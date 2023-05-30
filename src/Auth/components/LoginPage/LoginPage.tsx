@@ -1,14 +1,100 @@
-import {RouterProps} from 'react-router-dom'
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
-const Login = () => {
+import {
+    tastyKitchensLogo,
+    tastyKitchensLogoAltText,
+} from "../../../Common/constants/index";
 
-    // console.log(props)
+import WrapperComponent from "../../../Common/components/WrapperComponent";
 
-    return(
-        <div>
-            <h1>Login</h1>
-        </div>
-    )
-}
+import { loginPageProps } from "../../stores/types";
 
-export default Login
+import InputLabelContainer from "../InputLabelContainer";
+
+import {
+    LoginPageContainer,
+    LoginPageImg,
+    FormSection,
+    FormCard,
+    LogoImg,
+    Title,
+    LoginHeading,
+    FormEle,
+    LoginButton,
+    LoginError,
+    BgImgContainer,
+    LoginPageTopSection,
+    LoginButtonContainer
+} from "./styledComponents";
+import { ObjContext } from "../../../Common/context";
+
+export const LoginPage = (props: loginPageProps): JSX.Element => {
+    const {
+        userNameProps,
+        passwordProps,
+        submitMethod,
+        authErrorMessage,
+        constraint,
+    } = props;
+
+    const { t } = useTranslation();
+
+    const isDesktopView = useContext(ObjContext);
+
+    const submitForm = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        submitMethod();
+    };
+
+    const renderDesktopViewLoginPage = () => (
+        <LoginPageContainer>
+            <FormSection>
+                <FormCard>
+                    <LogoImg
+                        src={tastyKitchensLogo}
+                        alt={tastyKitchensLogoAltText}
+                    />
+                    <Title>{t("loginPageText.title")}</Title>
+                    <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
+                    {renderLoginForm()}
+                </FormCard>
+            </FormSection>
+            <BgImgContainer></BgImgContainer>
+            
+        </LoginPageContainer>
+    );
+
+    const renderMobileViewLoginpage = () => (
+        <LoginPageContainer>
+            <LoginPageTopSection>
+                <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
+                <BgImgContainer></BgImgContainer>
+            </LoginPageTopSection>
+            {renderLoginForm()}
+        </LoginPageContainer>
+    );
+
+    const renderLoginForm = () => (
+        <FormEle onSubmit={submitForm}>
+            <InputLabelContainer inputLabelPropsObj={userNameProps} />
+            <InputLabelContainer inputLabelPropsObj={passwordProps} />
+            <LoginButtonContainer>
+            <LoginButton type="submit">
+                {constraint === "INITIAL"
+                    ? t("loginPageText.loginText")
+                    : t("loginPageText.loadingText")}
+            </LoginButton>
+            {authErrorMessage && <LoginError>{authErrorMessage}</LoginError>}
+            </LoginButtonContainer>
+        </FormEle>
+    );
+
+    return (
+        <WrapperComponent>
+            {isDesktopView
+                ? renderDesktopViewLoginPage()
+                : renderMobileViewLoginpage()}
+        </WrapperComponent>
+    );
+};

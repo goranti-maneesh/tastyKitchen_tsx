@@ -1,0 +1,17 @@
+{
+    "name": "Tasty Kitchens",
+    "loginErrors": {
+        "loginUsernameError": "వినియోగదారు పేరు తప్పనిసరిగా 5 అక్షరాలను కలిగి ఉండాలి",
+        "loginPasswordError": "పాస్‌వర్డ్ తప్పనిసరిగా అక్షరాలు, ప్రత్యేక అక్షరాలు మరియు సంఖ్యలను 6 నుండి 16 వరకు కలిగి ఉండాలి",
+        "loginButtonError": "చెల్లుబాటు అయ్యే వినియోగదారు పేరు మరియు పాస్‌వర్డ్‌ను నమోదు చేయండి"
+    },
+    "loginPageText": {
+        "title": "Tasty Kitchens",
+        "loginText": "లాగిన్",
+        "usernameLabelText": "వినియోగదారు పేరు",
+        "usernamePhaceholderText": "వినియోగదారు పేరు",
+        "passwordLabelText": "పాస్వర్డ్",
+        "passwordPhaceholderText": "పాస్వర్డ్",
+        "loadingText": "లోడింగ"
+    }
+}

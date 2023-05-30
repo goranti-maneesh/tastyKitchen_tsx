@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
 import {AuthServiceAPI} from '../../Common/stores/index'
 
 import { AuthStore } from '../stores/AuthStore/AuthStore'
@@ -9,7 +9,7 @@ const AuthServiceApiInstance = new AuthServiceAPI()
 
 const AuthStoreInstance = new AuthStore(AuthServiceApiInstance)
 
-const AuthContext = createContext({})
+const AuthContext = createContext(AuthStoreInstance)
 
 export const AuthHooks = ({children}: props) => (
     <AuthContext.Provider value={AuthStoreInstance}>
