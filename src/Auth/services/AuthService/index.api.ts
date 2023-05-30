@@ -1,4 +1,5 @@
 import { AuthReqObjectTypes, AuthSuccessResObjectTypes, AuthFailureResObjectTypes } from "../../stores/types";
+
 import { AuthServiceType } from "./index";
 
 export class AuthServiceAPI implements AuthServiceType{

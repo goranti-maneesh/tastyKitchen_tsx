@@ -1,5 +1,5 @@
 export interface AuthSuccessResObjectTypes {
-    jwtToken: string;
+    jwt_token: string;
     responseStatus: boolean;
     error_msg?: string;
 }
@@ -8,7 +8,7 @@ export interface AuthFailureResObjectTypes {
     error_msg: string;
     status_code: Number;
     responseStatus: boolean;
-    jwtToken?: string;
+    jwt_token?: string;
 }
 
 export interface AuthReqObjectTypes {

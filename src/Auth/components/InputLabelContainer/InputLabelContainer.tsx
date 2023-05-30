@@ -9,7 +9,7 @@ import {
     ErrorMsg,
 } from "./styledComponents";
 
-export const InputLabelContainer = (props: inputLabelPropsObjTypes) => {
+export const InputLabelContainer = (props: inputLabelPropsObjTypes): JSX.Element => {
     const { inputLabelPropsObj } = props;
 
     const {

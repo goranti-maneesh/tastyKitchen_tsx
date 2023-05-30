@@ -7,6 +7,7 @@ import {
 } from "../../../Common/constants/index";
 
 import WrapperComponent from "../../../Common/components/WrapperComponent";
+import { ObjContext } from "../../../Common/context";
 
 import { loginPageProps } from "../../stores/types";
 
@@ -27,7 +28,6 @@ import {
     LoginPageTopSection,
     LoginButtonContainer
 } from "./styledComponents";
-import { ObjContext } from "../../../Common/context";
 
 export const LoginPage = (props: loginPageProps): JSX.Element => {
     const {
@@ -47,7 +47,7 @@ export const LoginPage = (props: loginPageProps): JSX.Element => {
         submitMethod();
     };
 
-    const renderDesktopViewLoginPage = () => (
+    const renderDesktopViewLoginPage = (): JSX.Element => (
         <LoginPageContainer>
             <FormSection>
                 <FormCard>
@@ -65,7 +65,7 @@ export const LoginPage = (props: loginPageProps): JSX.Element => {
         </LoginPageContainer>
     );
 
-    const renderMobileViewLoginpage = () => (
+    const renderMobileViewLoginpage = (): JSX.Element => (
         <LoginPageContainer>
             <LoginPageTopSection>
                 <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
@@ -75,7 +75,7 @@ export const LoginPage = (props: loginPageProps): JSX.Element => {
         </LoginPageContainer>
     );
 
-    const renderLoginForm = () => (
+    const renderLoginForm = (): JSX.Element => (
         <FormEle onSubmit={submitForm}>
             <InputLabelContainer inputLabelPropsObj={userNameProps} />
             <InputLabelContainer inputLabelPropsObj={passwordProps} />

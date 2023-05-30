@@ -1,12 +1,15 @@
-import { AuthServiceType } from "../../services/AuthService";
 import { action, makeAutoObservable, runInAction } from "mobx";
+
+import { setJwtToken } from "../../../Common/utils/StorageUtils";
+import { constraints } from "../../../Common/constraints";
+
+import { AuthServiceType } from "../../services/AuthService";
+
 import {
     AuthSuccessResObjectTypes,
     AuthFailureResObjectTypes,
     AuthReqObjectTypes,
 } from "../types";
-import { setJwtToken } from "../../../Common/utils/StorageUtils";
-import { constraints } from "../../../Common/constraints";
 
 export class AuthStore {
     AuthApiService: AuthServiceType;
@@ -35,8 +38,9 @@ export class AuthStore {
     setAPIResponse = (
         response: AuthSuccessResObjectTypes | AuthFailureResObjectTypes
     ): void => {
+        console.log(response.jwt_token);
         if (response.responseStatus) {
-            setJwtToken(response.jwtToken!);
+            setJwtToken(response.jwt_token!);
             this.authErrorMessage = "";
         } else {
             this.authErrorMessage = response.error_msg!;
@@ -56,6 +60,7 @@ export class AuthStore {
             username: this.username,
             password: this.password,
         });
+        console.log(response)
         this.setAPIResponse(response);
         this.constraint = constraints.initial;
     };
