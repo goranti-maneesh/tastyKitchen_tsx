@@ -1,0 +1,13 @@
+{
+    "offers": [
+       {
+        "image_url": "https://assets.ccbp.in/frontend/react-js/restaurants-app-project/carousel-images-jammu-special.jpg",
+        "id": 1
+       },
+       {
+        "image_url": "https://assets.ccbp.in/frontend/react-js/restaurants-app-project/carousel-images-jammu-special.jpg",
+        "id": 2
+       }
+      ],
+      "responseStatus": true
+}

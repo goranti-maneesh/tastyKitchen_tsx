@@ -3,21 +3,20 @@ import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
 import { RouterProps } from "react-router-dom";
 
+import WrapperComponent from "../../Common/components/WrapperComponent";
+import { getJwtToken } from "../../Common/utils/StorageUtils";
 import {
     usernameRegex,
     passwordRegex,
-} from "../../../Common/utils/RegularExpressions/LoginCredsRegex";
-import WrapperComponent from "../../../Common/components/WrapperComponent";
-import { getJwtToken } from "../../../Common/utils/StorageUtils";
+} from "../../Common/utils/RegularExpressions/LoginCredsRegex";
 
-import { useAuthStore } from "../../hooks/useAuthStore";
-import { inputLabelProps } from "../../stores/types";
+import { useAuthStore } from "../hooks/useAuthStore";
+import { inputLabelProps } from "../stores/types";
 
-import LoginPage from "./index";
+import LoginPage from "../components/LoginPage";
 import { LoginRouteContainer } from "./styledComponents";
 
-export const HomeRoute = observer((props: RouterProps): JSX.Element => {
-
+export const LoginRoute = observer((props: RouterProps): JSX.Element => {
     const { t } = useTranslation();
 
     const authStore = useAuthStore();
@@ -28,22 +27,21 @@ export const HomeRoute = observer((props: RouterProps): JSX.Element => {
         authErrorMessage,
         setErrorMsg,
         responseStatus,
-        constraint
+        constraint,
     } = authStore;
 
-    const {history} = props
+    const { history } = props;
 
-    const onSubmitLoginForm = (): void => {
-
+    const onSubmitLoginForm = async (): Promise<void> => {
         if (username === "" && password === "") {
             setErrorMsg(t("loginErrors.loginButtonError"));
         } else {
-            fetchLoginApi();
-            if(responseStatus){
-                history.replace("/")
+            await fetchLoginApi();
+            const { responseStatus } = authStore;
+            if (responseStatus) {
+                history.replace("/");
             }
         }
-
     };
 
     const onChangeUsername = (
@@ -83,10 +81,10 @@ export const HomeRoute = observer((props: RouterProps): JSX.Element => {
     };
 
     useEffect((): void => {
-        if(getJwtToken()){
-            history.replace("/")
+        if (getJwtToken()) {
+            history.replace("/");
         }
-    }, [])
+    }, []);
 
     return (
         <LoginRouteContainer>

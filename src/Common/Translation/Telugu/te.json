@@ -13,5 +13,10 @@
         "passwordLabelText": "పాస్వర్డ్",
         "passwordPhaceholderText": "పాస్వర్డ్",
         "loadingText": "లోడింగ"
+    },
+    "headerText": {
+        "home": "Home",
+        "cart": "Cart",
+        "logout": "Logout"
     }
 }

@@ -1,3 +1,3 @@
-import { AuthServiceAPI } from "./index.api";
+import { AuthServiceAPI, HomeRouteServivceAPI } from "./index.api";
 
-export {AuthServiceAPI}
+export { AuthServiceAPI, HomeRouteServivceAPI };

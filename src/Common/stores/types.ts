@@ -8,3 +8,7 @@ export interface constraintsTypes{
     success: string,
     failure: string
 }
+
+export interface headerLinkComponentProps {
+    $isSelected: boolean
+}

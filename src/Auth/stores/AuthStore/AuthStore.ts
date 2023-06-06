@@ -13,7 +13,7 @@ import {
 
 export class AuthStore {
     AuthApiService: AuthServiceType;
-    responseStatus = true as boolean;
+    responseStatus = false as boolean;
     authErrorMessage = "" as string;
     username = "" as string;
     password = "" as string;
@@ -38,7 +38,6 @@ export class AuthStore {
     setAPIResponse = (
         response: AuthSuccessResObjectTypes | AuthFailureResObjectTypes
     ): void => {
-        console.log(response.jwt_token);
         if (response.responseStatus) {
             setJwtToken(response.jwt_token!);
             this.authErrorMessage = "";
@@ -60,7 +59,6 @@ export class AuthStore {
             username: this.username,
             password: this.password,
         });
-        console.log(response)
         this.setAPIResponse(response);
         this.constraint = constraints.initial;
     };

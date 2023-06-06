@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const LoginRouteContainer = styled.div``;
-
 export const LoginPageContainer = styled.div`
     ${tw`flex w-full h-full`}
 

@@ -1,0 +1,46 @@
+{
+    "restaurants": [
+    {
+        "has_online_delivery": true,
+        "user_rating": {
+        "rating_text": "Very Good",
+        "rating_color": "5BA829",
+        "total_reviews": 155,
+        "rating": 4.3
+        },
+        "name": "Broasted Friend Chicken (BFC)",
+        "has_table_booking": 0,
+        "is_delivering_now": 0,
+        "cost_for_two": 1500,
+        "cuisine": "North Indian, Fast Food",
+        "image_url": "https://www.franchisezing.com/franchise/wp-content/uploads/2016/02/chole-bhature.jpg",
+        "id": "2300058",
+        "menu_type": "NON-VEG",
+        "location": "plot no 23, Silicon Valley, Hyderabad, Telangana 500081",
+        "opens_at": "10:00 AM Tomorrow",
+        "group_by_time": true
+    },
+    {
+        "has_online_delivery": true,
+        "user_rating": {
+        "rating_text": "Very Good",
+        "rating_color": "5BA829",
+        "total_reviews": 155,
+        "rating": 4.3
+        },
+        "name": "Broasted Friend Chicken (BFC)",
+        "has_table_booking": 0,
+        "is_delivering_now": 0,
+        "cost_for_two": 1500,
+        "cuisine": "North Indian, Fast Food",
+        "image_url": "https://www.franchisezing.com/franchise/wp-content/uploads/2016/02/chole-bhature.jpg",
+        "id": "2300059",
+        "menu_type": "NON-VEG",
+        "location": "plot no 23, Silicon Valley, Hyderabad, Telangana 500081",
+        "opens_at": "10:00 AM Tomorrow",
+        "group_by_time": true
+    }
+  ],
+  "total": 30,
+  "responseStatus": true
+}

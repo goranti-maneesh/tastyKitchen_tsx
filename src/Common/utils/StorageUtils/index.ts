@@ -6,17 +6,18 @@ export const setToken = (jwtToken: string): void => {
     Cookies.set(token, jwtToken, {expires: 24})
 }
 
-export const getToken = (): boolean => {
-    if(Cookies.get(token) !== undefined){
-        return true
+export const getToken = (): string | null => {
+    const JwtToken = Cookies.get(token)
+    if(JwtToken !== undefined){
+        return JwtToken
     }
-    return false
+    return null
 }
 
 export const setJwtToken = (jwtToken: string): void => {
     setToken(jwtToken)
 }
 
-export const getJwtToken = (): boolean => {
+export const getJwtToken = (): string | null => {
     return getToken()
 }

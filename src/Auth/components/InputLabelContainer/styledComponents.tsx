@@ -1,11 +1,10 @@
 import styled from "styled-components";
-
 import tw from "twin.macro";
 
 export const InputLabelCont = styled.div`
     ${tw`mb-6 w-360px`}
 
-    @media(max-width: 768px){
+    @media(max-width: 768px) {
         ${tw`w-312px`}
     }
 `;
@@ -17,7 +16,7 @@ export const LoginLabelEle = styled.label`
 export const LoginInputEle = styled.input`
     ${tw`w-360px h-40px p-2 pl-4 pr-4 bg-Catskill_White rounded-sm text-Big_Stone outline-none text-fs14_lh24`}
 
-    @media(max-width: 768px){
+    @media(max-width: 768px) {
         ${tw`w-312px`}
     }
 `;

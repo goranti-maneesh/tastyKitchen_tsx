@@ -3,7 +3,7 @@ import {AuthServiceAPI} from '../../Common/stores/index'
 
 import { AuthStore } from '../stores/AuthStore/AuthStore'
 
-import {props} from '../stores/types'
+import {props} from '../../Common/stores/types'
 
 const AuthServiceApiInstance = new AuthServiceAPI()
 
