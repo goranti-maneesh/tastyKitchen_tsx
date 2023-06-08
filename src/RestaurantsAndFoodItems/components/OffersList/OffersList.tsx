@@ -5,17 +5,32 @@ import WrapperComponent from "../../../Common/components/WrapperComponent";
 import { offersListEachObjTypes } from "../../stores/types";
 
 import EachOffer from "../EachOffer";
+
 import { OffersUlElement } from "./styledComponents";
+import "./index.css";
 
 export const OffersList = (props: any) => {
     const { responseData } = props;
-    console.log(responseData);
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        appendDots: (dots: any) => {
+            return (
+                <ul
+                    style={{
+                        margin: "0px",
+                        position: "relative",
+                        top: "-30px",
+                        color: "white",
+                    }}
+                >
+                    {dots}
+                </ul>
+            );
+        },
     };
     return (
         <WrapperComponent>
