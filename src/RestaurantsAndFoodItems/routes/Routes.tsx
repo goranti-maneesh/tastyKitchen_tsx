@@ -3,13 +3,19 @@ import { observer } from "mobx-react-lite";
 
 import Header from "../../Common/components/Header";
 import { constraints } from "../../Common/constraints";
+import Loading from "../../Common/components/Loader";
+import Failure from "../../Common/components/Failure";
 
 import { useOffersListHook } from "../hooks/useOffersListHooks";
 import { useRestaurantsListHook } from "../hooks/useRestaurantsListHooks";
 import OffersList from "../components/OffersList";
 import RestaurantsList from "../components/RestaurantsList";
 
-import { HomeRouteMainContainer } from "./styledComponents";
+import {
+    HomeRouteMainContainer,
+    LoaderViewContainer,
+    RestaurantsListMainContainer,
+} from "./styledComponents";
 
 export const HomeRoute = observer((): JSX.Element => {
     const offersListHook = useOffersListHook();
@@ -31,11 +37,21 @@ export const HomeRoute = observer((): JSX.Element => {
         getRestaurantsList();
     }, []);
 
+    const renderLoader = () => (
+        <LoaderViewContainer>
+            <Loading />
+        </LoaderViewContainer>
+    );
+
+    const renderFailure = () => (
+        <LoaderViewContainer>
+            <Failure />
+        </LoaderViewContainer>
+    );
+
     const renderOffersList = () => {
-        const {responseData} = offersListHook
-        return(
-            <OffersList responseData={responseData}/>
-        )
+        const { responseData } = offersListHook;
+        return <OffersList responseData={responseData} />;
     };
 
     const renderRestaurantsList = () => <RestaurantsList />;
@@ -44,11 +60,11 @@ export const HomeRoute = observer((): JSX.Element => {
         const { constraint } = offersListHook;
         switch (constraint) {
             case constraints.loading:
-                return null;
+                return renderLoader();
             case constraints.success:
                 return renderOffersList();
             case constraints.failure:
-                return null;
+                return renderFailure();
             default:
                 return null;
         }
@@ -59,11 +75,11 @@ export const HomeRoute = observer((): JSX.Element => {
         console.log(constraint);
         switch (constraint) {
             case constraints.loading:
-                return null;
+                return renderLoader();
             case constraints.success:
                 return renderRestaurantsList();
             case constraints.failure:
-                return null;
+                return renderFailure();
             default:
                 return null;
         }

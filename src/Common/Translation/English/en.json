@@ -18,5 +18,13 @@
         "home": "Home",
         "cart": "Cart",
         "logout": "Logout"
+    },
+    "failureText": {
+        "headingText": "Something went wrong",
+        "retryButton": "Retry"
+    },
+    "homeText": {
+        "title": "Popular Restaurants",
+        "description": "Select Your favourite restaurant special dish and make your day happy..."
     }
 }

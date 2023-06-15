@@ -10,19 +10,6 @@ import {
     restaurantsListEachObjFetchedTypes,
 } from "../types";
 
-const sortByOptions = [
-    {
-        id: 0,
-        displayText: "Highest",
-        value: "Highest",
-    },
-    {
-        id: 2,
-        displayText: "Lowest",
-        value: "Lowest",
-    },
-];
-
 export class RestaurantsListStore {
     limit = 9 as number;
     offset = 0 as number;

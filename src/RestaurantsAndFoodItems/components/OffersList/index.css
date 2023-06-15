@@ -12,3 +12,11 @@
     height: 20px;
     margin: 0px;
 }
+
+.slick-prev {
+    display: none !important;
+}
+
+.slick-next {
+    display: none !important;
+}
