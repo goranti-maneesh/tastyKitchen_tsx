@@ -15,6 +15,7 @@ export class RestaurantsListStore {
     offset = 0 as number;
     numberOfPages = 0 as number;
     sortByRating = "Highest" as string;
+    isSortingHighest = true as boolean;
     responseStatus = false as boolean;
     responseData = [] as Array<restaurantsListEachObjTypes>;
     constraint = constraints.initial as string;
@@ -35,6 +36,16 @@ export class RestaurantsListStore {
 
     changeRating = (rating: string): void => {
         this.sortByRating = rating;
+    };
+
+    changeRatingToHighest = (ratingStatus: boolean): void => {
+        this.isSortingHighest = true;
+        this.sortByRating = "Highest";
+    };
+
+    changeRatingToLowest = (ratingStatus: boolean): void => {
+        this.isSortingHighest = false;
+        this.sortByRating = "Lowest";
     };
 
     updateResponseData = (

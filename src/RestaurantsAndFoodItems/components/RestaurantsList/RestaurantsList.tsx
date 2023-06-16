@@ -1,8 +1,14 @@
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { TiTick } from "react-icons/ti";
+import { observer } from "mobx-react-lite";
 
 import WrapperComponent from "../../../Common/components/WrapperComponent";
+
+import { useRestaurantsListHook } from "../../hooks/useRestaurantsListHooks";
+import { restaurantsListEachObjTypes } from "../../stores/types";
+
+import EachRestaurant from '../EachRestaurant'
 
 import {
     RestaurantListContainer,
@@ -16,6 +22,12 @@ import {
     PopupContainer,
     ButtonOption,
     PopupModalContainer,
+    SortingButton,
+    SortingText,
+    FilterIcon,
+    DropDownIcon,
+    RestaurantsLists,
+    RestaurantListUlElement
 } from "./styledComponents";
 import "./index.css";
 
@@ -32,18 +44,29 @@ const sortByOptions = [
     },
 ];
 
-export const RestaurantsList = () => {
+export const RestaurantsList = observer(() => {
     const { t } = useTranslation();
 
-    const [isSortingHighest, setSortingStatus] = useState(false);
+    const restaurantsStore = useRestaurantsListHook();
+
+    const {
+        changeRatingToHighest,
+        changeRatingToLowest,
+        isSortingHighest,
+        fetchRestaurantsList,
+        responseData
+    } = restaurantsStore;
+
     const sortingText = isSortingHighest ? "Highest" : "Lowest";
 
     const setLowestRating = () => {
-        setSortingStatus(false);
+        changeRatingToLowest(false);
+        fetchRestaurantsList();
     };
 
     const setHighestRating = () => {
-        setSortingStatus(true);
+        changeRatingToHighest(true);
+        fetchRestaurantsList();
     };
 
     const renderSelectPopup = () => (
@@ -52,9 +75,11 @@ export const RestaurantsList = () => {
                 <PopupModalContainer
                     modal
                     trigger={
-                        <button type="button" className="trigger-button">
-                            {`Sort by ${sortingText}`}
-                        </button>
+                        <SortingButton type="button" className="trigger-button">
+                            <FilterIcon fill="#475569" />
+                            <SortingText>{`Sort by ${sortingText}`}</SortingText>
+                            <DropDownIcon fill="#475569" />
+                        </SortingButton>
                     }
                     closeOnDocumentClick={true}
                     position="top left"
@@ -64,6 +89,7 @@ export const RestaurantsList = () => {
                             <ButtonOption
                                 type="button"
                                 onClick={setLowestRating}
+                                $sortingBtnBgColor={sortingText === "Lowest"}
                             >
                                 <p>Lowest</p>
                                 {sortingText === "Lowest" && <TiTick />}
@@ -73,6 +99,7 @@ export const RestaurantsList = () => {
                             <ButtonOption
                                 type="button"
                                 onClick={setHighestRating}
+                                $sortingBtnBgColor={sortingText === "Highest"}
                             >
                                 <p>Highest</p>
                                 {sortingText === "Highest" && <TiTick />}
@@ -83,6 +110,14 @@ export const RestaurantsList = () => {
             </PopupMainContainer>
         </SelectContainer>
     );
+
+    const renderRestaurantsList = () => (
+        <RestaurantListUlElement>
+            {responseData.map((eachRestaurant: restaurantsListEachObjTypes) => (
+                <EachRestaurant key={eachRestaurant.id} eachRestaurant={eachRestaurant}/>
+            ))}
+        </RestaurantListUlElement>
+    )
 
     return (
         <WrapperComponent>
@@ -99,7 +134,10 @@ export const RestaurantsList = () => {
 
                     {renderSelectPopup()}
                 </TitleAndSelectContainer>
+                <RestaurantsLists>
+                    {renderRestaurantsList()}
+                </RestaurantsLists>
             </RestaurantListContainer>
         </WrapperComponent>
     );
-};
+});

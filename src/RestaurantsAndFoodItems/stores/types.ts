@@ -71,3 +71,11 @@ export interface restaurantsListResponseTypes {
     total: number;
     responseStatus: boolean;
 }
+
+export interface eachRestaurantPropTypes{
+    eachRestaurant: restaurantsListEachObjTypes
+}
+
+export interface ButtonOptionStyleTypes {
+    $sortingBtnBgColor: boolean
+}

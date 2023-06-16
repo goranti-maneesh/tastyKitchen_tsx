@@ -37,7 +37,7 @@ export const OffersList = (props: any) => {
             <OffersUlElement>
                 <Slider {...settings}>
                     {responseData.map((eachOffer: offersListEachObjTypes) => (
-                        <EachOffer eachOffer={eachOffer} />
+                        <EachOffer key={eachOffer.id} eachOffer={eachOffer} />
                     ))}
                 </Slider>
             </OffersUlElement>
