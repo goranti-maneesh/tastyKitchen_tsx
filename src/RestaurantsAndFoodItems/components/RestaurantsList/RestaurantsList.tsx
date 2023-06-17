@@ -8,7 +8,7 @@ import WrapperComponent from "../../../Common/components/WrapperComponent";
 import { useRestaurantsListHook } from "../../hooks/useRestaurantsListHooks";
 import { restaurantsListEachObjTypes } from "../../stores/types";
 
-import EachRestaurant from '../EachRestaurant'
+import EachRestaurant from "../EachRestaurant";
 
 import {
     RestaurantListContainer,
@@ -27,7 +27,7 @@ import {
     FilterIcon,
     DropDownIcon,
     RestaurantsLists,
-    RestaurantListUlElement
+    RestaurantListUlElement,
 } from "./styledComponents";
 import "./index.css";
 
@@ -54,7 +54,7 @@ export const RestaurantsList = observer(() => {
         changeRatingToLowest,
         isSortingHighest,
         fetchRestaurantsList,
-        responseData
+        responseData,
     } = restaurantsStore;
 
     const sortingText = isSortingHighest ? "Highest" : "Lowest";
@@ -84,28 +84,34 @@ export const RestaurantsList = observer(() => {
                     closeOnDocumentClick={true}
                     position="top left"
                 >
-                    <PopupContainer>
-                        <EachOptionContainer>
-                            <ButtonOption
-                                type="button"
-                                onClick={setLowestRating}
-                                $sortingBtnBgColor={sortingText === "Lowest"}
-                            >
-                                <p>Lowest</p>
-                                {sortingText === "Lowest" && <TiTick />}
-                            </ButtonOption>
-                        </EachOptionContainer>
-                        <EachOptionContainer>
-                            <ButtonOption
-                                type="button"
-                                onClick={setHighestRating}
-                                $sortingBtnBgColor={sortingText === "Highest"}
-                            >
-                                <p>Highest</p>
-                                {sortingText === "Highest" && <TiTick />}
-                            </ButtonOption>
-                        </EachOptionContainer>
-                    </PopupContainer>
+                    <WrapperComponent>
+                        <PopupContainer>
+                            <EachOptionContainer>
+                                <ButtonOption
+                                    type="button"
+                                    onClick={setLowestRating}
+                                    $sortingBtnBgColor={
+                                        sortingText === "Lowest"
+                                    }
+                                >
+                                    <p>Lowest</p>
+                                    {sortingText === "Lowest" && <TiTick />}
+                                </ButtonOption>
+                            </EachOptionContainer>
+                            <EachOptionContainer>
+                                <ButtonOption
+                                    type="button"
+                                    onClick={setHighestRating}
+                                    $sortingBtnBgColor={
+                                        sortingText === "Highest"
+                                    }
+                                >
+                                    <p>Highest</p>
+                                    {sortingText === "Highest" && <TiTick />}
+                                </ButtonOption>
+                            </EachOptionContainer>
+                        </PopupContainer>
+                    </WrapperComponent>
                 </PopupModalContainer>
             </PopupMainContainer>
         </SelectContainer>
@@ -114,10 +120,13 @@ export const RestaurantsList = observer(() => {
     const renderRestaurantsList = () => (
         <RestaurantListUlElement>
             {responseData.map((eachRestaurant: restaurantsListEachObjTypes) => (
-                <EachRestaurant key={eachRestaurant.id} eachRestaurant={eachRestaurant}/>
+                <EachRestaurant
+                    key={eachRestaurant.id}
+                    eachRestaurant={eachRestaurant}
+                />
             ))}
         </RestaurantListUlElement>
-    )
+    );
 
     return (
         <WrapperComponent>
@@ -134,9 +143,7 @@ export const RestaurantsList = observer(() => {
 
                     {renderSelectPopup()}
                 </TitleAndSelectContainer>
-                <RestaurantsLists>
-                    {renderRestaurantsList()}
-                </RestaurantsLists>
+                <RestaurantsLists>{renderRestaurantsList()}</RestaurantsLists>
             </RestaurantListContainer>
         </WrapperComponent>
     );

@@ -1,9 +1,11 @@
 .popup-overlay {
-    position: relative !important;
+    position: absolute !important;
+    top: 100;
     margin: auto;
     display: flex;
-    justify-content: flex-end;
-    width: 89vw;
+    justify-content: center;
+    margin-top: 378px;
+    /* width: 89vw; */
 }
 
 .popup-content {

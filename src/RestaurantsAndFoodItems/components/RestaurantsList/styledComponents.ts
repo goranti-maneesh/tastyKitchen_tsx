@@ -35,7 +35,7 @@ export const PopupModalContainer = styled(Popup)`
 export const EachOptionContainer = styled.div``;
 
 export const PopupContainer = styled.div`
-    ${tw`text-Geyser border-solid border-DEFAULT shadow-sortingPopup w-161px h-112px flex flex-col p-2 rounded-xl mt-2`}
+    ${tw`text-Geyser border-solid border-DEFAULT shadow-sortingPopup w-161px h-112px flex flex-col p-2 rounded-xl ml-auto mt-2`}
 `;
 
 export const ButtonOption = styled.button<ButtonOptionStyleTypes>`
@@ -60,6 +60,6 @@ export const DropDownIcon = styled(IoMdArrowDropdown)`
     ${tw`w-16px h-16px`}
 `;
 
-export const RestaurantsLists = styled.div``
+export const RestaurantsLists = styled.div``;
 
-export const RestaurantListUlElement = styled.ul``
+export const RestaurantListUlElement = styled.ul``;
