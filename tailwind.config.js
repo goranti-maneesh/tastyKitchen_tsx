@@ -14,25 +14,37 @@ module.exports = {
         extend: {
             spacing: {
                 "18px": "18px",
+                "23px": "23px",
+                "30px": "30px",
+                "49px": "49px",
+                "63px": "63px",
+                "415px": "415px",
+                "609px": "609px",
             },
             width: {
+                "12px": "12px",
                 "16px": "16px",
                 "24px": "24px",
+                "39px": "39px",
                 "50vw": "50vw",
                 "53px": "53px",
                 "49px": "49px",
                 "73px": "73px",
                 "89vw": "89vw",
                 "112px": "112px",
-                "145px" :"145px",
+                "145px": "145px",
+                "160px": "160px",
                 "161px": "161px",
                 "312px": "312px",
+                "350px": "350px",
                 "360px": "360px",
                 "387px": "387px",
                 "456px": "456px",
                 "1110px": "1110px",
             },
             height: {
+                "2px": "2px",
+                "12px": "12px",
                 "16px": "16px",
                 "24px": "24px",
                 "32px": "32px",
@@ -40,9 +52,17 @@ module.exports = {
                 "40px": "40px",
                 "43px": "43px",
                 "50vh": "50vh",
+                "64px": "64px",
                 "96px": "96px",
+                "100px": "100px",
                 "112px": "112px",
+                "188px": "188px",
+                "250px": "250px",
+                "299px": "299px",
+                "319px": "319px",
+                "369px": "369px",
                 "387px": "387px",
+                "432px": "432px",
                 "523px": "523px",
             },
             minHeight: {
@@ -54,7 +74,8 @@ module.exports = {
             },
             boxShadow: {
                 loginFormCard: "0px 8px 40px rgba(7, 7, 7, 0.08);",
-                sortingPopup: "0px 0px 2px rgba(40, 41, 61, 0.04), 0px 4px 8px rgba(96, 97, 112, 0.16);"
+                sortingPopup:
+                    "0px 0px 2px rgba(40, 41, 61, 0.04), 0px 4px 8px rgba(96, 97, 112, 0.16);",
             },
             colors: {
                 Tree_Poppy: "#F7931E",
@@ -64,7 +85,11 @@ module.exports = {
                 Fiord: "#475569",
                 Pickled_Bluewood: "#334155",
                 Geyser: "#CBD5E1",
-                Catskill_White: "#F1F5F9"
+                Catskill_White: "#F1F5F9",
+                Nile_Blue: "#183B56",
+                Ghost: "#CBD2D9",
+                Slate_Gray: "#64748B",
+                Mirage: "#1E293B",
             },
             outlineWidth: {
                 "0px": "0px",
@@ -81,6 +106,12 @@ module.exports = {
                 "32px",
                 {
                     lineHeight: "40px",
+                },
+            ],
+            fs32_lh48: [
+                "32px",
+                {
+                    lineHeight: "48px",
                 },
             ],
             fs24_lh32: [
@@ -101,6 +132,12 @@ module.exports = {
                 "14px",
                 {
                     lineHeight: "18px",
+                },
+            ],
+            fs18_lh24: [
+                "18px",
+                {
+                    lineHeight: "24px",
                 },
             ],
             fs12_lh16: [

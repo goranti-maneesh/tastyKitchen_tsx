@@ -79,3 +79,7 @@ export interface eachRestaurantPropTypes{
 export interface ButtonOptionStyleTypes {
     $sortingBtnBgColor: boolean
 }
+
+export interface eachOfferProps{
+    eachOffer: offersListEachObjTypes
+}

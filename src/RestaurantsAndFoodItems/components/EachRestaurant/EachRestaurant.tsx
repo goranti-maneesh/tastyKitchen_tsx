@@ -1,33 +1,45 @@
+import { useTranslation } from "react-i18next";
+
+import { ratingImg, ratingImgAltText } from "../../../Common/constants";
+
 import { eachRestaurantPropTypes } from "../../stores/types";
 
-import {EachRestaurantLi, EachRestaurantLink, RestaurantImage, RestaurantDetailsContainer,
-    RestaurantName, RestaurantMenuType, RestaurantRatingContainer, RatingImage, RestaurantRating,
-    TotalReviews} from './styledComponents'
+import {
+    EachRestaurantLi,
+    EachRestaurantLink,
+    RestaurantImage,
+    RestaurantDetailsContainer,
+    RestaurantName,
+    RestaurantMenuType,
+    RestaurantRatingContainer,
+    RatingImage,
+    RestaurantRating,
+    TotalReviews,
+} from "./styledComponents";
 
 export const EachRestaurant = (props: eachRestaurantPropTypes) => {
+    const { eachRestaurant } = props;
 
-    const {eachRestaurant} = props
+    const { imageUrl, name, menuType, userRating, id } = eachRestaurant;
 
-    const {imageUrl, name, menuType, userRating} = eachRestaurant
+    const { t } = useTranslation();
 
-    return(
-        <EachRestaurantLi>
-            <EachRestaurantLink to="">
-                <RestaurantImage src={imageUrl} alt=""/>
+    return (
+        <EachRestaurantLink to={`restaurants/${id}`}>
+            <EachRestaurantLi>
+                <RestaurantImage src={imageUrl} alt="" />
                 <RestaurantDetailsContainer>
                     <RestaurantName>{name}</RestaurantName>
                     <RestaurantMenuType>{menuType}</RestaurantMenuType>
                     <RestaurantRatingContainer>
-                        <RatingImage/>
-                        <RestaurantRating>
-                            {userRating.rating}
-                        </RestaurantRating>
-                        <TotalReviews>
-                            {userRating.totalReviews}
-                        </TotalReviews>
+                        <RatingImage src={ratingImg} alt={ratingImgAltText} />
+                        <RestaurantRating>{userRating.rating}</RestaurantRating>
+                        <TotalReviews>{`(${userRating.totalReviews} ${t(
+                            "homeText.ratingsText"
+                        )})`}</TotalReviews>
                     </RestaurantRatingContainer>
                 </RestaurantDetailsContainer>
-            </EachRestaurantLink>
-        </EachRestaurantLi>
-    )
-}
+            </EachRestaurantLi>
+        </EachRestaurantLink>
+    );
+};

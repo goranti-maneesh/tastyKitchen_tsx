@@ -1,7 +1,9 @@
-import { offersListEachObjTypes } from "../../stores/types";
+import { eachOfferProps } from "../../stores/types";
 
-export const EachOffer = (props: any) => {
+import {EachOfferImg} from './styledComponents'
+
+export const EachOffer = (props: eachOfferProps) => {
     const { eachOffer } = props;
     const { imageUrl } = eachOffer;
-    return <img src={imageUrl} />;
+    return <EachOfferImg src={imageUrl} />;
 };

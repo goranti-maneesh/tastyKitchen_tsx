@@ -25,6 +25,7 @@
     },
     "homeText": {
         "title": "Popular Restaurants",
-        "description": "Select Your favourite restaurant special dish and make your day happy..."
+        "description": "Select Your favourite restaurant special dish and make your day happy...",
+        "ratingsText": "ratings"
     }
 }

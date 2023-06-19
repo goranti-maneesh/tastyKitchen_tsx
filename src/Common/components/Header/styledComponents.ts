@@ -10,14 +10,26 @@ export const HeaderMainContainer = styled.div``;
 
 export const LogoTitleContainer = styled.div`
     ${tw`flex items-center h-96px`}
+
+    @media(max-width: 768px) {
+        ${tw`h-64px `}
+    }
 `;
 
 export const TastyKitchensLogo = styled.img`
     ${tw`w-49px h-39px`}
+
+    @media(max-width: 768px) {
+        ${tw`w-39px h-32px`}
+    }
 `;
 
 export const TastyKitchensTitle = styled.h1`
     ${tw`text-fs24_lh32 m-0 text-Tree_Poppy font-bold italic ml-18px`}
+
+    @media(max-width: 768px) {
+        ${tw`text-fs16_lh24 ml-2    `}
+    }
 `;
 
 export const DesktopViewContainer = styled.div`

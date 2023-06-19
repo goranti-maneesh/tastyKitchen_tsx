@@ -28,6 +28,7 @@ import {
     DropDownIcon,
     RestaurantsLists,
     RestaurantListUlElement,
+    HorizontalLine
 } from "./styledComponents";
 import "./index.css";
 
@@ -143,6 +144,7 @@ export const RestaurantsList = observer(() => {
 
                     {renderSelectPopup()}
                 </TitleAndSelectContainer>
+                <HorizontalLine />
                 <RestaurantsLists>{renderRestaurantsList()}</RestaurantsLists>
             </RestaurantListContainer>
         </WrapperComponent>

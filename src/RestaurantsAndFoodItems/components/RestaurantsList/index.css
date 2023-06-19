@@ -4,8 +4,25 @@
     margin: auto;
     display: flex;
     justify-content: center;
-    margin-top: 378px;
-    /* width: 89vw; */
+    margin-top: 609px;
+}
+
+@media ((min-width: 768px) and (max-width: 996px)) {
+    .popup-overlay {
+        margin-top: 539px;
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-overlay {
+        margin-top: 383px;
+    }
+}
+
+@media (max-width: 585px) {
+    .popup-overlay {
+        margin-top: 407px;
+    }
 }
 
 .popup-content {

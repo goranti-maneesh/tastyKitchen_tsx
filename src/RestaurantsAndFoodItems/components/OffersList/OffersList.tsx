@@ -6,7 +6,7 @@ import { offersListEachObjTypes } from "../../stores/types";
 
 import EachOffer from "../EachOffer";
 
-import { OffersUlElement } from "./styledComponents";
+import { OffersUlElement, OffersContainer } from "./styledComponents";
 import "./index.css";
 
 export const OffersList = (props: any) => {
@@ -34,13 +34,20 @@ export const OffersList = (props: any) => {
     };
     return (
         <WrapperComponent>
-            <OffersUlElement>
-                <Slider {...settings}>
-                    {responseData.map((eachOffer: offersListEachObjTypes) => (
-                        <EachOffer key={eachOffer.id} eachOffer={eachOffer} />
-                    ))}
-                </Slider>
-            </OffersUlElement>
+            <OffersContainer>
+                <OffersUlElement>
+                    <Slider {...settings}>
+                        {responseData.map(
+                            (eachOffer: offersListEachObjTypes) => (
+                                <EachOffer
+                                    key={eachOffer.id}
+                                    eachOffer={eachOffer}
+                                />
+                            )
+                        )}
+                    </Slider>
+                </OffersUlElement>
+            </OffersContainer>
         </WrapperComponent>
     );
 };
