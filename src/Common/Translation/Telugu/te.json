@@ -27,5 +27,8 @@
         "title": "Popular Restaurants",
         "description": "Select Your favourite restaurant special dish and make your day happy...",
         "ratingsText": "ratings"
+    },
+    "footerText": {
+        "description": "The only thing we are serious about is food. Contact us on"
     }
 }

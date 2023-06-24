@@ -12,10 +12,14 @@ module.exports = {
             8: "8px",
         },
         extend: {
+            fontFamily: {
+                serif: ["Bree Serif"],
+            },
             spacing: {
                 "18px": "18px",
                 "23px": "23px",
                 "30px": "30px",
+                "40px": "40px",
                 "49px": "49px",
                 "63px": "63px",
                 "415px": "415px",
@@ -26,6 +30,8 @@ module.exports = {
                 "16px": "16px",
                 "24px": "24px",
                 "39px": "39px",
+                "40px": "40px",
+                "48px": "48px",
                 "50vw": "50vw",
                 "53px": "53px",
                 "49px": "49px",
@@ -40,6 +46,7 @@ module.exports = {
                 "360px": "360px",
                 "387px": "387px",
                 "456px": "456px",
+                "479px": "479px",
                 "1110px": "1110px",
             },
             height: {
@@ -48,6 +55,7 @@ module.exports = {
                 "16px": "16px",
                 "24px": "24px",
                 "32px": "32px",
+                "38px": "38px",
                 "39px": "39px",
                 "40px": "40px",
                 "43px": "43px",
@@ -62,6 +70,7 @@ module.exports = {
                 "319px": "319px",
                 "369px": "369px",
                 "387px": "387px",
+                "424px": "424px",
                 "432px": "432px",
                 "523px": "523px",
             },
@@ -90,6 +99,8 @@ module.exports = {
                 Ghost: "#CBD2D9",
                 Slate_Gray: "#64748B",
                 Mirage: "#1E293B",
+                Ebony: "#0F172A",
+                white: "#FFFFFF",
             },
             outlineWidth: {
                 "0px": "0px",

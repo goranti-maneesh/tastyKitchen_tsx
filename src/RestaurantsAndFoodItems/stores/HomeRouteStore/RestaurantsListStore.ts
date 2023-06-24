@@ -14,6 +14,7 @@ export class RestaurantsListStore {
     limit = 9 as number;
     offset = 0 as number;
     numberOfPages = 0 as number;
+    pageNumber = 1 as number;
     sortByRating = "Highest" as string;
     isSortingHighest = true as boolean;
     responseStatus = false as boolean;
@@ -27,11 +28,19 @@ export class RestaurantsListStore {
     }
 
     decreaseOffsetValue = (): void => {
-        this.offset -= 1;
+        if (this.pageNumber > 1) {
+            this.offset -= 9;
+            this.pageNumber -= 1;
+            this.fetchRestaurantsList();
+        }
     };
 
     increaseOffsetValue = (): void => {
-        this.offset += 1;
+        if (this.pageNumber < this.numberOfPages) {
+            this.offset += 9;
+            this.pageNumber += 1;
+            this.fetchRestaurantsList();
+        }
     };
 
     changeRating = (rating: string): void => {
@@ -52,7 +61,7 @@ export class RestaurantsListStore {
         response: restaurantsListFetchedResponseTypes
     ): void => {
         if (response.responseStatus) {
-            this.numberOfPages = response.total;
+            this.numberOfPages = Math.ceil(response.total / this.limit);
             this.responseStatus = response.responseStatus;
             this.constraint = constraints.success;
             this.responseData = response.restaurants.map(

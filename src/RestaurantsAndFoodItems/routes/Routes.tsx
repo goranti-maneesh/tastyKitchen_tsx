@@ -5,6 +5,7 @@ import Header from "../../Common/components/Header";
 import { constraints } from "../../Common/constraints";
 import Loading from "../../Common/components/Loader";
 import Failure from "../../Common/components/Failure";
+import Footer from "../../Common/components/Footer";
 
 import { useOffersListHook } from "../hooks/useOffersListHooks";
 import { useRestaurantsListHook } from "../hooks/useRestaurantsListHooks";
@@ -90,6 +91,7 @@ export const HomeRoute = observer((): JSX.Element => {
             <Header />
             {offersListOverAllViews()}
             {restaurantsListOverAllViews()}
+            <Footer/>
         </HomeRouteMainContainer>
     );
 });

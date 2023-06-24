@@ -8,6 +8,8 @@ import WrapperComponent from "../../../Common/components/WrapperComponent";
 import { useRestaurantsListHook } from "../../hooks/useRestaurantsListHooks";
 import { restaurantsListEachObjTypes } from "../../stores/types";
 
+import Pagination from '../Pagination'
+
 import EachRestaurant from "../EachRestaurant";
 
 import {
@@ -147,6 +149,7 @@ export const RestaurantsList = observer(() => {
                 <HorizontalLine />
                 <RestaurantsLists>{renderRestaurantsList()}</RestaurantsLists>
             </RestaurantListContainer>
+            <Pagination/>
         </WrapperComponent>
     );
 });
