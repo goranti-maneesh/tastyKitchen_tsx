@@ -40,7 +40,6 @@ export class OffersListStore {
     fetchOffersList = async (): Promise<void> => {
         this.constraint = constraints.loading;
         const response = await this.serviceApi.offersListApiService();
-        console.log(response, "response");
         this.updateResponseData(response);
     };
 }

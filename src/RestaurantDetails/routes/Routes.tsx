@@ -73,7 +73,6 @@ export const HomeRoute = observer((): JSX.Element => {
 
     const restaurantsListOverAllViews = () => {
         const { constraint } = restaurantsListHook;
-        console.log(constraint);
         switch (constraint) {
             case constraints.loading:
                 return renderLoader();

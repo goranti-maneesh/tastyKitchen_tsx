@@ -12,6 +12,7 @@ import {
     FooterTastyKitchensTitle,
     FooterDescriptionContainer,
     FooterDecription,
+    SocialMediaContainer,
     SocialMediaIconsContainer,
     PinInterestIcon,
     InstagramIcon,
@@ -36,12 +37,14 @@ export const Footer = () => {
                     {t("footerText.description")}
                 </FooterDecription>
             </FooterDescriptionContainer>
+            <SocialMediaContainer>
             <SocialMediaIconsContainer>
                 <PinInterestIcon fill="#0F172A" />
                 <InstagramIcon fill="#ffffff" />
                 <TwitterIcon fill="#ffffff" />
                 <FaceBookIcon fill="#ffffff" />
             </SocialMediaIconsContainer>
+            </SocialMediaContainer>
         </FooterContainer>
     );
 };

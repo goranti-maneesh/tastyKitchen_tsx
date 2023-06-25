@@ -1,0 +1,31 @@
+{
+    "restaurantsList": {
+        "rating": 3.6,
+        "id": "3200283",
+        "name": "Miss.Ice Cream",
+        "cost_for_two": 700,
+        "cuisine": "Bakery",
+        "image_url": "https://b.zmtcdn.com/data/pictures/3/2200283/2f0442152a13a183aaf62065e4689158_featured_v2.jpg",
+        "reviews_count": 51,
+        "opens_at": "12:00 PM, Tomorrow",
+        "location": "Domalguda, Himayatnagar, Hyderabad",
+        "items_count": 45,
+        "food_items": [
+            {
+                "name": "Chicken Roast",
+                "cost": 660,
+                "food_type": "NON-VEG",
+                "image_url": "https://americanhomecook.com/wp-content/uploads/2019/11/Thanksgiving-Roast-Chicken2.jpg",
+                "id": "1"
+            },
+            {
+                "name": "Chicken Roast",
+                "cost": 660,
+                "food_type": "NON-VEG",
+                "image_url": "https://americanhomecook.com/wp-content/uploads/2019/11/Thanksgiving-Roast-Chicken2.jpg",
+                "id": "2"
+            }
+        ]
+    },
+    "responseStatus": true
+}

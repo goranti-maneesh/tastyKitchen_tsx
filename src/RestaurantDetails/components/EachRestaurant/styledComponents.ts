@@ -3,13 +3,13 @@ import tw from "twin.macro";
 import { Link } from "react-router-dom";
 
 export const EachRestaurantLi = styled.li`
-    ${tw`w-350px flex mb-8 mr-30px`}
+    ${tw`w-350px flex mb-8 mr-10px`}
 `;
 
 export const EachRestaurantLink = styled(Link)``;
 
 export const RestaurantImage = styled.img`
-    ${tw`w-160px rounded-lg mr-4`}
+    ${tw`w-160px h-100px rounded-lg mr-4`}
 `;
 
 export const RestaurantDetailsContainer = styled.div`

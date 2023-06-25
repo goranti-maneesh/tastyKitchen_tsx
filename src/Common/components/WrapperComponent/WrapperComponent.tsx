@@ -1,8 +1,8 @@
-import {props} from '../../stores/types'
+import {childProps} from '../../stores/types'
 
 import {WrapperComponentContainer} from './styledComponents'
 
-export const WrapperComponent = ({children}: props) => {
+export const WrapperComponent = ({children}: childProps) => {
     return(
         <WrapperComponentContainer>
             {children}

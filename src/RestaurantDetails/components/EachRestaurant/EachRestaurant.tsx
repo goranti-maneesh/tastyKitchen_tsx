@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { ratingImg, ratingImgAltText } from "../../../Common/constants";
+import { ratingImg, ratingImgAltText, restaurantImgAltText } from "../../../Common/constants";
 
 import { eachRestaurantPropTypes } from "../../stores/types";
 
@@ -27,7 +27,7 @@ export const EachRestaurant = (props: eachRestaurantPropTypes) => {
     return (
         <EachRestaurantLink to={`restaurants/${id}`}>
             <EachRestaurantLi>
-                <RestaurantImage src={imageUrl} alt="" />
+                <RestaurantImage src={imageUrl} alt={restaurantImgAltText} />
                 <RestaurantDetailsContainer>
                     <RestaurantName>{name}</RestaurantName>
                     <RestaurantMenuType>{menuType}</RestaurantMenuType>

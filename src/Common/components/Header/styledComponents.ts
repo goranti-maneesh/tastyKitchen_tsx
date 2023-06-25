@@ -59,7 +59,7 @@ export const LogoutButton = styled.button`
 `;
 
 export const OptionsAndCrossIconContainer = styled.div`
-    ${tw`flex justify-between`}
+    ${tw`flex justify-between h-96px pt-4`}
 `;
 
 export const CrossIconButton = styled.button``;

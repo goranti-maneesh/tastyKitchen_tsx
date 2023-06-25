@@ -93,7 +93,7 @@ export const DropDownIcon = styled(IoMdArrowDropdown)`
 export const RestaurantsLists = styled.div``;
 
 export const RestaurantListUlElement = styled.ul`
-    ${tw`flex flex-wrap`}
+    ${tw`flex flex-wrap justify-between`}
 `;
 
 export const HorizontalLine = styled.hr`

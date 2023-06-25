@@ -1,6 +1,8 @@
 import Slider from "react-slick";
+import { useContext } from "react";
 
 import WrapperComponent from "../../../Common/components/WrapperComponent";
+import { ObjContext } from "../../../Common/context";
 
 import { offersListEachObjTypes } from "../../stores/types";
 
@@ -11,6 +13,9 @@ import "./index.css";
 
 export const OffersList = (props: any) => {
     const { responseData } = props;
+
+    const isDesktopView = useContext(ObjContext);
+
     const settings = {
         dots: true,
         infinite: true,
@@ -34,22 +39,22 @@ export const OffersList = (props: any) => {
             );
         },
     };
-    return (
-        <WrapperComponent>
-            <OffersContainer>
-                <OffersUlElement>
-                    <Slider {...settings}>
-                        {responseData.map(
-                            (eachOffer: offersListEachObjTypes) => (
-                                <EachOffer
-                                    key={eachOffer.id}
-                                    eachOffer={eachOffer}
-                                />
-                            )
-                        )}
-                    </Slider>
-                </OffersUlElement>
-            </OffersContainer>
-        </WrapperComponent>
+
+    const renderOffersList = () => (
+        <OffersContainer>
+            <OffersUlElement>
+                <Slider {...settings}>
+                    {responseData.map((eachOffer: offersListEachObjTypes) => (
+                        <EachOffer key={eachOffer.id} eachOffer={eachOffer} />
+                    ))}
+                </Slider>
+            </OffersUlElement>
+        </OffersContainer>
+    );
+
+    return isDesktopView ? (
+        <WrapperComponent>{renderOffersList()}</WrapperComponent>
+    ) : (
+        renderOffersList()
     );
 };

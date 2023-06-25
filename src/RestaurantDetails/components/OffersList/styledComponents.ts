@@ -3,6 +3,10 @@ import tw from "twin.macro";
 
 export const OffersUlElement = styled.ul`
     ${tw`bg-white`}
+
+    @media((min-width:576px) and (max-width: 768px)) {
+        ${tw`w-89vw m-auto`}
+    }
 `;
 
 export const OffersContainer = styled.div`

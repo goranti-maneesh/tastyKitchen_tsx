@@ -17,6 +17,7 @@ module.exports = {
             },
             spacing: {
                 "18px": "18px",
+                "10px": "10px",
                 "23px": "23px",
                 "30px": "30px",
                 "40px": "40px",
@@ -41,6 +42,8 @@ module.exports = {
                 "145px": "145px",
                 "160px": "160px",
                 "161px": "161px",
+                "168px": "168px",
+                "280px": "280px",
                 "312px": "312px",
                 "350px": "350px",
                 "360px": "360px",
@@ -66,6 +69,7 @@ module.exports = {
                 "112px": "112px",
                 "188px": "188px",
                 "250px": "250px",
+                "256px": "256px",
                 "299px": "299px",
                 "319px": "319px",
                 "369px": "369px",
@@ -129,6 +133,12 @@ module.exports = {
                 "24px",
                 {
                     lineHeight: "32px",
+                },
+            ],
+            fs20_lh24: [
+                "20px",
+                {
+                    lineHeight: "24px",
                 },
             ],
             fs16_lh26: ["16px", { lineHeight: "26px" }],

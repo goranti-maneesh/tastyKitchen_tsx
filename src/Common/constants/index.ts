@@ -4,6 +4,8 @@ export const tastyKitchensLogo = "https://res.cloudinary.com/degjdup40/image/upl
 
 export const tastyKitchensLogoAltText = "tasty-kitchen-logo"
 
+export const restaurantImgAltText = "restaurant-img"
+
 export const ratingImg = "https://res.cloudinary.com/degjdup40/image/upload/v1687134786/7_Rating_dqnghk.jpg"
 
 export const ratingImgAltText = "rating"

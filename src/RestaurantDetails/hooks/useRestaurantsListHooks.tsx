@@ -1,6 +1,6 @@
 import {createContext, useContext} from 'react'
 
-import {props} from '../../Common/stores/types'
+import {childProps} from '../../Common/stores/types'
 
 import {HomeRouteServivceAPI} from '../../Common/stores/index.api'
 
@@ -12,7 +12,7 @@ const restaurantsListStoreInstance = new RestaurantsListStore(HomeRouteServiceIn
 
 const RestaurantsListContext = createContext(restaurantsListStoreInstance)
 
-export const RestaurantsListHook = ({children}: props) => (
+export const RestaurantsListHook = ({children}: childProps) => (
     <RestaurantsListContext.Provider value={restaurantsListStoreInstance}>
         {children}
     </RestaurantsListContext.Provider>
