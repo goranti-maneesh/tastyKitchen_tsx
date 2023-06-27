@@ -26,16 +26,31 @@ export class FoodItemStore {
     }
 
     getCartListFromLocalStorage = () => {
-        console.log(123);
+        const localStorageData = localStorage.getItem("cartList");
+        if (localStorageData !== null) {
+            const parsedCartList: Array<updatedFoodItemsTypes> =
+                JSON.parse(localStorageData);
+            const updatedCartList = this.response.map((eachItem) => {
+                const filteredLSCartItem = parsedCartList.find(
+                    (eachCartItem) => eachCartItem.id === eachItem.id
+                );
+                if (filteredLSCartItem !== undefined) {
+                    return filteredLSCartItem;
+                }
+                return eachItem;
+            });
+            this.response = updatedCartList;
+        }
     };
 
-    updateCartListFromLocalStorage = () => {};
+    updateCartListFromLocalStorage = () => {
+        localStorage.setItem("cartList", JSON.stringify(this.cartItems));
+    };
 
     updateResponseData = (response: fetchedRestaurantListItemsTypes) => {
         this.responseStatus = response.responseStatus;
         if (response.responseStatus) {
             this.constraint = constraints.success;
-            console.log(response.restaurantsList, "response.restaurantsList");
             const foodItemsResponse = response.restaurantsList.food_items.map(
                 (eachItem) => new FoodItemsModel(eachItem)
             );

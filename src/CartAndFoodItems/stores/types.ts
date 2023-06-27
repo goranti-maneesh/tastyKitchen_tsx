@@ -64,3 +64,7 @@ export interface restaurantPosterTypes {
     location: string;
     itemsCount: number;
 }
+
+export interface matchParamsTypes {
+    id: string
+}
