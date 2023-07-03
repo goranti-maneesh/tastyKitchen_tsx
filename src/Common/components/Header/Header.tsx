@@ -75,10 +75,12 @@ const Header = (props: RouterProps) => {
     );
 
     const renderDesktopView = () => (
-        <DesktopViewContainer>
-            {renderLogoAndTitle()}
-            {renderHomeCartLogoutButtons()}
-        </DesktopViewContainer>
+        <WrapperComponent>
+            <DesktopViewContainer>
+                {renderLogoAndTitle()}
+                {renderHomeCartLogoutButtons()}
+            </DesktopViewContainer>
+        </WrapperComponent>
     );
 
     const renderOptionsAndCrossIcon = () => (
@@ -103,11 +105,9 @@ const Header = (props: RouterProps) => {
     );
 
     return (
-        <WrapperComponent>
-            <HeaderMainContainer>
-                {isDesktopView ? renderDesktopView() : renderMobileView()}
-            </HeaderMainContainer>
-        </WrapperComponent>
+        <HeaderMainContainer>
+            {isDesktopView ? renderDesktopView() : renderMobileView()}
+        </HeaderMainContainer>
     );
 };
 

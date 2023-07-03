@@ -4,19 +4,19 @@ import { constraints } from "../../../Common/constraints";
 import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
 
 import {
-    updatedFoodItemsTypes,
+    foodItemsModelTypes,
     fetchedRestaurantListItemsTypes,
     restaurantPosterTypes,
-    fetchUpdatedRestaurantListItemsTypes,
+    restaurantListItemsTypes,
 } from "../types";
 
 import { FoodItemsModel } from "../FoodItemsModels/FoodItemModel";
 
 export class FoodItemStore {
     constraint = constraints.initial as string;
-    response = [] as Array<updatedFoodItemsTypes>;
+    response = [] as Array<foodItemsModelTypes>;
     responseStatus = true as boolean;
-    cartItems = [] as Array<updatedFoodItemsTypes>;
+    cartItems = [] as Array<foodItemsModelTypes>;
     serviceApiInstance: FoodItemsServiceTypes;
     restaurantPoster = {} as restaurantPosterTypes;
 
@@ -28,7 +28,7 @@ export class FoodItemStore {
     getCartListFromLocalStorage = () => {
         const localStorageData = localStorage.getItem("cartList");
         if (localStorageData !== null) {
-            const parsedCartList: Array<updatedFoodItemsTypes> =
+            const parsedCartList: Array<foodItemsModelTypes> =
                 JSON.parse(localStorageData);
             const updatedCartList = this.response.map((eachItem) => {
                 const filteredLSCartItem = parsedCartList.find(
@@ -40,6 +40,8 @@ export class FoodItemStore {
                 return eachItem;
             });
             this.response = updatedCartList;
+        } else {
+            this.response = [];
         }
     };
 
@@ -47,12 +49,29 @@ export class FoodItemStore {
         localStorage.setItem("cartList", JSON.stringify(this.cartItems));
     };
 
+    restaurantPosterDetails = (restaurantList: restaurantListItemsTypes) => ({
+        rating: restaurantList.rating,
+        id: restaurantList.id,
+        name: restaurantList.name,
+        costForTwo: restaurantList.cost_for_two,
+        cuisine: restaurantList.cuisine,
+        imageUrl: restaurantList.image_url,
+        reviewsCount: restaurantList.reviews_count,
+        opensAt: restaurantList.opens_at,
+        location: restaurantList.location,
+        itemsCount: restaurantList.items_count,
+    });
+
     updateResponseData = (response: fetchedRestaurantListItemsTypes) => {
         this.responseStatus = response.responseStatus;
         if (response.responseStatus) {
             this.constraint = constraints.success;
             const foodItemsResponse = response.restaurantsList.food_items.map(
                 (eachItem) => new FoodItemsModel(eachItem)
+            );
+            console.log(foodItemsResponse, "foodItemsResponse");
+            this.restaurantPoster = this.restaurantPosterDetails(
+                response.restaurantsList
             );
             this.response = foodItemsResponse;
             this.cartItems = foodItemsResponse.filter(

@@ -6,7 +6,9 @@ import { MdCancel } from "react-icons/md";
 
 import { headerLinkComponentProps } from "../../stores/types";
 
-export const HeaderMainContainer = styled.div``;
+export const HeaderMainContainer = styled.div`
+    ${tw`bg-white relative`}
+`;
 
 export const LogoTitleContainer = styled.div`
     ${tw`flex items-center h-96px`}
@@ -66,7 +68,9 @@ export const CrossIconButton = styled.button``;
 
 export const CrossIcon = styled(MdCancel)``;
 
-export const MobileViewContainer = styled.div``;
+export const MobileViewContainer = styled.div`
+    ${tw`max-w-1110px w-89vw m-auto`}
+`;
 
 export const LogoAndMenuContainer = styled.div`
     ${tw`flex justify-between`}

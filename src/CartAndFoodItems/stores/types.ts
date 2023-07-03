@@ -4,6 +4,7 @@ export interface foodItemsTypes {
     food_type: string;
     image_url: string;
     id: string;
+    rating: number;
 }
 
 export interface restaurantListItemsTypes {
@@ -26,6 +27,7 @@ export interface updatedFoodItemsTypes {
     foodType: string;
     imageUrl: string;
     id: string;
+    rating: number;
 }
 
 export interface updatedRestaurantListItemsType {
@@ -40,6 +42,18 @@ export interface updatedRestaurantListItemsType {
     location: string;
     itemsCount: number;
     foodItems: Array<updatedFoodItemsTypes>;
+}
+
+export interface foodItemsModelTypes {
+    name: string;
+    cost: number;
+    foodType: string;
+    imageUrl: string;
+    id: string;
+    rating: number;
+    quantity: number;
+    increaseItemQuantity: () => void;
+    decreaseItemQuantity: () => void;
 }
 
 export interface fetchedRestaurantListItemsTypes {
@@ -66,5 +80,14 @@ export interface restaurantPosterTypes {
 }
 
 export interface matchParamsTypes {
-    id: string
+    id: string;
+}
+
+export interface FoodItemProps {
+    restaurantPoster: restaurantPosterTypes;
+    foodItemDetails: Array<foodItemsModelTypes>;
+}
+
+export interface eachItemPropsTypes {
+    eachItem: foodItemsModelTypes;
 }

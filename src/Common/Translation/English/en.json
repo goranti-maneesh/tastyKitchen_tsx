@@ -30,5 +30,7 @@
     },
     "footerText": {
         "description": "The only thing we are serious about is food. Contact us on"
-    }
+    },
+    "costForTwo": "Cost for two",
+    "ADD": "ADD"
 }

@@ -3,11 +3,19 @@ import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router-dom";
 
 import { constraints } from "../../Common/constraints";
+import Loading from "../../Common/components/Loader";
+import Failure from "../../Common/components/Failure";
+import Header from "../../Common/components/Header";
+import Footer from "../../Common/components/Footer";
 
 import { useFoodItemsHook } from "../hooks/useFoodItemsHooks";
 import { matchParamsTypes } from "../stores/types";
+import FoodItems from "../components/FoodItems";
 
-import { RestaurantItemsContainer } from "./styledComponents";
+import {
+    RestaurantItemsContainer,
+    LoaderViewContainer,
+} from "./styledComponents";
 
 export const RestaurantItemsRoute = observer(
     (props: RouteComponentProps<matchParamsTypes>) => {
@@ -41,11 +49,21 @@ export const RestaurantItemsRoute = observer(
             };
         }, []);
 
-        const renderSuccessViews = () => {};
+        const renderSuccessViews = () => (
+            <FoodItems restaurantPoster={restaurantPoster} foodItemDetails={response}/>
+        );
 
-        const renderLoader = () => {};
+        const renderLoader = () => (
+            <LoaderViewContainer>
+                <Loading />
+            </LoaderViewContainer>
+        );
 
-        const renderFailureViw = () => {};
+        const renderFailureViw = () => (
+            <LoaderViewContainer>
+                <Failure />
+            </LoaderViewContainer>
+        );
 
         const renderOverAllViews = () => {
             switch (constraint) {
@@ -62,7 +80,9 @@ export const RestaurantItemsRoute = observer(
 
         return (
             <RestaurantItemsContainer>
+                <Header />
                 {renderOverAllViews()}
+                <Footer />
             </RestaurantItemsContainer>
         );
     }

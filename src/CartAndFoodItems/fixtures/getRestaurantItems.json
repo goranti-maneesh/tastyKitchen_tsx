@@ -16,14 +16,16 @@
                 "cost": 660,
                 "food_type": "NON-VEG",
                 "image_url": "https://americanhomecook.com/wp-content/uploads/2019/11/Thanksgiving-Roast-Chicken2.jpg",
-                "id": "1"
+                "id": "1",
+                "rating": 4
             },
             {
                 "name": "Chicken Roast",
                 "cost": 660,
                 "food_type": "NON-VEG",
                 "image_url": "https://americanhomecook.com/wp-content/uploads/2019/11/Thanksgiving-Roast-Chicken2.jpg",
-                "id": "2"
+                "id": "2",
+                "rating": 4
             }
         ]
     },
