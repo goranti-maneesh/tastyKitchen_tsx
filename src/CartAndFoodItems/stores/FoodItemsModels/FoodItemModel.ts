@@ -1,3 +1,5 @@
+import {action} from 'mobx'
+
 import { foodItemsModelTypes, foodItemsTypes } from "../types";
 
 export class FoodItemsModel implements foodItemsModelTypes {
@@ -18,11 +20,14 @@ export class FoodItemsModel implements foodItemsModelTypes {
         this.quantity = 0;
     }
 
-    increaseItemQuantity = (): void => {
+    @action.bound
+    increaseItemQuantity = (): number => {
         this.quantity += 1;
         console.log(this.quantity);
+        return this.quantity
     };
 
+    @action.bound
     decreaseItemQuantity = (): void => {
         if (this.quantity > 0) {
             this.quantity -= 1;

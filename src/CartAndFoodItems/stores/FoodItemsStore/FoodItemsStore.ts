@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, action } from "mobx";
 
 import { constraints } from "../../../Common/constraints";
 import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
@@ -25,6 +25,16 @@ export class FoodItemStore {
         this.serviceApiInstance = serviceApiInstance;
     }
 
+    @action.bound
+    increaseFoodQuantity = (increaseItemQuantity: () => void) => {
+        const itemQuantity = increaseItemQuantity();
+        console.log(itemQuantity, "itemQuantity");
+    };
+
+    @action.bound
+    decreaseFoodQuantity = () => {};
+
+    @action.bound
     getCartListFromLocalStorage = () => {
         const localStorageData = localStorage.getItem("cartList");
         if (localStorageData !== null) {
@@ -45,10 +55,12 @@ export class FoodItemStore {
         }
     };
 
+    @action.bound
     updateCartListFromLocalStorage = () => {
         localStorage.setItem("cartList", JSON.stringify(this.cartItems));
     };
 
+    @action.bound
     restaurantPosterDetails = (restaurantList: restaurantListItemsTypes) => ({
         rating: restaurantList.rating,
         id: restaurantList.id,
@@ -62,6 +74,7 @@ export class FoodItemStore {
         itemsCount: restaurantList.items_count,
     });
 
+    @action.bound
     updateResponseData = (response: fetchedRestaurantListItemsTypes) => {
         this.responseStatus = response.responseStatus;
         if (response.responseStatus) {
@@ -82,6 +95,7 @@ export class FoodItemStore {
         }
     };
 
+    @action.bound
     fetchFoodItems = async (id: string) => {
         this.constraint = constraints.loading;
 

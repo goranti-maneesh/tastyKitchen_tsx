@@ -35,19 +35,20 @@ export const EachFoodItem = (props: eachItemPropsTypes) => {
 
     const foodItems = useFoodItemsHook();
 
-    const { updateResponseData } = foodItems;
+    const { increaseFoodQuantity } = foodItems;
 
     console.log(quantity > 0, "quantity");
 
     const { t } = useTranslation();
 
     const increaseQuantity = () => {
-        increaseItemQuantity();
-        // updateResponseData()
+        // increaseItemQuantity();
+        console.log(id)
+        increaseFoodQuantity(increaseItemQuantity);
     };
 
     const decreaseQuantity = () => {
-        decreaseItemQuantity();
+        // decreaseItemQuantity();
     };
 
     const renderQuantity = () => {
@@ -63,7 +64,7 @@ export const EachFoodItem = (props: eachItemPropsTypes) => {
     };
 
     const renderAddButton = () => (
-        <AddButton type="button" onClick={increaseItemQuantity}>
+        <AddButton type="button" onClick={increaseQuantity}>
             {t("ADD")}
         </AddButton>
     );
