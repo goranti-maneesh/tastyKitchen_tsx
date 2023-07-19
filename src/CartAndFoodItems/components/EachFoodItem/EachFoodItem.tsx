@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react-lite";
 
 import { eachItemPropsTypes } from "../../stores/types";
 import { useFoodItemsHook } from "../../hooks/useFoodItemsHooks";
 
 import { RatingIcon } from "../FoodItems/styledComponents";
+
+import { ObjContext } from "../../../Common/context";
 
 import {
     EachFoodItemContainer,
@@ -19,7 +23,7 @@ import {
     Quantity,
 } from "./styledComponents";
 
-export const EachFoodItem = (props: eachItemPropsTypes) => {
+export const EachFoodItem = observer((props: eachItemPropsTypes) => {
     const { eachItem } = props;
     const {
         name,
@@ -29,29 +33,27 @@ export const EachFoodItem = (props: eachItemPropsTypes) => {
         id,
         quantity,
         rating,
-        increaseItemQuantity,
-        decreaseItemQuantity,
     } = eachItem;
+
+    const {increaseCartItemQuantity, decreaseCartItemQuantity} = useContext(ObjContext);
 
     const foodItems = useFoodItemsHook();
 
-    const { increaseFoodQuantity } = foodItems;
+    // const { increaseFoodQuantity } = foodItems;
 
-    console.log(quantity > 0, "quantity");
+    // console.log(quantity, "quantity");
 
     const { t } = useTranslation();
 
     const increaseQuantity = () => {
-        // increaseItemQuantity();
-        console.log(id)
-        increaseFoodQuantity(increaseItemQuantity);
+        increaseCartItemQuantity(eachItem)
     };
 
     const decreaseQuantity = () => {
-        // decreaseItemQuantity();
+        decreaseCartItemQuantity(id)
     };
 
-    const renderQuantity = () => {
+    const renderQuantity = () => (
         <QuantityContainer>
             <PlusMinusButton type="button" onClick={decreaseQuantity}>
                 -
@@ -60,8 +62,8 @@ export const EachFoodItem = (props: eachItemPropsTypes) => {
             <PlusMinusButton type="button" onClick={increaseQuantity}>
                 +
             </PlusMinusButton>
-        </QuantityContainer>;
-    };
+        </QuantityContainer>
+    );
 
     const renderAddButton = () => (
         <AddButton type="button" onClick={increaseQuantity}>
@@ -83,4 +85,4 @@ export const EachFoodItem = (props: eachItemPropsTypes) => {
             </FoodItemDetails>
         </EachFoodItemContainer>
     );
-};
+});

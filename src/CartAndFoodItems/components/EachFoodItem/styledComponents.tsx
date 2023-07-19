@@ -31,12 +31,14 @@ export const AddButton = styled.button`
     ${tw`text-Tree_Poppy text-fs12_lh16 font-medium w-58px h-8 rounded-lg border-2 border-solid border-Tree_Poppy outline-none`}
 `;
 
-export const QuantityContainer = styled.div``;
-
-export const PlusMinusButton = styled.button`
-    ${tw`outline-none w-18px h-18px rounded-sm text-Limed_Spruce`}
+export const QuantityContainer = styled.div`
+    ${tw`flex items-center`}
 `;
 
-export const Quantity = styled.div`
-    ${tw`text-Limed_Spruce text-fs16_lh24 mr-10px ml-10px`}
+export const PlusMinusButton = styled.button`
+    ${tw`rounded-sm p-1 pb-7px pl-5px outline-none w-18px h-18px rounded-sm text-Limed_Spruce border border-solid border-Fiord flex items-center justify-center`}
+`;
+
+export const Quantity = styled.p`
+    ${tw`text-Fiord text-fs16_lh24 mr-10px ml-10px`}
 `;

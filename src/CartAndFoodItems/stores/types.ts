@@ -28,6 +28,7 @@ export interface updatedFoodItemsTypes {
     imageUrl: string;
     id: string;
     rating: number;
+    quantity: number;
 }
 
 export interface updatedRestaurantListItemsType {
@@ -52,8 +53,6 @@ export interface foodItemsModelTypes {
     id: string;
     rating: number;
     quantity: number;
-    increaseItemQuantity: () => void;
-    decreaseItemQuantity: () => void;
 }
 
 export interface fetchedRestaurantListItemsTypes {

@@ -28,7 +28,7 @@ export const RestaurantItemsRoute = observer(
             restaurantPoster,
             fetchFoodItems,
             getCartListFromLocalStorage,
-            updateCartListFromLocalStorage,
+            updateCartListInLocalStorage,
         } = foodItems;
 
         const fetchFoodItemsList = () => {
@@ -40,17 +40,20 @@ export const RestaurantItemsRoute = observer(
 
         useEffect(() => {
             fetchFoodItemsList();
-            getCartListFromLocalStorage();
+            // getCartListFromLocalStorage();
         }, []);
 
-        useEffect(() => {
-            return () => {
-                updateCartListFromLocalStorage();
-            };
-        }, []);
+        // useEffect(() => {
+        //     return () => {
+        //         updateCartListInLocalStorage();
+        //     };
+        // }, []);
 
         const renderSuccessViews = () => (
-            <FoodItems restaurantPoster={restaurantPoster} foodItemDetails={response}/>
+            <FoodItems
+                restaurantPoster={restaurantPoster}
+                foodItemDetails={response}
+            />
         );
 
         const renderLoader = () => (
@@ -66,6 +69,7 @@ export const RestaurantItemsRoute = observer(
         );
 
         const renderOverAllViews = () => {
+            console.log(constraint, "constraint");
             switch (constraint) {
                 case constraints.loading:
                     return renderLoader();

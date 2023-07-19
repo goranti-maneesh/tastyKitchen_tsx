@@ -30,7 +30,7 @@ import {
 } from "./styledComponents";
 
 const Header = (props: RouterProps) => {
-    const isDesktopView = useContext(ObjContext);
+    const {isDesktopView} = useContext(ObjContext);
 
     const { t } = useTranslation();
 

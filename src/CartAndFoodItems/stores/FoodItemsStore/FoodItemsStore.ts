@@ -1,7 +1,5 @@
+import { useContext } from "react";
 import { makeAutoObservable, action } from "mobx";
-
-import { constraints } from "../../../Common/constraints";
-import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
 
 import {
     foodItemsModelTypes,
@@ -9,8 +7,20 @@ import {
     restaurantPosterTypes,
     restaurantListItemsTypes,
 } from "../types";
-
 import { FoodItemsModel } from "../FoodItemsModels/FoodItemModel";
+
+import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
+
+import { constraints } from "../../../Common/constraints";
+import { ObjContext } from "../../../Common/context";
+
+let cartListFromContext: Array<foodItemsModelTypes> = [];
+
+// const GetCartListFromContext = () => {
+//     const {cartList} =  useContext(ObjContext)
+//     cartListFromContext = cartList
+
+// }
 
 export class FoodItemStore {
     constraint = constraints.initial as string;
@@ -26,22 +36,14 @@ export class FoodItemStore {
     }
 
     @action.bound
-    increaseFoodQuantity = (increaseItemQuantity: () => void) => {
-        const itemQuantity = increaseItemQuantity();
-        console.log(itemQuantity, "itemQuantity");
-    };
-
-    @action.bound
-    decreaseFoodQuantity = () => {};
-
-    @action.bound
     getCartListFromLocalStorage = () => {
         const localStorageData = localStorage.getItem("cartList");
         if (localStorageData !== null) {
-            const parsedCartList: Array<foodItemsModelTypes> =
+            const parsedData: Array<foodItemsModelTypes> =
                 JSON.parse(localStorageData);
+            this.cartItems = parsedData;
             const updatedCartList = this.response.map((eachItem) => {
-                const filteredLSCartItem = parsedCartList.find(
+                const filteredLSCartItem = parsedData.find(
                     (eachCartItem) => eachCartItem.id === eachItem.id
                 );
                 if (filteredLSCartItem !== undefined) {
@@ -51,13 +53,29 @@ export class FoodItemStore {
             });
             this.response = updatedCartList;
         } else {
-            this.response = [];
+            localStorage.setItem("cartList", JSON.stringify([]));
         }
     };
 
     @action.bound
-    updateCartListFromLocalStorage = () => {
-        localStorage.setItem("cartList", JSON.stringify(this.cartItems));
+    updateCartListInLocalStorage = () => {
+        const cartItems = this.response.filter(
+            (eachItem) => eachItem.quantity > 0
+        );
+
+        const otherCartItems = this.cartItems.filter((eachItem) => {
+            const isItemAddedInCart = this.response.find(
+                (eachResponseItem) => eachResponseItem.id === eachItem.id
+            );
+            if (isItemAddedInCart === undefined) {
+                return eachItem;
+            }
+        });
+
+        localStorage.setItem(
+            "cartList",
+            JSON.stringify([...otherCartItems, ...cartItems])
+        );
     };
 
     @action.bound
@@ -79,17 +97,30 @@ export class FoodItemStore {
         this.responseStatus = response.responseStatus;
         if (response.responseStatus) {
             this.constraint = constraints.success;
+
             const foodItemsResponse = response.restaurantsList.food_items.map(
                 (eachItem) => new FoodItemsModel(eachItem)
             );
-            console.log(foodItemsResponse, "foodItemsResponse");
+
+            const updatedFoodItemsResponse = foodItemsResponse.map(
+                (eachItem) => {
+                    const filteredLSCartItem = cartListFromContext.find(
+                        (eachCartItem) => eachCartItem.id === eachItem.id
+                    );
+                    if (filteredLSCartItem !== undefined) {
+                        return filteredLSCartItem;
+                    }
+                    return eachItem;
+                }
+            );
+
+            console.log(updatedFoodItemsResponse, "updatedFoodItemsResponse");
+
             this.restaurantPoster = this.restaurantPosterDetails(
                 response.restaurantsList
             );
-            this.response = foodItemsResponse;
-            this.cartItems = foodItemsResponse.filter(
-                (eachItem) => eachItem.quantity > 0
-            );
+
+            this.response = updatedFoodItemsResponse;
         } else {
             this.constraint = constraints.failure;
         }
