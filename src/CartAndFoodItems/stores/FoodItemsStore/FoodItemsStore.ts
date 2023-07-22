@@ -26,7 +26,7 @@ export class FoodItemStore {
     constraint = constraints.initial as string;
     response = [] as Array<foodItemsModelTypes>;
     responseStatus = true as boolean;
-    cartItems = [] as Array<foodItemsModelTypes>;
+    cartList = [] as Array<foodItemsModelTypes>;
     serviceApiInstance: FoodItemsServiceTypes;
     restaurantPoster = {} as restaurantPosterTypes;
 
@@ -35,48 +35,90 @@ export class FoodItemStore {
         this.serviceApiInstance = serviceApiInstance;
     }
 
-    @action.bound
-    getCartListFromLocalStorage = () => {
-        const localStorageData = localStorage.getItem("cartList");
-        if (localStorageData !== null) {
-            const parsedData: Array<foodItemsModelTypes> =
-                JSON.parse(localStorageData);
-            this.cartItems = parsedData;
-            const updatedCartList = this.response.map((eachItem) => {
-                const filteredLSCartItem = parsedData.find(
-                    (eachCartItem) => eachCartItem.id === eachItem.id
-                );
-                if (filteredLSCartItem !== undefined) {
-                    return filteredLSCartItem;
-                }
-                return eachItem;
-            });
-            this.response = updatedCartList;
-        } else {
-            localStorage.setItem("cartList", JSON.stringify([]));
-        }
-    };
+    // @action.bound
+    // getCartListFromLocalStorage = () => {
+    //     const localStorageData = localStorage.getItem("cartList");
+    //     if (localStorageData !== null) {
+    //         const parsedData: Array<foodItemsModelTypes> =
+    //             JSON.parse(localStorageData);
+    //         this.cartItems = parsedData;
+    //         const updatedCartList = this.response.map((eachItem) => {
+    //             const filteredLSCartItem = parsedData.find(
+    //                 (eachCartItem) => eachCartItem.id === eachItem.id
+    //             );
+    //             if (filteredLSCartItem !== undefined) {
+    //                 return filteredLSCartItem;
+    //             }
+    //             return eachItem;
+    //         });
+    //         this.response = updatedCartList;
+    //     } else {
+    //         localStorage.setItem("cartList", JSON.stringify([]));
+    //     }
+    // };
 
-    @action.bound
-    updateCartListInLocalStorage = () => {
-        const cartItems = this.response.filter(
-            (eachItem) => eachItem.quantity > 0
-        );
+    // @action.bound
+    // updateCartListInLocalStorage = () => {
+    //     const cartItems = this.response.filter(
+    //         (eachItem) => eachItem.quantity > 0
+    //     );
 
-        const otherCartItems = this.cartItems.filter((eachItem) => {
-            const isItemAddedInCart = this.response.find(
-                (eachResponseItem) => eachResponseItem.id === eachItem.id
+    //     const otherCartItems = this.cartItems.filter((eachItem) => {
+    //         const isItemAddedInCart = this.response.find(
+    //             (eachResponseItem) => eachResponseItem.id === eachItem.id
+    //         );
+    //         if (isItemAddedInCart === undefined) {
+    //             return eachItem;
+    //         }
+    //     });
+
+    //     localStorage.setItem(
+    //         "cartList",
+    //         JSON.stringify([...otherCartItems, ...cartItems])
+    //     );
+    // };
+
+    getUpdatedResponseData = (cartList: Array<foodItemsModelTypes>) => {
+        const updatedResponseData = this.response.map((eachItem) => {
+            const getCartItemData = cartList.find(
+                (eachCartItem) => eachCartItem.id === eachItem.id
             );
-            if (isItemAddedInCart === undefined) {
-                return eachItem;
+            if (getCartItemData !== undefined) {
+                return getCartItemData;
             }
+            return eachItem;
         });
 
-        localStorage.setItem(
-            "cartList",
-            JSON.stringify([...otherCartItems, ...cartItems])
-        );
+        return updatedResponseData;
     };
+
+    addItemToCart = (obj: foodItemsModelTypes) => {
+        const updatedCartList = [...this.cartList, { ...obj, quantity: 1 }];
+
+        this.cartList = updatedCartList;
+
+        const updatedData = this.getUpdatedResponseData(updatedCartList);
+
+        this.response = updatedData;
+    };
+
+    incrementItemQuantity = (id: string) => {
+        const updatedCartList = this.cartList.map((eachItem) => {
+            if (eachItem.id === id) {
+                return { ...eachItem, quantity: eachItem.quantity + 1 };
+            }
+
+            return eachItem;
+        });
+
+        this.cartList = updatedCartList;
+
+        const updatedData = this.getUpdatedResponseData(updatedCartList);
+
+        this.response = updatedData;
+    };
+
+    decrementItemQuantity = (id: foodItemsModelTypes) => {};
 
     @action.bound
     restaurantPosterDetails = (restaurantList: restaurantListItemsTypes) => ({
