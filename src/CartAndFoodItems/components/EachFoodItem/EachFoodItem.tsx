@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react-lite";
 
@@ -6,8 +5,6 @@ import { eachItemPropsTypes } from "../../stores/types";
 import { useFoodItemsHook } from "../../hooks/useFoodItemsHooks";
 
 import { RatingIcon } from "../FoodItems/styledComponents";
-
-import { ObjContext } from "../../../Common/context";
 
 import {
     EachFoodItemContainer,
@@ -25,32 +22,25 @@ import {
 
 export const EachFoodItem = observer((props: eachItemPropsTypes) => {
     const { eachItem } = props;
-    const {
-        name,
-        cost,
-        foodType,
-        imageUrl,
-        id,
-        quantity,
-        rating,
-    } = eachItem;
-
-    const {increaseCartItemQuantity, decreaseCartItemQuantity} = useContext(ObjContext);
+    const { name, cost, foodType, imageUrl, id, quantity, rating } = eachItem;
 
     const foodItems = useFoodItemsHook();
 
-    // const { increaseFoodQuantity } = foodItems;
-
-    // console.log(quantity, "quantity");
+    const { addItemToCart, incrementItemQuantity, decrementItemQuantity } =
+        foodItems;
 
     const { t } = useTranslation();
 
     const increaseQuantity = () => {
-        increaseCartItemQuantity(eachItem)
+        incrementItemQuantity(id);
     };
 
     const decreaseQuantity = () => {
-        decreaseCartItemQuantity(id)
+        decrementItemQuantity(id);
+    };
+
+    const addItemToCartList = () => {
+        addItemToCart(eachItem);
     };
 
     const renderQuantity = () => (
@@ -66,7 +56,7 @@ export const EachFoodItem = observer((props: eachItemPropsTypes) => {
     );
 
     const renderAddButton = () => (
-        <AddButton type="button" onClick={increaseQuantity}>
+        <AddButton type="button" onClick={addItemToCartList}>
             {t("ADD")}
         </AddButton>
     );

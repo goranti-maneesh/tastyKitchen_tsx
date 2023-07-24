@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { makeAutoObservable, action } from "mobx";
 
 import {
@@ -12,15 +11,6 @@ import { FoodItemsModel } from "../FoodItemsModels/FoodItemModel";
 import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
 
 import { constraints } from "../../../Common/constraints";
-import { ObjContext } from "../../../Common/context";
-
-let cartListFromContext: Array<foodItemsModelTypes> = [];
-
-// const GetCartListFromContext = () => {
-//     const {cartList} =  useContext(ObjContext)
-//     cartListFromContext = cartList
-
-// }
 
 export class FoodItemStore {
     constraint = constraints.initial as string;
@@ -29,96 +19,68 @@ export class FoodItemStore {
     cartList = [] as Array<foodItemsModelTypes>;
     serviceApiInstance: FoodItemsServiceTypes;
     restaurantPoster = {} as restaurantPosterTypes;
+    totalPrice = 0 as number;
 
     constructor(serviceApiInstance: FoodItemsServiceTypes) {
         makeAutoObservable(this);
         this.serviceApiInstance = serviceApiInstance;
     }
 
-    // @action.bound
-    // getCartListFromLocalStorage = () => {
-    //     const localStorageData = localStorage.getItem("cartList");
-    //     if (localStorageData !== null) {
-    //         const parsedData: Array<foodItemsModelTypes> =
-    //             JSON.parse(localStorageData);
-    //         this.cartItems = parsedData;
-    //         const updatedCartList = this.response.map((eachItem) => {
-    //             const filteredLSCartItem = parsedData.find(
-    //                 (eachCartItem) => eachCartItem.id === eachItem.id
-    //             );
-    //             if (filteredLSCartItem !== undefined) {
-    //                 return filteredLSCartItem;
-    //             }
-    //             return eachItem;
-    //         });
-    //         this.response = updatedCartList;
-    //     } else {
-    //         localStorage.setItem("cartList", JSON.stringify([]));
-    //     }
-    // };
-
-    // @action.bound
-    // updateCartListInLocalStorage = () => {
-    //     const cartItems = this.response.filter(
-    //         (eachItem) => eachItem.quantity > 0
-    //     );
-
-    //     const otherCartItems = this.cartItems.filter((eachItem) => {
-    //         const isItemAddedInCart = this.response.find(
-    //             (eachResponseItem) => eachResponseItem.id === eachItem.id
-    //         );
-    //         if (isItemAddedInCart === undefined) {
-    //             return eachItem;
-    //         }
-    //     });
-
-    //     localStorage.setItem(
-    //         "cartList",
-    //         JSON.stringify([...otherCartItems, ...cartItems])
-    //     );
-    // };
-
-    getUpdatedResponseData = (cartList: Array<foodItemsModelTypes>) => {
-        const updatedResponseData = this.response.map((eachItem) => {
-            const getCartItemData = cartList.find(
-                (eachCartItem) => eachCartItem.id === eachItem.id
-            );
-            if (getCartItemData !== undefined) {
-                return getCartItemData;
-            }
-            return eachItem;
-        });
-
-        return updatedResponseData;
+    calculateTotalPrice = () => {
+        this.totalPrice = this.cartList.reduce(
+            (total, item) => total + item.price,
+            0
+        );
     };
 
-    addItemToCart = (obj: foodItemsModelTypes) => {
-        const updatedCartList = [...this.cartList, { ...obj, quantity: 1 }];
+    updateLocalStorage = () => {
+        localStorage.setItem("cartList", JSON.stringify(this.cartList));
+    };
 
-        this.cartList = updatedCartList;
+    getCartItemIndex = (id: string) => {
+        return this.cartList.findIndex((item) => item.id === id);
+    };
 
-        const updatedData = this.getUpdatedResponseData(updatedCartList);
+    updateCartItemQuantity = (id: string, increment: boolean) => {
+        const index = this.getCartItemIndex(id);
+        console.log(index, "index");
+        if (index !== -1) {
+            const item = this.cartList[index];
+            item.quantity += increment ? 1 : -1;
+            item.price = item.quantity * item.cost;
+            if (item.quantity <= 0) {
+                this.cartList.splice(index, 1);
+            }
+            this.calculateTotalPrice();
+            this.updateLocalStorage();
+        }
+    };
 
-        this.response = updatedData;
+    getUpdatedResponseData = (cartList: foodItemsModelTypes[]) => {
+        return this.response.map((eachItem) => {
+            const cartItem = cartList.find((item) => item.id === eachItem.id);
+            return cartItem || eachItem;
+        });
+    };
+
+    addItemToCart = (item: foodItemsModelTypes) => {
+        const newItem = { ...item, quantity: 1, price: item.cost };
+        this.cartList.push(newItem);
+        this.calculateTotalPrice();
+        this.updateLocalStorage();
+        this.response = this.getUpdatedResponseData(this.cartList);
     };
 
     incrementItemQuantity = (id: string) => {
-        const updatedCartList = this.cartList.map((eachItem) => {
-            if (eachItem.id === id) {
-                return { ...eachItem, quantity: eachItem.quantity + 1 };
-            }
-
-            return eachItem;
-        });
-
-        this.cartList = updatedCartList;
-
-        const updatedData = this.getUpdatedResponseData(updatedCartList);
-
-        this.response = updatedData;
+        console.log(id);
+        this.updateCartItemQuantity(id, true);
+        this.response = this.getUpdatedResponseData(this.cartList);
     };
 
-    decrementItemQuantity = (id: foodItemsModelTypes) => {};
+    decrementItemQuantity = (id: string) => {
+        this.updateCartItemQuantity(id, false);
+        this.response = this.getUpdatedResponseData(this.cartList);
+    };
 
     @action.bound
     restaurantPosterDetails = (restaurantList: restaurantListItemsTypes) => ({
@@ -134,6 +96,20 @@ export class FoodItemStore {
         itemsCount: restaurantList.items_count,
     });
 
+    getCartListFromLS = () => {
+        const cartListFromLS: string | null = localStorage.getItem("cartList");
+
+        let parsedCartList: Array<foodItemsModelTypes> = [];
+
+        if (cartListFromLS !== null) {
+            parsedCartList = JSON.parse(cartListFromLS);
+        }
+
+        this.cartList = parsedCartList;
+
+        return parsedCartList;
+    };
+
     @action.bound
     updateResponseData = (response: fetchedRestaurantListItemsTypes) => {
         this.responseStatus = response.responseStatus;
@@ -144,9 +120,20 @@ export class FoodItemStore {
                 (eachItem) => new FoodItemsModel(eachItem)
             );
 
+            const parsedCartList = this.getCartListFromLS();
+
+            if (parsedCartList.length !== 0) {
+                let totalCartPrice = 0;
+                parsedCartList.forEach((eachItem) => {
+                    totalCartPrice += eachItem.quantity * eachItem.cost;
+                });
+
+                this.totalPrice = totalCartPrice;
+            }
+
             const updatedFoodItemsResponse = foodItemsResponse.map(
                 (eachItem) => {
-                    const filteredLSCartItem = cartListFromContext.find(
+                    const filteredLSCartItem = parsedCartList.find(
                         (eachCartItem) => eachCartItem.id === eachItem.id
                     );
                     if (filteredLSCartItem !== undefined) {
@@ -155,8 +142,6 @@ export class FoodItemStore {
                     return eachItem;
                 }
             );
-
-            console.log(updatedFoodItemsResponse, "updatedFoodItemsResponse");
 
             this.restaurantPoster = this.restaurantPosterDetails(
                 response.restaurantsList

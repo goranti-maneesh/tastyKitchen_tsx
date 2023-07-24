@@ -7,6 +7,7 @@ import {
     tastyKitchensLogo,
     tastyKitchensLogoAltText,
 } from "../../constants/index";
+import { removeJwtToken } from "../../utils/StorageUtils";
 
 import WrapperComponent from "../WrapperComponent";
 
@@ -30,7 +31,7 @@ import {
 } from "./styledComponents";
 
 const Header = (props: RouterProps) => {
-    const {isDesktopView} = useContext(ObjContext);
+    const { isDesktopView } = useContext(ObjContext);
 
     const { t } = useTranslation();
 
@@ -44,6 +45,12 @@ const Header = (props: RouterProps) => {
 
     const onClickMenuIcon = () => {
         setMenuStatus(true);
+    };
+
+    const onClickLogout = () => {
+        const { history } = props;
+        removeJwtToken();
+        history.replace("/login");
     };
 
     const renderLogoAndTitle = () => (
@@ -69,7 +76,9 @@ const Header = (props: RouterProps) => {
                 </LinkComponent>
             </LiElement>
             <LiElement>
-                <LogoutButton>{t("headerText.logout")}</LogoutButton>
+                <LogoutButton onClick={onClickLogout}>
+                    {t("headerText.logout")}
+                </LogoutButton>
             </LiElement>
         </HomeCartLogoutUl>
     );

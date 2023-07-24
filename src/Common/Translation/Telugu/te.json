@@ -31,6 +31,24 @@
     "footerText": {
         "description": "The only thing we are serious about is food. Contact us on"
     },
+    "cartText": {
+        "item": "Item",
+        "quantity": "Quantity",
+        "price": "Price",
+        "orderTotalText": "Order Total",
+        "placeOrderText": "Place Order"
+    },
+    "paymentSuccess": {
+        "title": "Payment Successful",
+        "description1": "Thank you for ordering",
+        "description2": "Your payment is successfully completed.",
+        "buttonText": "Go To Home Page"
+    },
+    "noOrders": {
+        "title": "No Orders Yet!",
+        "description": "Your cart is empty. Add something from the menu.",
+        "buttonText": "Order Now"
+    },
     "costForTwo": "Cost for two",
     "ADD": "ADD"
 }

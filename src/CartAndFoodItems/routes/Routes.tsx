@@ -27,8 +27,6 @@ export const RestaurantItemsRoute = observer(
             responseStatus,
             restaurantPoster,
             fetchFoodItems,
-            getCartListFromLocalStorage,
-            updateCartListInLocalStorage,
         } = foodItems;
 
         const fetchFoodItemsList = () => {

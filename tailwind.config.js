@@ -40,6 +40,7 @@ module.exports = {
                 "68px": "68px",
                 "415px": "415px",
                 "609px": "609px",
+                "10": "10%"
             },
             width: {
                 "1px": "1px",
@@ -56,7 +57,9 @@ module.exports = {
                 "58px": "58px",
                 "73px": "73px",
                 "89vw": "89vw",
+                "100px": "100px",
                 "112px": "112px",
+                "136px": "136px",
                 "145px": "145px",
                 "150px": "150px",
                 "160px": "160px",
@@ -105,6 +108,7 @@ module.exports = {
                 "387px": "387px",
                 "424px": "424px",
                 "432px": "432px",
+                "504px": "504px",
                 "523px": "523px",
             },
             minHeight: {
@@ -137,6 +141,9 @@ module.exports = {
                 Mine_Shaft: "#333333",
                 Downriver: "#0A1F44",
                 Limed_Spruce: "#3E4C59",
+                Selago: "#F9FBFE",
+                BlueRibbon: "#0B69FF",
+                Sun: "#FFA412"
             },
             outlineWidth: {
                 "0px": "0px",

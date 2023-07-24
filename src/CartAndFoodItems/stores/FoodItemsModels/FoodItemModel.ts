@@ -10,6 +10,7 @@ export class FoodItemsModel implements foodItemsModelTypes {
     id: string;
     rating: number;
     quantity = 0 as number;
+    price = 0 as number
     constructor(data: foodItemsTypes) {
         makeAutoObservable(this);
         this.name = data.name;
@@ -19,16 +20,4 @@ export class FoodItemsModel implements foodItemsModelTypes {
         this.id = data.id;
         this.rating = data.rating;
     }
-
-    // @action.bound
-    // increaseItemQuantity = (): void => {
-    //     this.quantity += 1;
-    // };
-
-    // @action.bound
-    // decreaseItemQuantity = (): void => {
-    //     if (this.quantity > 0) {
-    //         this.quantity -= 1;
-    //     }
-    // };
 }

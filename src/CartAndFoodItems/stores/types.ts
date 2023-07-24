@@ -29,6 +29,7 @@ export interface updatedFoodItemsTypes {
     id: string;
     rating: number;
     quantity: number;
+    price: number
 }
 
 export interface updatedRestaurantListItemsType {
@@ -53,6 +54,7 @@ export interface foodItemsModelTypes {
     id: string;
     rating: number;
     quantity: number;
+    price: number
 }
 
 export interface fetchedRestaurantListItemsTypes {
@@ -89,4 +91,10 @@ export interface FoodItemProps {
 
 export interface eachItemPropsTypes {
     eachItem: foodItemsModelTypes;
+}
+
+export interface cartItemsPropsTypes {
+    eachItem: foodItemsModelTypes, 
+    incrementItemQuantity: (id: string) => void
+    decrementItemQuantity: (id: string) => void
 }
