@@ -3,6 +3,8 @@ import tw from "twin.macro";
 
 export const CartRouteMainContainer = styled.div``;
 
+export const CartContainer = styled.p``;
+
 export const CartDetailsTitleContainer = styled.div`
     ${tw`flex mt-8 mb-6 justify-between pl-10 pr-10`}
 `;
@@ -10,7 +12,7 @@ export const CartDetailsTitleContainer = styled.div`
 export const CartItemTitle = styled.p``;
 
 export const CartDetailsContainer = styled.div`
-    ${tw`h-504px bg-Selago border border-solid border-opacity-10 mt-12 mb-16 pb-12 pl-12`}
+    ${tw`bg-Selago border border-solid border-opacity-10 mt-12 mb-16 pb-12 pl-12`}
 `;
 
 export const CartListUlElement = styled.ul``;
@@ -32,5 +34,25 @@ export const TotalPriceContainer = styled.div`
 `;
 
 export const PlaceOrderButton = styled.button`
-    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-xl cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4`}
+    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-lg cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4`}
+`;
+
+export const EmptyCartContainer = styled.div`
+    ${tw`flex flex-col justify-center items-center mt-142px`}
+`;
+
+export const EmptyCartImage = styled.img`
+    ${tw`w-426px h-367px mb-12`}
+`;
+
+export const EmptyCartHeading = styled.h1`
+    ${tw`text-Mirage text-fs32_lh48 font-medium mb-3`}
+`;
+
+export const EmptyCartDescription = styled.p`
+    ${tw`text-Slate_Gray text-fs16_lh24 font-normal mb-4`}
+`;
+
+export const OrderNowButton = styled.button`
+    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-lg cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4`}
 `;

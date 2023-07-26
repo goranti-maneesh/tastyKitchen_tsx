@@ -1,7 +1,12 @@
+import { useContext } from "react";
+
+import { ObjContext } from "../../../Common/context";
+
 import { cartItemsPropsTypes } from "../../stores/types";
 
 import {
     CartItemLiElement,
+    CartItemContainer,
     ImageTitleContainer,
     CartItemImage,
     CartItemName,
@@ -12,6 +17,8 @@ import {
 } from "./styledComponents";
 
 export const EachCartRoute = (props: cartItemsPropsTypes) => {
+    const { isDesktopView } = useContext(ObjContext);
+
     const { eachItem, incrementItemQuantity, decrementItemQuantity } = props;
 
     const { imageUrl, name, price, quantity, id } = eachItem;
@@ -26,20 +33,25 @@ export const EachCartRoute = (props: cartItemsPropsTypes) => {
 
     return (
         <CartItemLiElement>
-            <ImageTitleContainer>
-                <CartItemImage src={imageUrl} alt={name} />
-                <CartItemName>{name}</CartItemName>
-            </ImageTitleContainer>
-            <QuantityContainer>
-                <PlusMinusButton type="button" onClick={decreaseQuantity}>
-                    -
-                </PlusMinusButton>
-                <Quantity>{quantity}</Quantity>
-                <PlusMinusButton type="button" onClick={increaseQuantity}>
-                    +
-                </PlusMinusButton>
-            </QuantityContainer>
-            <CartItemPrice>{`₹ ${price}.00`}</CartItemPrice>
+            {!isDesktopView && <CartItemImage src={imageUrl} alt={name} />}
+            <CartItemContainer>
+                <ImageTitleContainer>
+                    {isDesktopView && (
+                        <CartItemImage src={imageUrl} alt={name} />
+                    )}
+                    <CartItemName>{name}</CartItemName>
+                </ImageTitleContainer>
+                <QuantityContainer>
+                    <PlusMinusButton type="button" onClick={decreaseQuantity}>
+                        -
+                    </PlusMinusButton>
+                    <Quantity>{quantity}</Quantity>
+                    <PlusMinusButton type="button" onClick={increaseQuantity}>
+                        +
+                    </PlusMinusButton>
+                </QuantityContainer>
+                <CartItemPrice>{`₹ ${price}.00`}</CartItemPrice>
+            </CartItemContainer>
         </CartItemLiElement>
     );
 };

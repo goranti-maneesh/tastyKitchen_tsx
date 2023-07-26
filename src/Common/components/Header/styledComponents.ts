@@ -7,7 +7,11 @@ import { MdCancel } from "react-icons/md";
 import { headerLinkComponentProps } from "../../stores/types";
 
 export const HeaderMainContainer = styled.div`
-    ${tw`bg-white relative`}
+    ${tw`bg-Catskill_White relative`}
+
+    @media(max-width: 768px) {
+        ${tw`bg-white`}
+    }
 `;
 
 export const LogoTitleContainer = styled.div`
@@ -61,19 +65,21 @@ export const LogoutButton = styled.button`
 `;
 
 export const OptionsAndCrossIconContainer = styled.div`
-    ${tw`flex justify-between h-96px pt-4`}
+    ${tw`max-w-1110px w-89vw m-auto flex justify-between h-96px pt-4`}
 `;
 
 export const CrossIconButton = styled.button``;
 
 export const CrossIcon = styled(MdCancel)``;
 
-export const MobileViewContainer = styled.div`
-    ${tw`max-w-1110px w-89vw m-auto`}
+export const MobileViewContainer = styled.div``;
+
+export const LogoAndMenuMainContainer = styled.div`
+    ${tw`bg-Catskill_White`}
 `;
 
 export const LogoAndMenuContainer = styled.div`
-    ${tw`flex justify-between`}
+    ${tw`max-w-1110px w-89vw m-auto flex justify-between`}
 `;
 
 export const MenuIconButton = styled.button``;

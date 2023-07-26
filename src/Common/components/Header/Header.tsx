@@ -25,6 +25,7 @@ import {
     CrossIconButton,
     CrossIcon,
     MobileViewContainer,
+    LogoAndMenuMainContainer,
     LogoAndMenuContainer,
     MenuIconButton,
     MenuIcon,
@@ -103,12 +104,14 @@ const Header = (props: RouterProps) => {
 
     const renderMobileView = () => (
         <MobileViewContainer>
-            <LogoAndMenuContainer>
-                {renderLogoAndTitle()}
-                <MenuIconButton type="button" onClick={onClickMenuIcon}>
-                    <MenuIcon />
-                </MenuIconButton>
-            </LogoAndMenuContainer>
+            <LogoAndMenuMainContainer>
+                <LogoAndMenuContainer>
+                    {renderLogoAndTitle()}
+                    <MenuIconButton type="button" onClick={onClickMenuIcon}>
+                        <MenuIcon />
+                    </MenuIconButton>
+                </LogoAndMenuContainer>
+            </LogoAndMenuMainContainer>
             {isMenuOpened && renderOptionsAndCrossIcon()}
         </MobileViewContainer>
     );

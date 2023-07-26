@@ -13,3 +13,7 @@ export const ratingImgAltText = "rating"
 export const footerTastyKitchensLogo = "https://res.cloudinary.com/degjdup40/image/upload/v1687306154/Group_7420_mexg7j.png"
 
 export const footerTastyKitchensLogoAltText = "footer-tasty-kitchen-logo"
+
+export const emptyCartImg = "https://res.cloudinary.com/degjdup40/image/upload/v1690308995/cooking_1_npwhzj.png"
+
+export const emptyCartImgAltText = "empty-cart-image"

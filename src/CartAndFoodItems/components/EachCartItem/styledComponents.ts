@@ -2,7 +2,19 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 export const CartItemLiElement = styled.li`
-    ${tw`flex justify-between items-center mb-6`}
+    ${tw`mb-6`}
+
+    @media(max-width: 768px) {
+        ${tw`flex`}
+    }
+`;
+
+export const CartItemContainer = styled.div`
+    ${tw`flex justify-between items-center`}
+
+    @media(max-width: 768px) {
+        ${tw`flex-col items-start`}
+    }
 `;
 
 export const ImageTitleContainer = styled.div`
