@@ -30,6 +30,8 @@ import {
     EmptyCartHeading,
     EmptyCartDescription,
     OrderNowButton,
+    CartDetailsContainerMobileView,
+    OrderNowLinkComponent,
 } from "./styledComponents";
 
 export const CartRoute = observer(() => {
@@ -45,6 +47,7 @@ export const CartRoute = observer(() => {
         getCartListFromLS,
         incrementItemQuantity,
         decrementItemQuantity,
+        removeItemsFromCart,
     } = foodItems;
 
     console.log(cartList, "totalPrice");
@@ -52,6 +55,10 @@ export const CartRoute = observer(() => {
     useEffect(() => {
         getCartListFromLS();
     }, []);
+
+    const clearCartList = () => {
+        removeItemsFromCart();
+    };
 
     const renderEachCart = () => (
         <CartListUlElement>
@@ -71,9 +78,11 @@ export const CartRoute = observer(() => {
             <OrderTotal>{t("cartText.orderTotalText")} :</OrderTotal>
             <TotalPriceContainer>
                 <OrderTotal>{`₹ ${totalPrice}.00`}</OrderTotal>
-                <PlaceOrderButton>
-                    {t("cartText.placeOrderText")}
-                </PlaceOrderButton>
+                <OrderNowLinkComponent to="/order-success">
+                    <PlaceOrderButton onClick={clearCartList}>
+                        {t("cartText.placeOrderText")}
+                    </PlaceOrderButton>
+                </OrderNowLinkComponent>
             </TotalPriceContainer>
         </TotalPriceSectionContainer>
     );
@@ -86,27 +95,41 @@ export const CartRoute = observer(() => {
                 <EmptyCartDescription>
                     {t("noOrders.description")}
                 </EmptyCartDescription>
-                <OrderNowButton>{t("noOrders.buttonText")}</OrderNowButton>
+                <OrderNowLinkComponent to="/">
+                    <OrderNowButton>{t("noOrders.buttonText")}</OrderNowButton>
+                </OrderNowLinkComponent>
             </EmptyCartContainer>
         );
     };
+
+    const renderCartInMobileView = () => (
+        <CartDetailsContainerMobileView>
+            {renderEachCart()}
+            <HorizontalLine />
+            {renderTotalPriceSection()}
+        </CartDetailsContainerMobileView>
+    );
+
+    const renderCartInDesktopView = () => (
+        <CartDetailsContainer>
+            <CartDetailsTitleContainer>
+                <CartItemTitle>{t("cartText.item")}</CartItemTitle>
+                <CartItemTitle>{t("cartText.quantity")}</CartItemTitle>
+                <CartItemTitle>{t("cartText.price")}</CartItemTitle>
+            </CartDetailsTitleContainer>
+            {renderEachCart()}
+            <HorizontalLine />
+            {renderTotalPriceSection()}
+        </CartDetailsContainer>
+    );
 
     const renderCart = () => {
         return (
             <CartContainer>
                 <WrapperComponent>
-                    <CartDetailsContainer>
-                        <CartDetailsTitleContainer>
-                            <CartItemTitle>{t("cartText.item")}</CartItemTitle>
-                            <CartItemTitle>
-                                {t("cartText.quantity")}
-                            </CartItemTitle>
-                            <CartItemTitle>{t("cartText.price")}</CartItemTitle>
-                        </CartDetailsTitleContainer>
-                        {renderEachCart()}
-                        <HorizontalLine />
-                        {renderTotalPriceSection()}
-                    </CartDetailsContainer>
+                    {isDesktopView
+                        ? renderCartInDesktopView()
+                        : renderCartInMobileView()}
                 </WrapperComponent>
                 <Footer />
             </CartContainer>

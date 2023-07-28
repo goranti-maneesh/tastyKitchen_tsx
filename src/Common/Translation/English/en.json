@@ -40,14 +40,18 @@
     },
     "paymentSuccess": {
         "title": "Payment Successful",
-        "description1": "Thank you for ordering",
-        "description2": "Your payment is successfully completed.",
+        "description": "Thank you for ordering Your payment is successfully completed.",
         "buttonText": "Go To Home Page"
     },
     "noOrders": {
         "title": "No Orders Yet!",
         "description": "Your cart is empty. Add something from the menu.",
         "buttonText": "Order Now"
+    },
+    "notFound": {
+        "title": "Page Not Found",
+        "description": "We are sorry, the page you requested could not be found. Please go back to the homepage",
+        "buttonText": "Home Page"
     },
     "costForTwo": "Cost for two",
     "ADD": "ADD"

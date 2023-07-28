@@ -106,8 +106,14 @@ export class FoodItemStore {
         }
 
         this.cartList = parsedCartList;
+        this.calculateTotalPrice();
 
         return parsedCartList;
+    };
+
+    removeItemsFromCart = () => {
+        this.cartList = [];
+        localStorage.setItem("cartList", JSON.stringify([]));
     };
 
     @action.bound

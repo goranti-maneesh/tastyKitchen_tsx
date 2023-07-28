@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthHooks } from "./Auth/hooks/useAuthStore";
 import { OffersListHook } from "./RestaurantDetails/hooks/useOffersListHooks";
@@ -10,7 +10,9 @@ import LoginRoute from "./Auth/routes";
 import HomeRoute from "./RestaurantDetails/routes";
 import RestaurantItemsRoute from "./CartAndFoodItems/routes";
 import CartRoute from "./CartAndFoodItems/components/Cart";
-import ProtectedRoute from "./Common/components/ProtectedRoute"
+import OrderSuccess from "./CartAndFoodItems/components/OrderSuccess";
+import NotFound from "./Common/components/NotFound";
+import ProtectedRoute from "./Common/components/ProtectedRoute";
 
 const mediaQuery = window.matchMedia("(min-width: 768px)");
 
@@ -59,6 +61,17 @@ const App = (): JSX.Element => {
                                         path="/cart"
                                         component={CartRoute}
                                     />
+                                    <ProtectedRoute
+                                        exact
+                                        path="/order-success"
+                                        component={OrderSuccess}
+                                    />
+                                    <Route
+                                        exact
+                                        path="/not-found"
+                                        component={NotFound}
+                                    />
+                                    <Redirect to="/not-found" />
                                 </Switch>
                             </FoodItemsHook>
                         </RestaurantsListHook>

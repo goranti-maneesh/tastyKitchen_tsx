@@ -17,3 +17,11 @@ export const footerTastyKitchensLogoAltText = "footer-tasty-kitchen-logo"
 export const emptyCartImg = "https://res.cloudinary.com/degjdup40/image/upload/v1690308995/cooking_1_npwhzj.png"
 
 export const emptyCartImgAltText = "empty-cart-image"
+
+export const greenTickImage = "https://res.cloudinary.com/degjdup40/image/upload/v1690482269/check-circle.1_1_usnd2d.png"
+
+export const greenTickAltText = "green-tick-image"
+
+export const notFoundImage = "https://res.cloudinary.com/degjdup40/image/upload/v1690506211/erroring_1_w8u3bm.png"
+
+export const notFoundAltText = "not-found-image"
