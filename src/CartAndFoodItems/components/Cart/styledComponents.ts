@@ -57,7 +57,7 @@ export const PlaceOrderButton = styled.button`
 `;
 
 export const EmptyCartContainer = styled.div`
-    ${tw`flex flex-col justify-center items-center mt-142px`}
+    ${tw`flex flex-col justify-center items-center h-screen`}
 `;
 
 export const EmptyCartImage = styled.img`
@@ -69,27 +69,27 @@ export const EmptyCartImage = styled.img`
 `;
 
 export const EmptyCartHeading = styled.h1`
-    ${tw`text-Mirage text-fs32_lh48 font-medium mb-3 leading-6`}
+    ${tw`text-Mirage text-fs32_lh48 font-medium mb-3 leading-6 text-center`}
 
     @media (max-width: 768px) {
-        ${tw`text-fs20_lh32`}
+        ${tw`text-fs20_lh32 `}
     }
 `;
 
 export const EmptyCartDescription = styled.p`
-    ${tw`text-Slate_Gray text-fs16_lh24 font-normal mb-4`}
+    ${tw`text-Slate_Gray text-fs16_lh24 font-normal mb-4 text-center`}
 
     @media (max-width: 768px) {
-        ${tw`text-fs20_lh32 mb-6`}
+        ${tw`text-fs20_lh32 mb-6 `}
     }
 `;
 
 export const OrderNowButton = styled.button`
-    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-lg cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4 mb-239px`}
+    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-lg cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4`}
 `;
 
 export const CartDetailsContainerMobileView = styled.div`
     ${tw`mt-8 mb-12`}
 `;
 
-export const OrderNowLinkComponent = styled(Link)``
+export const OrderNowLinkComponent = styled(Link)``;

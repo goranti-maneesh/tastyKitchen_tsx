@@ -1,3 +1,3 @@
-import {CartRoute} from "./CartRoute"
+import {CartRoute} from "./Cart"
 
 export default CartRoute
