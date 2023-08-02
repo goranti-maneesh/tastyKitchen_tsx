@@ -1,7 +1,14 @@
-import {offersListFetchedResponseTypes, restaurantsListFetchedResponseTypes} from '../../stores/types'
+import {
+    OffersListFetchedResponseTypes,
+    RestaurantsListFetchedResponseTypes,
+} from "../../stores/types";
 
 export interface HomeServiceType {
-    offersListApiService: () => Promise<offersListFetchedResponseTypes>
+    offersListApiService: () => Promise<OffersListFetchedResponseTypes>;
 
-    restaurantsListApiService: (offset: number, limit: number, sortByRating: string) => Promise<restaurantsListFetchedResponseTypes>
+    restaurantsListApiService: (
+        offset: number,
+        limit: number,
+        sortByRating: string
+    ) => Promise<RestaurantsListFetchedResponseTypes>;
 }

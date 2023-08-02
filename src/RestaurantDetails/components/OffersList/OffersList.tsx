@@ -4,7 +4,7 @@ import { useContext } from "react";
 import WrapperComponent from "../../../Common/components/WrapperComponent";
 import { ObjContext } from "../../../Common/context";
 
-import { offersListEachObjTypes } from "../../stores/types";
+import { OffersListEachObjTypes } from "../../stores/types";
 
 import EachOffer from "../EachOffer";
 
@@ -44,7 +44,7 @@ export const OffersList = (props: any) => {
         <OffersContainer>
             <OffersUlElement>
                 <Slider {...settings}>
-                    {responseData.map((eachOffer: offersListEachObjTypes) => (
+                    {responseData.map((eachOffer: OffersListEachObjTypes) => (
                         <EachOffer key={eachOffer.id} eachOffer={eachOffer} />
                     ))}
                 </Slider>

@@ -1,21 +1,23 @@
-import {createContext, useContext} from 'react'
+import { createContext, useContext } from "react";
 
-import {childProps} from '../../Common/stores/types'
+import { ChildProps } from "../../Common/stores/types";
 
-import {HomeRouteServivceAPI} from '../../Common/stores/index.api'
+import { HomeRouteServivceAPI } from "../../Common/stores/index.api";
 
-import { RestaurantsListStore } from '../stores/HomeRouteStore/RestaurantsListStore'
+import { RestaurantsListStore } from "../stores/HomeRouteStore/RestaurantsListStore";
 
-const HomeRouteServiceInstance = new HomeRouteServivceAPI
+const HomeRouteServiceInstance = new HomeRouteServivceAPI();
 
-const restaurantsListStoreInstance = new RestaurantsListStore(HomeRouteServiceInstance)
+const restaurantsListStoreInstance = new RestaurantsListStore(
+    HomeRouteServiceInstance
+);
 
-const RestaurantsListContext = createContext(restaurantsListStoreInstance)
+const RestaurantsListContext = createContext(restaurantsListStoreInstance);
 
-export const RestaurantsListHook = ({children}: childProps) => (
+export const RestaurantsListHook = ({ children }: ChildProps) => (
     <RestaurantsListContext.Provider value={restaurantsListStoreInstance}>
         {children}
     </RestaurantsListContext.Provider>
-)
+);
 
-export const useRestaurantsListHook = () => useContext(RestaurantsListContext)
+export const useRestaurantsListHook = () => useContext(RestaurantsListContext);

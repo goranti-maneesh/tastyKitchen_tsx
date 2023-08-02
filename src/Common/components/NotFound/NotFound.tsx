@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import Header from "../../../Common/components/Header";
-import { notFoundImage, notFoundAltText } from "../../../Common/constants";
+import { notFoundImage, notFoundAltText, homeRoute } from "../../../Common/constants";
 import WrapperComponent from "../../../Common/components/WrapperComponent";
 
 import {
@@ -26,7 +26,7 @@ export const NotFound = () => {
                     <NotFoundDescription>
                         {t("notFound.description")}
                     </NotFoundDescription>
-                    <LinkComponent to="/">
+                    <LinkComponent to={homeRoute}>
                         <HomePageButton>
                             {t("notFound.buttonText")}
                         </HomePageButton>

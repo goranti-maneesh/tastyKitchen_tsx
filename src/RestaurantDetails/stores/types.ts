@@ -1,24 +1,24 @@
-export interface offersListEachObjFetchedTypes {
+export interface OffersListEachObjFetchedTypes {
     image_url: string;
     id: number;
 }
 
-export interface offersListEachObjTypes {
+export interface OffersListEachObjTypes {
     imageUrl: string;
     id: number;
 }
 
-export interface offersListFetchedResponseTypes {
-    offers: Array<offersListEachObjFetchedTypes>;
+export interface OffersListFetchedResponseTypes {
+    offers: Array<OffersListEachObjFetchedTypes>;
     responseStatus: boolean;
 }
 
-export interface offersListResponseTypes {
-    offers: Array<offersListEachObjTypes>;
+export interface OffersListResponseTypes {
+    offers: Array<OffersListEachObjTypes>;
     responseStatus: boolean;
 }
 
-export interface restaurantsListEachObjFetchedTypes {
+export interface RestaurantsListEachObjFetchedTypes {
     has_online_delivery: boolean;
     user_rating: {
         rating_text: string;
@@ -39,14 +39,16 @@ export interface restaurantsListEachObjFetchedTypes {
     group_by_time: boolean;
 }
 
-export interface restaurantsListEachObjTypes {
+export interface UserRatingTypes{
+    ratingText: string;
+    ratingColor: string;
+    totalReviews: number;
+    rating: number;
+}
+
+export interface RestaurantsListEachObjTypes {
     hasOnlineDelivery: boolean;
-    userRating: {
-        ratingText: string;
-        ratingColor: string;
-        totalReviews: number;
-        rating: number;
-    };
+    userRating: UserRatingTypes
     name: string;
     hasTableBooking: number;
     isDeliveringNow: number;
@@ -60,26 +62,26 @@ export interface restaurantsListEachObjTypes {
     groupByTime: boolean;
 }
 
-export interface restaurantsListFetchedResponseTypes {
-    restaurants: Array<restaurantsListEachObjFetchedTypes>;
+export interface RestaurantsListFetchedResponseTypes {
+    restaurants: Array<RestaurantsListEachObjFetchedTypes>;
     total: number;
     responseStatus: boolean;
 }
 
-export interface restaurantsListResponseTypes {
-    restaurants: Array<restaurantsListEachObjTypes>;
+export interface RestaurantsListResponseTypes {
+    restaurants: Array<RestaurantsListEachObjTypes>;
     total: number;
     responseStatus: boolean;
 }
 
-export interface eachRestaurantPropTypes{
-    eachRestaurant: restaurantsListEachObjTypes
+export interface EachRestaurantPropTypes {
+    eachRestaurant: RestaurantsListEachObjTypes;
 }
 
 export interface ButtonOptionStyleTypes {
-    $sortingBtnBgColor: boolean
+    $sortingBtnBgColor: boolean;
 }
 
-export interface eachOfferProps{
-    eachOffer: offersListEachObjTypes
+export interface EachOfferProps {
+    eachOffer: OffersListEachObjTypes;
 }

@@ -1,5 +1,17 @@
 export const token = "jwt_token";
 
+export const homeRoute = "/"
+
+export const loginRoute = "/login"
+
+export const restaurantsRoute = "/restaurants"
+
+export const cartRoute = "/cart"
+
+export const orderSuccessRoute = "/order-success"
+
+export const notFoundRoute = "/not-found"
+
 export const tastyKitchensLogo = "https://res.cloudinary.com/degjdup40/image/upload/v1685290528/Frame_274_v4arhl.png"
 
 export const tastyKitchensLogoAltText = "tasty-kitchen-logo"

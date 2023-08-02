@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react-lite";
 
-import { eachItemPropsTypes } from "../../stores/types";
+import { EachItemPropsTypes } from "../../stores/types";
 import { useFoodItemsHook } from "../../hooks/useFoodItemsHooks";
 
 import { RatingIcon } from "../FoodItems/styledComponents";
@@ -20,9 +20,9 @@ import {
     Quantity,
 } from "./styledComponents";
 
-export const EachFoodItem = observer((props: eachItemPropsTypes) => {
+export const EachFoodItem = observer((props: EachItemPropsTypes) => {
     const { eachItem } = props;
-    const { name, cost, foodType, imageUrl, id, quantity, rating } = eachItem;
+    const { name, cost, imageUrl, id, quantity, rating } = eachItem;
 
     const foodItems = useFoodItemsHook();
 

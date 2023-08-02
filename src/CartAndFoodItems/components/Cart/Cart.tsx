@@ -7,7 +7,7 @@ import { ObjContext } from "../../../Common/context";
 import Footer from "../../../Common/components/Footer";
 import Header from "../../../Common/components/Header";
 import WrapperComponent from "../../../Common/components/WrapperComponent";
-import { emptyCartImg, emptyCartImgAltText } from "../../../Common/constants";
+import { emptyCartImg, emptyCartImgAltText, homeRoute, orderSuccessRoute } from "../../../Common/constants";
 
 import { useFoodItemsHook } from "../../hooks/useFoodItemsHooks";
 
@@ -78,7 +78,7 @@ export const CartRoute = observer(() => {
             <OrderTotal>{t("cartText.orderTotalText")} :</OrderTotal>
             <TotalPriceContainer>
                 <OrderTotal>{`₹ ${totalPrice}.00`}</OrderTotal>
-                <OrderNowLinkComponent to="/order-success">
+                <OrderNowLinkComponent to={orderSuccessRoute}>
                     <PlaceOrderButton onClick={clearCartList}>
                         {t("cartText.placeOrderText")}
                     </PlaceOrderButton>
@@ -95,7 +95,7 @@ export const CartRoute = observer(() => {
                 <EmptyCartDescription>
                     {t("noOrders.description")}
                 </EmptyCartDescription>
-                <OrderNowLinkComponent to="/">
+                <OrderNowLinkComponent to={homeRoute}>
                     <OrderNowButton>{t("noOrders.buttonText")}</OrderNowButton>
                 </OrderNowLinkComponent>
             </EmptyCartContainer>

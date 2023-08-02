@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import { MdCancel } from "react-icons/md";
 
-import { headerLinkComponentProps } from "../../stores/types";
+import { HeaderLinkComponentProps } from "../../stores/types";
 
 export const HeaderMainContainer = styled.div`
     ${tw`bg-Catskill_White relative`}
@@ -50,7 +50,7 @@ export const LiElement = styled.li`
     ${tw``}
 `;
 
-export const LinkComponent = styled(Link)<headerLinkComponentProps>`
+export const LinkComponent = styled(Link)<HeaderLinkComponentProps>`
     ${tw`text-Pickled_Bluewood text-fs16_lh26 font-bold mr-8`}
 
     ${(props) => props.$isSelected && tw`text-Tree_Poppy`}

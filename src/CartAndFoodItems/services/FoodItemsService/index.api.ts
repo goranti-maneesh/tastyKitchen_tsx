@@ -1,11 +1,11 @@
 import { getJwtToken } from "../../../Common/utils/StorageUtils";
 
-import { fetchedRestaurantListItemsTypes } from "../../stores/types";
+import { FetchedRestaurantListItemsTypes } from "../../stores/types";
 
 export class FoodItemsService implements FoodItemsService {
     getFoodItems = async (
         id: string
-    ): Promise<fetchedRestaurantListItemsTypes> => {
+    ): Promise<FetchedRestaurantListItemsTypes> => {
         const options = {
             method: "GET",
             headers: {

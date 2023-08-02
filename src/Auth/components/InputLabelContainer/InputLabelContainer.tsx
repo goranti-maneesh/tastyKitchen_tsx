@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { inputLabelPropsObjTypes } from "../../stores/types";
+import { InputLabelPropsObjTypes } from "../../stores/types";
 
 import {
     InputLabelCont,
@@ -9,8 +9,10 @@ import {
     ErrorMsg,
 } from "./styledComponents";
 
-export const InputLabelContainer = (props: inputLabelPropsObjTypes): JSX.Element => {
-    const { inputLabelPropsObj } = props;
+export const InputLabelContainer = (
+    props: InputLabelPropsObjTypes
+): JSX.Element => {
+    const { InputLabelPropsObj } = props;
 
     const {
         regex,
@@ -21,28 +23,28 @@ export const InputLabelContainer = (props: inputLabelPropsObjTypes): JSX.Element
         errorMsg,
         value,
         type,
-    } = inputLabelPropsObj;
+    } = InputLabelPropsObj;
 
-    const [isErrorMsgDisplayed, setErrorMsgStatus] = useState(false);
+    const [isErrorMsgDisplayed, setLoginErrorMsgStatus] = useState(false);
 
     const onBlurInputEle = (event: React.FormEvent<HTMLInputElement>): void => {
         if (regex.test(event.currentTarget.value)) {
-            setErrorMsgStatus(false);
+            setLoginErrorMsgStatus(false);
         } else {
-            setErrorMsgStatus(true);
+            setLoginErrorMsgStatus(true);
         }
     };
 
     const onFocusInputEle = (
         event: React.FormEvent<HTMLInputElement>
     ): void => {
-        setErrorMsgStatus(false);
+        setLoginErrorMsgStatus(false);
     };
 
     return (
         <InputLabelCont>
             <LoginLabelEle htmlFor={id}>{labelText}</LoginLabelEle>
-            <br/>
+            <br />
             <LoginInputEle
                 type={type}
                 id={id}

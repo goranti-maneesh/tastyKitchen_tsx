@@ -9,13 +9,12 @@ import {
 import WrapperComponent from "../../../Common/components/WrapperComponent";
 import { ObjContext } from "../../../Common/context";
 
-import { loginPageProps } from "../../stores/types";
+import { LoginPageProps } from "../../stores/types";
 
 import InputLabelContainer from "../InputLabelContainer";
 
 import {
     LoginPageContainer,
-    LoginPageImg,
     FormSection,
     FormCard,
     LogoImg,
@@ -26,10 +25,10 @@ import {
     LoginError,
     BgImgContainer,
     LoginPageTopSection,
-    LoginButtonContainer
+    LoginButtonContainer,
 } from "./styledComponents";
 
-export const LoginPage = (props: loginPageProps): JSX.Element => {
+export const LoginPage = (props: LoginPageProps): JSX.Element => {
     const {
         userNameProps,
         passwordProps,
@@ -61,7 +60,6 @@ export const LoginPage = (props: loginPageProps): JSX.Element => {
                 </FormCard>
             </FormSection>
             <BgImgContainer></BgImgContainer>
-            
         </LoginPageContainer>
     );
 
@@ -77,15 +75,17 @@ export const LoginPage = (props: loginPageProps): JSX.Element => {
 
     const renderLoginForm = (): JSX.Element => (
         <FormEle onSubmit={submitForm}>
-            <InputLabelContainer inputLabelPropsObj={userNameProps} />
-            <InputLabelContainer inputLabelPropsObj={passwordProps} />
+            <InputLabelContainer InputLabelPropsObj={userNameProps} />
+            <InputLabelContainer InputLabelPropsObj={passwordProps} />
             <LoginButtonContainer>
-            <LoginButton type="submit">
-                {constraint === "INITIAL"
-                    ? t("loginPageText.loginText")
-                    : t("loginPageText.loadingText")}
-            </LoginButton>
-            {authErrorMessage && <LoginError>{authErrorMessage}</LoginError>}
+                <LoginButton type="submit">
+                    {constraint === "INITIAL"
+                        ? t("loginPageText.loginText")
+                        : t("loginPageText.loadingText")}
+                </LoginButton>
+                {authErrorMessage && (
+                    <LoginError>{authErrorMessage}</LoginError>
+                )}
             </LoginButtonContainer>
         </FormEle>
     );

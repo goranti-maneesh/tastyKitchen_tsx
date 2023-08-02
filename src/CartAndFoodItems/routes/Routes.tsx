@@ -9,7 +9,7 @@ import Header from "../../Common/components/Header";
 import Footer from "../../Common/components/Footer";
 
 import { useFoodItemsHook } from "../hooks/useFoodItemsHooks";
-import { matchParamsTypes } from "../stores/types";
+import { MatchParamsTypes } from "../stores/types";
 import FoodItems from "../components/FoodItems";
 
 import {
@@ -18,16 +18,11 @@ import {
 } from "./styledComponents";
 
 export const RestaurantItemsRoute = observer(
-    (props: RouteComponentProps<matchParamsTypes>) => {
+    (props: RouteComponentProps<MatchParamsTypes>) => {
         const foodItems = useFoodItemsHook();
 
-        const {
-            constraint,
-            response,
-            responseStatus,
-            restaurantPoster,
-            fetchFoodItems,
-        } = foodItems;
+        const { constraint, response, restaurantPoster, fetchFoodItems } =
+            foodItems;
 
         const fetchFoodItemsList = () => {
             const { match } = props;
@@ -38,14 +33,7 @@ export const RestaurantItemsRoute = observer(
 
         useEffect(() => {
             fetchFoodItemsList();
-            // getCartListFromLocalStorage();
         }, []);
-
-        // useEffect(() => {
-        //     return () => {
-        //         updateCartListInLocalStorage();
-        //     };
-        // }, []);
 
         const renderSuccessViews = () => (
             <FoodItems

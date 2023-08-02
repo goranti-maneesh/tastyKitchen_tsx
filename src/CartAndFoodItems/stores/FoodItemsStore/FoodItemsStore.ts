@@ -1,10 +1,10 @@
 import { makeAutoObservable, action } from "mobx";
 
 import {
-    foodItemsModelTypes,
-    fetchedRestaurantListItemsTypes,
-    restaurantPosterTypes,
-    restaurantListItemsTypes,
+    FoodItemsModelTypes,
+    FetchedRestaurantListItemsTypes,
+    RestaurantPosterTypes,
+    RestaurantListItemsTypes,
 } from "../types";
 import { FoodItemsModel } from "../FoodItemsModels/FoodItemModel";
 
@@ -13,35 +13,52 @@ import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
 import { constraints } from "../../../Common/constraints";
 
 export class FoodItemStore {
-    constraint = constraints.initial as string;
-    response = [] as Array<foodItemsModelTypes>;
-    responseStatus = true as boolean;
-    cartList = [] as Array<foodItemsModelTypes>;
+    constraint: string;
+    response: Array<FoodItemsModelTypes>;
+    responseStatus: boolean;
+    cartList: Array<FoodItemsModelTypes>;
     serviceApiInstance: FoodItemsServiceTypes;
-    restaurantPoster = {} as restaurantPosterTypes;
-    totalPrice = 0 as number;
+    restaurantPoster: RestaurantPosterTypes;
+    totalPrice: number;
 
     constructor(serviceApiInstance: FoodItemsServiceTypes) {
         makeAutoObservable(this);
         this.serviceApiInstance = serviceApiInstance;
+        this.constraint = constraints.initial;
+        this.response = [];
+        this.responseStatus = true;
+        this.cartList = [];
+        this.restaurantPoster = {
+            rating: 0,
+            id: "",
+            name: "",
+            costForTwo: 0,
+            cuisine: "",
+            imageUrl: "",
+            reviewsCount: 0,
+            opensAt: "",
+            location: "",
+            itemsCount: 0,
+        };
+        this.totalPrice = 0;
     }
 
-    calculateTotalPrice = () => {
+    calculateTotalPrice = (): void => {
         this.totalPrice = this.cartList.reduce(
             (total, item) => total + item.price,
             0
         );
-    };
+    }
 
-    updateLocalStorage = () => {
+    updateLocalStorage = (): void => {
         localStorage.setItem("cartList", JSON.stringify(this.cartList));
-    };
+    }
 
-    getCartItemIndex = (id: string) => {
+    getCartItemIndex = (id: string): number => {
         return this.cartList.findIndex((item) => item.id === id);
-    };
+    }
 
-    updateCartItemQuantity = (id: string, increment: boolean) => {
+    updateCartItemQuantity = (id: string, increment: boolean): void => {
         const index = this.getCartItemIndex(id);
         console.log(index, "index");
         if (index !== -1) {
@@ -54,52 +71,58 @@ export class FoodItemStore {
             this.calculateTotalPrice();
             this.updateLocalStorage();
         }
-    };
+    }
 
-    getUpdatedResponseData = (cartList: foodItemsModelTypes[]) => {
+    getUpdatedResponseData = (
+        cartList: FoodItemsModelTypes[]
+    ): Array<FoodItemsModelTypes> => {
         return this.response.map((eachItem) => {
             const cartItem = cartList.find((item) => item.id === eachItem.id);
             return cartItem || eachItem;
         });
-    };
+    }
 
-    addItemToCart = (item: foodItemsModelTypes) => {
+    addItemToCart = (item: FoodItemsModelTypes): void => {
         const newItem = { ...item, quantity: 1, price: item.cost };
         this.cartList.push(newItem);
         this.calculateTotalPrice();
         this.updateLocalStorage();
         this.response = this.getUpdatedResponseData(this.cartList);
-    };
+    }
 
-    incrementItemQuantity = (id: string) => {
+    incrementItemQuantity = (id: string): void => {
         console.log(id);
         this.updateCartItemQuantity(id, true);
         this.response = this.getUpdatedResponseData(this.cartList);
-    };
+    }
 
-    decrementItemQuantity = (id: string) => {
+    decrementItemQuantity = (id: string): void => {
         this.updateCartItemQuantity(id, false);
         this.response = this.getUpdatedResponseData(this.cartList);
-    };
+    }
 
     @action.bound
-    restaurantPosterDetails = (restaurantList: restaurantListItemsTypes) => ({
-        rating: restaurantList.rating,
-        id: restaurantList.id,
-        name: restaurantList.name,
-        costForTwo: restaurantList.cost_for_two,
-        cuisine: restaurantList.cuisine,
-        imageUrl: restaurantList.image_url,
-        reviewsCount: restaurantList.reviews_count,
-        opensAt: restaurantList.opens_at,
-        location: restaurantList.location,
-        itemsCount: restaurantList.items_count,
-    });
+    restaurantPosterDetails = (
+        restaurantList: RestaurantListItemsTypes
+    ): RestaurantPosterTypes => {
+        return {
+            rating: restaurantList.rating,
+            id: restaurantList.id,
+            name: restaurantList.name,
+            costForTwo: restaurantList.cost_for_two,
+            cuisine: restaurantList.cuisine,
+            imageUrl: restaurantList.image_url,
+            reviewsCount: restaurantList.reviews_count,
+            opensAt: restaurantList.opens_at,
+            location: restaurantList.location,
+            itemsCount: restaurantList.items_count,
+        };
+    }
 
-    getCartListFromLS = () => {
+    getCartListFromLS = (): Array<FoodItemsModelTypes> => {
         const cartListFromLS: string | null = localStorage.getItem("cartList");
 
-        let parsedCartList: Array<foodItemsModelTypes> = [];
+        let parsedCartList: Array<FoodItemsModelTypes> = [];
 
         if (cartListFromLS !== null) {
             parsedCartList = JSON.parse(cartListFromLS);
@@ -111,13 +134,12 @@ export class FoodItemStore {
         return parsedCartList;
     };
 
-    removeItemsFromCart = () => {
+    removeItemsFromCart = (): void => {
         this.cartList = [];
         localStorage.setItem("cartList", JSON.stringify([]));
     };
 
-    @action.bound
-    updateResponseData = (response: fetchedRestaurantListItemsTypes) => {
+    updateResponseData = (response: FetchedRestaurantListItemsTypes): void => {
         this.responseStatus = response.responseStatus;
         if (response.responseStatus) {
             this.constraint = constraints.success;
@@ -159,8 +181,7 @@ export class FoodItemStore {
         }
     };
 
-    @action.bound
-    fetchFoodItems = async (id: string) => {
+    fetchFoodItems = async (id: string): Promise<void> => {
         this.constraint = constraints.loading;
 
         const response = await this.serviceApiInstance.getFoodItems(id);

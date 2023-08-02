@@ -4,6 +4,8 @@ import { withRouter, RouteProps, RouterProps } from "react-router-dom";
 
 import { ObjContext } from "../../context";
 import {
+    cartRoute,
+    homeRoute,
     tastyKitchensLogo,
     tastyKitchensLogoAltText,
 } from "../../constants/index";
@@ -67,12 +69,12 @@ const Header = (props: RouterProps) => {
     const renderHomeCartLogoutButtons = () => (
         <HomeCartLogoutUl>
             <LiElement>
-                <LinkComponent to="/" $isSelected={pathname === "/"}>
+                <LinkComponent to={homeRoute} $isSelected={pathname === homeRoute}>
                     {t("headerText.home")}
                 </LinkComponent>
             </LiElement>
             <LiElement>
-                <LinkComponent to="/cart" $isSelected={pathname === "/cart"}>
+                <LinkComponent to={cartRoute} $isSelected={pathname === cartRoute}>
                     {t("headerText.cart")}
                 </LinkComponent>
             </LiElement>

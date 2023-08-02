@@ -11,7 +11,7 @@ import {
 } from "../../Common/utils/RegularExpressions/LoginCredsRegex";
 
 import { useAuthStore } from "../hooks/useAuthStore";
-import { inputLabelProps } from "../stores/types";
+import { InputLabelProps } from "../stores/types";
 
 import LoginPage from "../components/LoginPage";
 import { LoginRouteContainer } from "./styledComponents";
@@ -25,7 +25,7 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
         password,
         fetchLoginApi,
         authErrorMessage,
-        setErrorMsg,
+        setLoginErrorMsg,
         responseStatus,
         constraint,
     } = authStore;
@@ -34,7 +34,7 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
 
     const onSubmitLoginForm = async (): Promise<void> => {
         if (username === "" && password === "") {
-            setErrorMsg(t("loginErrors.loginButtonError"));
+            setLoginErrorMsg(t("loginErrors.loginButtonError"));
         } else {
             await fetchLoginApi();
             const { responseStatus } = authStore;
@@ -47,18 +47,18 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
     const onChangeUsername = (
         event: React.FormEvent<HTMLInputElement>
     ): void => {
-        const { setUsername } = authStore;
-        setUsername(event.currentTarget.value);
+        const { setLoginUsername } = authStore;
+        setLoginUsername(event.currentTarget.value);
     };
 
     const onChangePassword = (
         event: React.FormEvent<HTMLInputElement>
     ): void => {
-        const { setPassword } = authStore;
-        setPassword(event.currentTarget.value);
+        const { setLoginPassword } = authStore;
+        setLoginPassword(event.currentTarget.value);
     };
 
-    const userNameProps: inputLabelProps = {
+    const userNameProps: InputLabelProps = {
         regex: usernameRegex,
         labelText: "USERNAME",
         id: "username",
@@ -69,7 +69,7 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
         type: "text",
     };
 
-    const passwordProps: inputLabelProps = {
+    const passwordProps: InputLabelProps = {
         regex: passwordRegex,
         labelText: "PASSWORD",
         id: "password",

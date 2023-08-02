@@ -5,26 +5,35 @@ import { HomeServiceType } from "../../services/HomeRouteService/index";
 
 import { RestaurantsListModels } from "../HomeRouteModels/restaurantsListModels/RestaurantsListModels";
 import {
-    restaurantsListEachObjTypes,
-    restaurantsListFetchedResponseTypes,
-    restaurantsListEachObjFetchedTypes,
+    RestaurantsListEachObjTypes,
+    RestaurantsListFetchedResponseTypes,
+    RestaurantsListEachObjFetchedTypes,
 } from "../types";
 
 export class RestaurantsListStore {
-    limit = 9 as number;
-    offset = 0 as number;
-    numberOfPages = 0 as number;
-    pageNumber = 1 as number;
-    sortByRating = "Highest" as string;
-    isSortingHighest = true as boolean;
-    responseStatus = false as boolean;
-    responseData = [] as Array<restaurantsListEachObjTypes>;
-    constraint = constraints.initial as string;
+    limit: number;
+    offset: number;
+    numberOfPages: number;
+    pageNumber: number;
+    sortByRating: string;
+    isSortingHighest: boolean;
+    responseStatus: boolean;
+    responseData: Array<RestaurantsListEachObjTypes>;
+    constraint: string;
     serviceApi: HomeServiceType;
 
     constructor(serviceApi: HomeServiceType) {
         makeAutoObservable(this);
         this.serviceApi = serviceApi;
+        this.limit = 9;
+        this.offset = 0;
+        this.numberOfPages = 0;
+        this.pageNumber = 1;
+        this.sortByRating = "Highest";
+        this.isSortingHighest = true;
+        this.responseStatus = false;
+        this.responseData = [];
+        this.constraint = constraints.initial;
     }
 
     decreaseOffsetValue = (): void => {
@@ -33,7 +42,7 @@ export class RestaurantsListStore {
             this.pageNumber -= 1;
             this.fetchRestaurantsList();
         }
-    };
+    }
 
     increaseOffsetValue = (): void => {
         if (this.pageNumber < this.numberOfPages) {
@@ -41,37 +50,35 @@ export class RestaurantsListStore {
             this.pageNumber += 1;
             this.fetchRestaurantsList();
         }
-    };
+    }
 
     changeRating = (rating: string): void => {
         this.sortByRating = rating;
-    };
+    }
 
-    changeRatingToHighest = (ratingStatus: boolean): void => {
+    changeRatingToHighest = (): void => {
         this.isSortingHighest = true;
         this.sortByRating = "Highest";
     };
 
-    changeRatingToLowest = (ratingStatus: boolean): void => {
+    changeRatingToLowest = (): void => {
         this.isSortingHighest = false;
         this.sortByRating = "Lowest";
     };
 
-    updateResponseData = (
-        response: restaurantsListFetchedResponseTypes
-    ): void => {
+    updateResponseData = (response: RestaurantsListFetchedResponseTypes): void => {
         if (response.responseStatus) {
             this.numberOfPages = Math.ceil(response.total / this.limit);
             this.responseStatus = response.responseStatus;
             this.constraint = constraints.success;
             this.responseData = response.restaurants.map(
-                (eachRestaurant: restaurantsListEachObjFetchedTypes) =>
+                (eachRestaurant: RestaurantsListEachObjFetchedTypes) =>
                     new RestaurantsListModels(eachRestaurant)
             );
         } else {
             this.constraint = constraints.failure;
         }
-    };
+    }
 
     fetchRestaurantsList = async (): Promise<void> => {
         this.constraint = constraints.loading;

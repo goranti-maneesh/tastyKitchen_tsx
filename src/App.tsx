@@ -6,6 +6,14 @@ import { OffersListHook } from "./RestaurantDetails/hooks/useOffersListHooks";
 import { RestaurantsListHook } from "./RestaurantDetails/hooks/useRestaurantsListHooks";
 import { FoodItemsHook } from "./CartAndFoodItems/hooks/useFoodItemsHooks";
 import { ObjContext } from "./Common/context";
+import {
+    cartRoute,
+    homeRoute,
+    loginRoute,
+    notFoundRoute,
+    orderSuccessRoute,
+    restaurantsRoute,
+} from "./Common/constants";
 import LoginRoute from "./Auth/routes";
 import HomeRoute from "./RestaurantDetails/routes";
 import RestaurantItemsRoute from "./CartAndFoodItems/routes";
@@ -43,35 +51,35 @@ const App = (): JSX.Element => {
                                 <Switch>
                                     <Route
                                         exact
-                                        path="/login"
+                                        path={loginRoute}
                                         component={LoginRoute}
                                     />
                                     <ProtectedRoute
                                         exact
-                                        path="/"
+                                        path={homeRoute}
                                         component={HomeRoute}
                                     />
                                     <ProtectedRoute
                                         exact
-                                        path="/restaurants/:id"
+                                        path={`${restaurantsRoute}/:id`}
                                         component={RestaurantItemsRoute}
                                     />
                                     <ProtectedRoute
                                         exact
-                                        path="/cart"
+                                        path={cartRoute}
                                         component={CartRoute}
                                     />
                                     <ProtectedRoute
                                         exact
-                                        path="/order-success"
+                                        path={orderSuccessRoute}
                                         component={OrderSuccess}
                                     />
                                     <Route
                                         exact
-                                        path="/not-found"
+                                        path={notFoundRoute}
                                         component={NotFound}
                                     />
-                                    <Redirect to="/not-found" />
+                                    <Redirect to={notFoundRoute} />
                                 </Switch>
                             </FoodItemsHook>
                         </RestaurantsListHook>

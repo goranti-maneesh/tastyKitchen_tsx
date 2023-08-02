@@ -1,8 +1,8 @@
-import {constraintsTypes} from '../stores/types'
+import { ConstraintsTypes } from "../stores/types";
 
-export const constraints: constraintsTypes = {
+export const constraints: ConstraintsTypes = {
     initial: "INITIAL",
     loading: "LOADING",
     success: "SUCCESS",
-    failure: "FAILURE"
-}
+    failure: "FAILURE",
+};

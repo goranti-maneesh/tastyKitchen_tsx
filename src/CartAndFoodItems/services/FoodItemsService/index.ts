@@ -1,5 +1,5 @@
-import { fetchedRestaurantListItemsTypes } from "../../stores/types";
+import { FetchedRestaurantListItemsTypes } from "../../stores/types";
 
 export interface FoodItemsServiceTypes {
-    getFoodItems: (id: string) => Promise<fetchedRestaurantListItemsTypes>
+    getFoodItems: (id: string) => Promise<FetchedRestaurantListItemsTypes>;
 }

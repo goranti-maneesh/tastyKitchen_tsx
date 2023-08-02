@@ -1,65 +1,65 @@
-import { action, makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 import { setJwtToken } from "../../../Common/utils/StorageUtils";
 import { constraints } from "../../../Common/constraints";
 
 import { AuthServiceType } from "../../services/AuthService";
 
-import {
-    AuthSuccessResObjectTypes,
-    AuthFailureResObjectTypes,
-    AuthReqObjectTypes,
-} from "../types";
+import { AuthSuccessResObjectTypes, AuthFailureResObjectTypes } from "../types";
 
 export class AuthStore {
     AuthApiService: AuthServiceType;
-    responseStatus = false as boolean;
-    authErrorMessage = "" as string;
-    username = "" as string;
-    password = "" as string;
-    constraint = constraints.initial as string;
+    responseStatus: boolean;
+    authErrorMessage: string;
+    username: string;
+    password: string;
+    constraint: string;
 
     constructor(AuthServiceApiInstance: AuthServiceType) {
         makeAutoObservable(this);
         this.AuthApiService = AuthServiceApiInstance;
+        this.responseStatus = false;
+        this.authErrorMessage = "";
+        this.username = "";
+        this.password = "";
+        this.constraint = constraints.initial;
     }
 
-    @action.bound
-    setUsername = (username: string): void => {
+    setLoginUsername = (username: string): void => {
         this.username = username;
     };
 
-    @action.bound
-    setPassword = (password: string): void => {
+    setLoginPassword = (password: string): void => {
         this.password = password;
     };
 
-    @action.bound
-    setAPIResponse = (
-        response: AuthSuccessResObjectTypes | AuthFailureResObjectTypes
+    setLoginApiSuccessResponse = (
+        response: AuthSuccessResObjectTypes
     ): void => {
-        if (response.responseStatus) {
-            setJwtToken(response.jwt_token!);
-            this.authErrorMessage = "";
-        } else {
-            this.authErrorMessage = response.error_msg!;
-        }
+        setJwtToken(response.jwt_token!);
+        this.authErrorMessage = "";
+    };
+
+    setLoginApiFailure = (response: AuthFailureResObjectTypes): void => {
+        this.authErrorMessage = response.error_msg!;
         this.responseStatus = response.responseStatus;
     };
 
-    @action.bound
-    setErrorMsg = (errorMsg: string): void => {
+    setLoginErrorMsg = (errorMsg: string): void => {
         this.authErrorMessage = errorMsg;
     };
 
-    @action.bound
     fetchLoginApi = async (): Promise<void> => {
         this.constraint = constraints.loading;
         const response = await this.AuthApiService.onAuthLogin({
             username: this.username,
             password: this.password,
         });
-        this.setAPIResponse(response);
+        if ("jwt_token" in response) {
+            this.setLoginApiSuccessResponse(response);
+        } else {
+            this.setLoginApiFailure(response);
+        }
         this.constraint = constraints.initial;
     };
 }

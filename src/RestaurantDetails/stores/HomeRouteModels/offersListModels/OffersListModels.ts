@@ -1,10 +1,10 @@
-import {offersListEachObjFetchedTypes} from '../../types'
+import { OffersListEachObjFetchedTypes } from "../../types";
 
-export class OffersListModels{
-    imageUrl = "" as string
-    id = 0 as number
-    constructor(data: offersListEachObjFetchedTypes){
-        this.imageUrl = data.image_url
-        this.id = data.id
+export class OffersListModels {
+    imageUrl: string;
+    id: number;
+    constructor(data: OffersListEachObjFetchedTypes) {
+        this.imageUrl = data.image_url;
+        this.id = data.id;
     }
 }

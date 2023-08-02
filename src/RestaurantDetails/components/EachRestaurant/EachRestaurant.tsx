@@ -1,8 +1,12 @@
 import { useTranslation } from "react-i18next";
 
-import { ratingImg, ratingImgAltText, restaurantImgAltText } from "../../../Common/constants";
+import {
+    ratingImg,
+    ratingImgAltText,
+    restaurantImgAltText,
+} from "../../../Common/constants";
 
-import { eachRestaurantPropTypes } from "../../stores/types";
+import { EachRestaurantPropTypes } from "../../stores/types";
 
 import {
     EachRestaurantLi,
@@ -17,7 +21,7 @@ import {
     TotalReviews,
 } from "./styledComponents";
 
-export const EachRestaurant = (props: eachRestaurantPropTypes) => {
+export const EachRestaurant = (props: EachRestaurantPropTypes) => {
     const { eachRestaurant } = props;
 
     const { imageUrl, name, menuType, userRating, id } = eachRestaurant;

@@ -1,14 +1,14 @@
-export interface childProps {
-    children: React.ReactNode 
+export interface ChildProps {
+    children: React.ReactNode;
 }
 
-export interface constraintsTypes{
-    initial: string,
-    loading: string,
-    success: string,
-    failure: string
+export interface ConstraintsTypes {
+    initial: string;
+    loading: string;
+    success: string;
+    failure: string;
 }
 
-export interface headerLinkComponentProps {
-    $isSelected: boolean
+export interface HeaderLinkComponentProps {
+    $isSelected: boolean;
 }

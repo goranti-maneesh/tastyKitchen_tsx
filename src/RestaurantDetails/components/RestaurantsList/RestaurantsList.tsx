@@ -1,14 +1,13 @@
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import { TiTick } from "react-icons/ti";
 import { observer } from "mobx-react-lite";
 
 import WrapperComponent from "../../../Common/components/WrapperComponent";
 
 import { useRestaurantsListHook } from "../../hooks/useRestaurantsListHooks";
-import { restaurantsListEachObjTypes } from "../../stores/types";
+import { RestaurantsListEachObjTypes } from "../../stores/types";
 
-import Pagination from '../Pagination'
+import Pagination from "../Pagination";
 
 import EachRestaurant from "../EachRestaurant";
 
@@ -30,22 +29,9 @@ import {
     DropDownIcon,
     RestaurantsLists,
     RestaurantListUlElement,
-    HorizontalLine
+    HorizontalLine,
 } from "./styledComponents";
 import "./index.css";
-
-const sortByOptions = [
-    {
-        id: 0,
-        displayText: "Highest",
-        value: "Highest",
-    },
-    {
-        id: 1,
-        displayText: "Lowest",
-        value: "Lowest",
-    },
-];
 
 export const RestaurantsList = observer(() => {
     const { t } = useTranslation();
@@ -63,12 +49,12 @@ export const RestaurantsList = observer(() => {
     const sortingText = isSortingHighest ? "Highest" : "Lowest";
 
     const setLowestRating = () => {
-        changeRatingToLowest(false);
+        changeRatingToLowest();
         fetchRestaurantsList();
     };
 
     const setHighestRating = () => {
-        changeRatingToHighest(true);
+        changeRatingToHighest();
         fetchRestaurantsList();
     };
 
@@ -122,7 +108,7 @@ export const RestaurantsList = observer(() => {
 
     const renderRestaurantsList = () => (
         <RestaurantListUlElement>
-            {responseData.map((eachRestaurant: restaurantsListEachObjTypes) => (
+            {responseData.map((eachRestaurant: RestaurantsListEachObjTypes) => (
                 <EachRestaurant
                     key={eachRestaurant.id}
                     eachRestaurant={eachRestaurant}
@@ -149,7 +135,7 @@ export const RestaurantsList = observer(() => {
                 <HorizontalLine />
                 <RestaurantsLists>{renderRestaurantsList()}</RestaurantsLists>
             </RestaurantListContainer>
-            <Pagination/>
+            <Pagination />
         </WrapperComponent>
     );
 });

@@ -1,17 +1,17 @@
-import { action, makeAutoObservable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
-import { foodItemsModelTypes, foodItemsTypes } from "../types";
+import { FoodItemsModelTypes, FoodItemsTypes } from "../types";
 
-export class FoodItemsModel implements foodItemsModelTypes {
+export class FoodItemsModel implements FoodItemsModelTypes {
     name: string;
     cost: number;
     foodType: string;
     imageUrl: string;
     id: string;
     rating: number;
-    quantity = 0 as number;
-    price = 0 as number
-    constructor(data: foodItemsTypes) {
+    quantity: number;
+    price: number;
+    constructor(data: FoodItemsTypes) {
         makeAutoObservable(this);
         this.name = data.name;
         this.cost = data.cost;
@@ -19,5 +19,7 @@ export class FoodItemsModel implements foodItemsModelTypes {
         this.imageUrl = data.image_url;
         this.id = data.id;
         this.rating = data.rating;
+        this.quantity = 0;
+        this.price = 0;
     }
 }

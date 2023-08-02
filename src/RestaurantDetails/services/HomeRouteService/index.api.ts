@@ -1,15 +1,15 @@
 import { HomeServiceType } from "./index";
 
 import {
-    offersListFetchedResponseTypes,
-    restaurantsListFetchedResponseTypes,
+    OffersListFetchedResponseTypes,
+    RestaurantsListFetchedResponseTypes,
 } from "../../stores/types";
 
 import { getJwtToken } from "../../../Common/utils/StorageUtils";
 
 export class HomeRouteServivceAPI implements HomeServiceType {
     offersListApiService =
-        async (): Promise<offersListFetchedResponseTypes> => {
+        async (): Promise<OffersListFetchedResponseTypes> => {
             const options = {
                 method: "GET",
                 headers: {
@@ -34,7 +34,7 @@ export class HomeRouteServivceAPI implements HomeServiceType {
         offset: number,
         limit: number,
         sortByRating: string
-    ): Promise<restaurantsListFetchedResponseTypes> => {
+    ): Promise<RestaurantsListFetchedResponseTypes> => {
         const options = {
             method: "GET",
             headers: {

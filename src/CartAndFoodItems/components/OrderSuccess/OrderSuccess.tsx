@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import Header from "../../../Common/components/Header";
-import { greenTickImage, greenTickAltText } from "../../../Common/constants";
+import { greenTickImage, greenTickAltText, homeRoute } from "../../../Common/constants";
 import WrapperComponent from "../../../Common/components/WrapperComponent";
 
 import {
@@ -33,7 +33,7 @@ export const OrderSuccess = () => {
                         <OrderSuccessDescription>
                             {t("paymentSuccess.description")}
                         </OrderSuccessDescription>
-                        <LinkComponent to="/">
+                        <LinkComponent to={homeRoute}>
                             <OrderSuccessButton>
                                 {t("paymentSuccess.buttonText")}
                             </OrderSuccessButton>

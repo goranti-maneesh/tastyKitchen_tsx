@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { ObjContext } from "../../../Common/context";
 
-import { cartItemsPropsTypes } from "../../stores/types";
+import { CartItemsPropsTypes } from "../../stores/types";
 
 import {
     CartItemLiElement,
@@ -16,7 +16,7 @@ import {
     Quantity,
 } from "./styledComponents";
 
-export const EachCartRoute = (props: cartItemsPropsTypes) => {
+export const EachCartRoute = (props: CartItemsPropsTypes) => {
     const { isDesktopView } = useContext(ObjContext);
 
     const { eachItem, incrementItemQuantity, decrementItemQuantity } = props;

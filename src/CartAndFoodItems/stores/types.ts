@@ -1,4 +1,4 @@
-export interface foodItemsTypes {
+export interface FoodItemsTypes {
     name: string;
     cost: number;
     food_type: string;
@@ -7,7 +7,7 @@ export interface foodItemsTypes {
     rating: number;
 }
 
-export interface restaurantListItemsTypes {
+export interface RestaurantListItemsTypes {
     rating: number;
     id: string;
     name: string;
@@ -18,10 +18,10 @@ export interface restaurantListItemsTypes {
     opens_at: string;
     location: string;
     items_count: number;
-    food_items: Array<foodItemsTypes>;
+    food_items: Array<FoodItemsTypes>;
 }
 
-export interface updatedFoodItemsTypes {
+export interface UpdatedFoodItemsTypes {
     name: string;
     cost: number;
     foodType: string;
@@ -29,10 +29,10 @@ export interface updatedFoodItemsTypes {
     id: string;
     rating: number;
     quantity: number;
-    price: number
+    price: number;
 }
 
-export interface updatedRestaurantListItemsType {
+export interface UpdatedRestaurantListItemsType {
     rating: number;
     id: string;
     name: string;
@@ -43,10 +43,10 @@ export interface updatedRestaurantListItemsType {
     opensAt: string;
     location: string;
     itemsCount: number;
-    foodItems: Array<updatedFoodItemsTypes>;
+    foodItems: Array<UpdatedFoodItemsTypes>;
 }
 
-export interface foodItemsModelTypes {
+export interface FoodItemsModelTypes {
     name: string;
     cost: number;
     foodType: string;
@@ -54,20 +54,15 @@ export interface foodItemsModelTypes {
     id: string;
     rating: number;
     quantity: number;
-    price: number
+    price: number;
 }
 
-export interface fetchedRestaurantListItemsTypes {
-    restaurantsList: restaurantListItemsTypes;
+export interface FetchedRestaurantListItemsTypes {
+    restaurantsList: RestaurantListItemsTypes;
     responseStatus: boolean;
 }
 
-export interface fetchUpdatedRestaurantListItemsTypes {
-    restaurantsList: updatedRestaurantListItemsType;
-    responseStatus: boolean;
-}
-
-export interface restaurantPosterTypes {
+export interface RestaurantPosterTypes {
     rating: number;
     id: string;
     name: string;
@@ -80,21 +75,21 @@ export interface restaurantPosterTypes {
     itemsCount: number;
 }
 
-export interface matchParamsTypes {
+export interface MatchParamsTypes {
     id: string;
 }
 
 export interface FoodItemProps {
-    restaurantPoster: restaurantPosterTypes;
-    foodItemDetails: Array<foodItemsModelTypes>;
+    restaurantPoster: RestaurantPosterTypes;
+    foodItemDetails: Array<FoodItemsModelTypes>;
 }
 
-export interface eachItemPropsTypes {
-    eachItem: foodItemsModelTypes;
+export interface EachItemPropsTypes {
+    eachItem: FoodItemsModelTypes;
 }
 
-export interface cartItemsPropsTypes {
-    eachItem: foodItemsModelTypes, 
-    incrementItemQuantity: (id: string) => void
-    decrementItemQuantity: (id: string) => void
+export interface CartItemsPropsTypes {
+    eachItem: FoodItemsModelTypes;
+    incrementItemQuantity: (id: string) => void;
+    decrementItemQuantity: (id: string) => void;
 }
