@@ -7,7 +7,7 @@ import { MdCancel } from "react-icons/md";
 import { HeaderLinkComponentProps } from "../../stores/types";
 
 export const HeaderMainContainer = styled.div`
-    ${tw`bg-Catskill_White relative`}
+    ${tw`bg-catskill_white relative`}
 
     @media(max-width: 768px) {
         ${tw`bg-white`}
@@ -31,7 +31,7 @@ export const TastyKitchensLogo = styled.img`
 `;
 
 export const TastyKitchensTitle = styled.h1`
-    ${tw`text-fs24_lh32 m-0 text-Tree_Poppy font-bold italic ml-18px`}
+    ${tw`text-fs24_lh32 m-0 text-tree_poppy font-bold italic ml-18px`}
 
     @media(max-width: 768px) {
         ${tw`text-fs16_lh24 ml-2    `}
@@ -51,9 +51,9 @@ export const LiElement = styled.li`
 `;
 
 export const LinkComponent = styled(Link)<HeaderLinkComponentProps>`
-    ${tw`text-Pickled_Bluewood text-fs16_lh26 font-bold mr-8`}
+    ${tw`text-pickled_bluewood text-fs16_lh26 font-bold mr-8`}
 
-    ${(props) => props.$isSelected && tw`text-Tree_Poppy`}
+    ${(props) => props.$isSelected && tw`text-tree_poppy`}
 
     @media(max-width: 768px) {
         ${tw`mr-6 font-medium`}
@@ -61,7 +61,7 @@ export const LinkComponent = styled(Link)<HeaderLinkComponentProps>`
 `;
 
 export const LogoutButton = styled.button`
-    ${tw`pl-4 pr-4 pt-2 pb-2 flex justify-center items-center rounded-lg text-white bg-Tree_Poppy text-fs12_lh16 cursor-pointer outline-none font-bold w-73px h-8`}
+    ${tw`pl-4 pr-4 pt-2 pb-2 flex justify-center items-center rounded-lg text-white bg-tree_poppy text-fs12_lh16 cursor-pointer outline-none font-bold w-73px h-8`}
 `;
 
 export const OptionsAndCrossIconContainer = styled.div`
@@ -75,7 +75,7 @@ export const CrossIcon = styled(MdCancel)``;
 export const MobileViewContainer = styled.div``;
 
 export const LogoAndMenuMainContainer = styled.div`
-    ${tw`bg-Catskill_White`}
+    ${tw`bg-catskill_white`}
 `;
 
 export const LogoAndMenuContainer = styled.div`

@@ -50,8 +50,6 @@ export const CartRoute = observer(() => {
         removeItemsFromCart,
     } = foodItems;
 
-    console.log(cartList, "totalPrice");
-
     useEffect(() => {
         getCartListFromLS();
     }, []);

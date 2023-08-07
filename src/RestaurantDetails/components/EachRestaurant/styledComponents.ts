@@ -17,11 +17,11 @@ export const RestaurantDetailsContainer = styled.div`
 `;
 
 export const RestaurantName = styled.h1`
-    ${tw`text-Pickled_Bluewood text-fs18_lh24 m-0 mb-1 font-bold `}
+    ${tw`text-pickled_bluewood text-fs18_lh24 m-0 mb-1 font-bold `}
 `;
 
 export const RestaurantMenuType = styled.p`
-    ${tw`text-Slate_Gray text-fs14_lh24 font-normal m-0 mb-2`}
+    ${tw`text-slate_gray text-fs14_lh24 font-normal m-0 mb-2`}
 `;
 
 export const RestaurantRatingContainer = styled.div`
@@ -33,9 +33,9 @@ export const RatingImage = styled.img`
 `;
 
 export const RestaurantRating = styled.p`
-    ${tw`text-Mirage text-fs14_lh18 font-bold m-0 ml-1 mr-1`}
+    ${tw`text-mirage text-fs14_lh18 font-bold m-0 ml-1 mr-1`}
 `;
 
 export const TotalReviews = styled.p`
-    ${tw`text-Slate_Gray text-fs12_lh16 font-normal m-0`}
+    ${tw`text-slate_gray text-fs12_lh16 font-normal m-0`}
 `;

@@ -15,7 +15,7 @@ export interface AuthReqObjectTypes {
 }
 
 export interface InputLabelProps {
-    regex: RegExp;
+    regex: string;
     labelText: string;
     id: string;
     placeholder: string;

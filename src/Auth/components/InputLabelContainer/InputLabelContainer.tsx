@@ -28,7 +28,7 @@ export const InputLabelContainer = (
     const [isErrorMsgDisplayed, setLoginErrorMsgStatus] = useState(false);
 
     const onBlurInputEle = (event: React.FormEvent<HTMLInputElement>): void => {
-        if (regex.test(event.currentTarget.value)) {
+        if (event.currentTarget.value.match(regex)) {
             setLoginErrorMsgStatus(false);
         } else {
             setLoginErrorMsgStatus(true);

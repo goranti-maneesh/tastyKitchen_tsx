@@ -1,15 +1,14 @@
 import { createContext, useContext } from "react";
 
 import { ChildProps } from "../../Common/stores/types";
-
 import { HomeRouteServivceAPI } from "../../Common/stores/index.api";
 
 import { RestaurantsListStore } from "../stores/HomeRouteStore/RestaurantsListStore";
 
-const HomeRouteServiceInstance = new HomeRouteServivceAPI();
+const homeRouteServiceInstance = new HomeRouteServivceAPI();
 
 const restaurantsListStoreInstance = new RestaurantsListStore(
-    HomeRouteServiceInstance
+    homeRouteServiceInstance
 );
 
 const RestaurantsListContext = createContext(restaurantsListStoreInstance);

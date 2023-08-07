@@ -5,10 +5,12 @@ import { RouterProps } from "react-router-dom";
 
 import WrapperComponent from "../../Common/components/WrapperComponent";
 import { getJwtToken } from "../../Common/utils/StorageUtils";
+import { replacePageWith } from "../../Common/utils/HisyoryUtils";
 import {
     usernameRegex,
     passwordRegex,
-} from "../../Common/utils/RegularExpressions/LoginCredsRegex";
+    homeRoute,
+} from "../../Common/constants";
 
 import { useAuthStore } from "../hooks/useAuthStore";
 import { InputLabelProps } from "../stores/types";
@@ -38,8 +40,9 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
         } else {
             await fetchLoginApi();
             const { responseStatus } = authStore;
+            console.log(responseStatus, "responseStatus");
             if (responseStatus) {
-                history.replace("/");
+                replacePageWith(history, homeRoute);
             }
         }
     };
@@ -82,22 +85,20 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
 
     useEffect((): void => {
         if (getJwtToken()) {
-            history.replace("/");
+            replacePageWith(history, homeRoute);
         }
     }, []);
 
     return (
         <LoginRouteContainer>
-            <WrapperComponent>
-                <LoginPage
-                    userNameProps={userNameProps}
-                    passwordProps={passwordProps}
-                    submitMethod={onSubmitLoginForm}
-                    authErrorMessage={authErrorMessage}
-                    responseStatus={responseStatus}
-                    constraint={constraint}
-                />
-            </WrapperComponent>
+            <LoginPage
+                userNameProps={userNameProps}
+                passwordProps={passwordProps}
+                submitMethod={onSubmitLoginForm}
+                authErrorMessage={authErrorMessage}
+                responseStatus={responseStatus}
+                constraint={constraint}
+            />
         </LoginRouteContainer>
     );
 });

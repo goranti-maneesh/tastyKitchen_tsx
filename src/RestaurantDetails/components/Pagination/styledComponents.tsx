@@ -7,7 +7,7 @@ export const PaginationContainer = styled.div`
 `;
 
 export const PaginationButton = styled.button`
-    ${tw`w-8 h-8 p-2 border border-solid border-Pickled_Bluewood`}
+    ${tw`w-8 h-8 p-2 border border-solid border-pickled_bluewood`}
 `;
 
 export const LeftArrowIcon = styled(FiChevronLeft)`
@@ -19,5 +19,5 @@ export const RightArrowIcon = styled(FiChevronRight)`
 `;
 
 export const PageNumbers = styled.p`
-    ${tw`text-Pickled_Bluewood font-serif ml-3 mr-3 font-bold`}
+    ${tw`text-pickled_bluewood font-serif ml-3 mr-3 font-bold`}
 `;

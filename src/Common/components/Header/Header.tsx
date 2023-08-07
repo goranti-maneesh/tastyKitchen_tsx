@@ -6,10 +6,12 @@ import { ObjContext } from "../../context";
 import {
     cartRoute,
     homeRoute,
+    loginRoute,
     tastyKitchensLogo,
     tastyKitchensLogoAltText,
 } from "../../constants/index";
 import { removeJwtToken } from "../../utils/StorageUtils";
+import {replacePageWith} from "../../utils/HisyoryUtils"
 
 import WrapperComponent from "../WrapperComponent";
 
@@ -53,7 +55,7 @@ const Header = (props: RouterProps) => {
     const onClickLogout = () => {
         const { history } = props;
         removeJwtToken();
-        history.replace("/login");
+        replacePageWith(history, loginRoute)
     };
 
     const renderLogoAndTitle = () => (

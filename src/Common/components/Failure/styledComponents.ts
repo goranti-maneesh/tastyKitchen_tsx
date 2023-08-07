@@ -10,5 +10,5 @@ export const FailureText = styled.h1`
 `;
 
 export const RetryButton = styled.button`
-    ${tw`pl-4 pr-4 pt-2 pb-2 flex justify-center items-center rounded-lg text-white bg-Tree_Poppy text-fs12_lh16 cursor-pointer outline-none font-bold w-73px h-8`}
+    ${tw`pl-4 pr-4 pt-2 pb-2 flex justify-center items-center rounded-lg text-white bg-tree_poppy text-fs12_lh16 cursor-pointer outline-none font-bold w-73px h-8`}
 `;

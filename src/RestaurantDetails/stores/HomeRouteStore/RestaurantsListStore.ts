@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { constraints } from "../../../Common/constraints";
+import { constraints } from "../../../Common/constants";
 
 import { HomeServiceType } from "../../services/HomeRouteService/index";
 
@@ -42,7 +42,7 @@ export class RestaurantsListStore {
             this.pageNumber -= 1;
             this.fetchRestaurantsList();
         }
-    }
+    };
 
     increaseOffsetValue = (): void => {
         if (this.pageNumber < this.numberOfPages) {
@@ -50,11 +50,11 @@ export class RestaurantsListStore {
             this.pageNumber += 1;
             this.fetchRestaurantsList();
         }
-    }
+    };
 
     changeRating = (rating: string): void => {
         this.sortByRating = rating;
-    }
+    };
 
     changeRatingToHighest = (): void => {
         this.isSortingHighest = true;
@@ -66,7 +66,9 @@ export class RestaurantsListStore {
         this.sortByRating = "Lowest";
     };
 
-    updateResponseData = (response: RestaurantsListFetchedResponseTypes): void => {
+    updateResponseData = (
+        response: RestaurantsListFetchedResponseTypes
+    ): void => {
         if (response.responseStatus) {
             this.numberOfPages = Math.ceil(response.total / this.limit);
             this.responseStatus = response.responseStatus;
@@ -78,7 +80,7 @@ export class RestaurantsListStore {
         } else {
             this.constraint = constraints.failure;
         }
-    }
+    };
 
     fetchRestaurantsList = async (): Promise<void> => {
         this.constraint = constraints.loading;

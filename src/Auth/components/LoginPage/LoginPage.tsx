@@ -39,7 +39,7 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
 
     const { t } = useTranslation();
 
-    const isDesktopView = useContext(ObjContext);
+    const {isDesktopView} = useContext(ObjContext);
 
     const submitForm = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
@@ -48,6 +48,7 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
 
     const renderDesktopViewLoginPage = (): JSX.Element => (
         <LoginPageContainer>
+            {console.log("desktop")}
             <FormSection>
                 <FormCard>
                     <LogoImg
@@ -65,6 +66,7 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
 
     const renderMobileViewLoginpage = (): JSX.Element => (
         <LoginPageContainer>
+            {console.log("mobile")}
             <LoginPageTopSection>
                 <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
                 <BgImgContainer></BgImgContainer>
@@ -90,11 +92,13 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
         </FormEle>
     );
 
+    console.log(isDesktopView, "isDesktopView");
+
     return (
-        <WrapperComponent>
+        <>
             {isDesktopView
                 ? renderDesktopViewLoginPage()
                 : renderMobileViewLoginpage()}
-        </WrapperComponent>
+        </>
     );
 };

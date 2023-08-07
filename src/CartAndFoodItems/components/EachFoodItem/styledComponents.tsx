@@ -12,11 +12,11 @@ export const FoodItemImage = styled.img`
 export const FoodItemDetails = styled.div``;
 
 export const FoodItemName = styled.p`
-    ${tw`text-fs18_lh24 font-bold text-Pickled_Bluewood tracking-0.013 mb-2`}
+    ${tw`text-fs18_lh24 font-bold text-pickled_bluewood tracking-0.013 mb-2`}
 `;
 
 export const FoodItemCost = styled.p`
-    ${tw`text-Pickled_Bluewood text-fs16_lh24 font-medium mb-2`}
+    ${tw`text-pickled_bluewood text-fs16_lh24 font-medium mb-2`}
 `;
 
 export const FoodItemRating = styled.p`
@@ -24,11 +24,11 @@ export const FoodItemRating = styled.p`
 `;
 
 export const FoodRating = styled.span`
-    ${tw`text-fs14_lh16 font-bold text-Downriver`}
+    ${tw`text-fs14_lh16 font-bold text-downriver`}
 `;
 
 export const AddButton = styled.button`
-    ${tw`text-Tree_Poppy text-fs12_lh16 font-medium w-58px h-8 rounded-lg border-2 border-solid border-Tree_Poppy outline-none`}
+    ${tw`text-tree_poppy text-fs12_lh16 font-medium w-58px h-8 rounded-lg border-2 border-solid border-tree_poppy outline-none`}
 `;
 
 export const QuantityContainer = styled.div`
@@ -36,9 +36,9 @@ export const QuantityContainer = styled.div`
 `;
 
 export const PlusMinusButton = styled.button`
-    ${tw`rounded-sm p-1 pb-7px pl-5px outline-none w-18px h-18px rounded-sm text-Limed_Spruce border border-solid border-Fiord flex items-center justify-center`}
+    ${tw`rounded-sm p-1 pb-7px pl-5px outline-none w-18px h-18px rounded-sm text-limed_spruce border border-solid border-fiord flex items-center justify-center`}
 `;
 
 export const Quantity = styled.p`
-    ${tw`text-Fiord text-fs16_lh24 mr-10px ml-10px`}
+    ${tw`text-fiord text-fs16_lh24 mr-10px ml-10px`}
 `;

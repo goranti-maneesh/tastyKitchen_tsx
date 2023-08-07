@@ -4,7 +4,7 @@ import { FaPinterestP, FaTwitter, FaFacebookSquare } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 
 export const FooterContainer = styled.div`
-    ${tw`bg-Ebony text-center h-424px flex flex-col justify-center`}
+    ${tw`bg-ebony text-center h-424px flex flex-col justify-center`}
 
     @media(max-width: 768px) {
         ${tw`h-256px`}

@@ -5,7 +5,7 @@ import { BsStarFill } from "react-icons/bs";
 export const FoodItemsMainContainer = styled.div``;
 
 export const PosterMainContainer = styled.div`
-    ${tw`bg-restaurantPosterBGImage bg-cover w-full bg-Mine_Shaft h-344px pt-1px`}
+    ${tw`bg-restaurantPosterBGImage bg-cover w-full bg-mine_shaft h-344px pt-1px`}
 
     @media(max-width: 768px) {
         ${tw`h-188px`}
@@ -77,11 +77,11 @@ export const RestaurantRating = styled.p`
 `;
 
 export const RatingsCount = styled.p`
-    ${tw`text-Catskill_White font-normal text-fs12_lh16 `}
+    ${tw`text-catskill_white font-normal text-fs12_lh16 `}
 `;
 
 export const HorizontalLine = styled.hr`
-    ${tw`ml-8 mr-8 w-1px h-33px bg-Catskill_White`}
+    ${tw`ml-8 mr-8 w-1px h-33px bg-catskill_white`}
 
     @media(max-width: 768px) {
         ${tw`ml-4 mr-4`}
@@ -99,9 +99,9 @@ export const Cost = styled.p`
 `;
 
 export const CostForTwoText = styled.p`
-    ${tw`text-Catskill_White text-fs12_lh16`}
+    ${tw`text-catskill_white text-fs12_lh16`}
 `;
 
 export const FoodItemsUlElement = styled.div`
     ${tw`flex mt-16 flex-wrap mb-16 justify-between`}
-`
+`;

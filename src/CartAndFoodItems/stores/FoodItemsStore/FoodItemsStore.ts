@@ -10,7 +10,7 @@ import { FoodItemsModel } from "../FoodItemsModels/FoodItemModel";
 
 import { FoodItemsServiceTypes } from "../../services/FoodItemsService";
 
-import { constraints } from "../../../Common/constraints";
+import { constraints } from "../../../Common/constants";
 
 export class FoodItemStore {
     constraint: string;
@@ -48,19 +48,18 @@ export class FoodItemStore {
             (total, item) => total + item.price,
             0
         );
-    }
+    };
 
     updateLocalStorage = (): void => {
         localStorage.setItem("cartList", JSON.stringify(this.cartList));
-    }
+    };
 
     getCartItemIndex = (id: string): number => {
         return this.cartList.findIndex((item) => item.id === id);
-    }
+    };
 
     updateCartItemQuantity = (id: string, increment: boolean): void => {
         const index = this.getCartItemIndex(id);
-        console.log(index, "index");
         if (index !== -1) {
             const item = this.cartList[index];
             item.quantity += increment ? 1 : -1;
@@ -71,7 +70,7 @@ export class FoodItemStore {
             this.calculateTotalPrice();
             this.updateLocalStorage();
         }
-    }
+    };
 
     getUpdatedResponseData = (
         cartList: FoodItemsModelTypes[]
@@ -80,7 +79,7 @@ export class FoodItemStore {
             const cartItem = cartList.find((item) => item.id === eachItem.id);
             return cartItem || eachItem;
         });
-    }
+    };
 
     addItemToCart = (item: FoodItemsModelTypes): void => {
         const newItem = { ...item, quantity: 1, price: item.cost };
@@ -88,18 +87,17 @@ export class FoodItemStore {
         this.calculateTotalPrice();
         this.updateLocalStorage();
         this.response = this.getUpdatedResponseData(this.cartList);
-    }
+    };
 
     incrementItemQuantity = (id: string): void => {
-        console.log(id);
         this.updateCartItemQuantity(id, true);
         this.response = this.getUpdatedResponseData(this.cartList);
-    }
+    };
 
     decrementItemQuantity = (id: string): void => {
         this.updateCartItemQuantity(id, false);
         this.response = this.getUpdatedResponseData(this.cartList);
-    }
+    };
 
     @action.bound
     restaurantPosterDetails = (
@@ -117,7 +115,7 @@ export class FoodItemStore {
             location: restaurantList.location,
             itemsCount: restaurantList.items_count,
         };
-    }
+    };
 
     getCartListFromLS = (): Array<FoodItemsModelTypes> => {
         const cartListFromLS: string | null = localStorage.getItem("cartList");

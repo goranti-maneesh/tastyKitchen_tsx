@@ -28,7 +28,7 @@ export const CartItemContainer = styled.div`
 export const ImageTitleContainer = styled.div`
     ${tw`flex items-center`}
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         ${tw`w-40`}
     }
 `;
@@ -42,7 +42,7 @@ export const CartItemImage = styled.img`
 `;
 
 export const CartItemName = styled.p`
-    ${tw`text-Nile_Blue text-fs20_lh24 font-medium`}
+    ${tw`text-nile_blue text-fs20_lh24 font-medium`}
 
     @media(max-width: 768px) {
         ${tw`text-fs14_lh24`}
@@ -52,13 +52,13 @@ export const CartItemName = styled.p`
 export const QuantityContainer = styled.div`
     ${tw`flex items-center`}
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         ${tw`w-30`}
     }
 `;
 
 export const CartItemPrice = styled.p`
-    ${tw`w-150px text-Sun text-fs16_lh24 font-bold`}
+    ${tw`w-150px text-sun text-fs16_lh24 font-bold`}
 
     @media(max-width: 768px) {
         ${tw`text-center`}
@@ -70,9 +70,9 @@ export const CartItemPrice = styled.p`
 `;
 
 export const PlusMinusButton = styled.button`
-    ${tw`rounded-sm p-1 pb-7px pl-5px outline-none w-18px h-18px rounded-sm text-Limed_Spruce border border-solid border-Fiord flex items-center justify-center`}
+    ${tw`rounded-sm p-1 pb-7px pl-5px outline-none w-18px h-18px rounded-sm text-limed_spruce border border-solid border-fiord flex items-center justify-center`}
 `;
 
 export const Quantity = styled.p`
-    ${tw`text-Fiord text-fs16_lh24 mr-10px ml-10px`}
+    ${tw`text-fiord text-fs16_lh24 mr-10px ml-10px`}
 `;

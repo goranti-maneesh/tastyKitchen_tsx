@@ -46,8 +46,6 @@ export const FoodItems = observer((props: FoodItemProps) => {
         itemsCount,
     } = restaurantPoster;
 
-    // console.log(foodItemDetails, "foodItemDetails");
-
     const renderPoster = () => (
         <PosterMainContainer>
             <PosterContainer>

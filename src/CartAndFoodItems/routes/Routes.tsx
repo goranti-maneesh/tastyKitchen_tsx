@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { RouteComponentProps } from "react-router-dom";
 
-import { constraints } from "../../Common/constraints";
+import { constraints } from "../../Common/constants";
 import Loading from "../../Common/components/Loader";
 import Failure from "../../Common/components/Failure";
 import Header from "../../Common/components/Header";
@@ -55,7 +55,6 @@ export const RestaurantItemsRoute = observer(
         );
 
         const renderOverAllViews = () => {
-            console.log(constraint, "constraint");
             switch (constraint) {
                 case constraints.loading:
                     return renderLoader();

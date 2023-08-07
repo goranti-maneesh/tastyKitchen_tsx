@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 import { setJwtToken } from "../../../Common/utils/StorageUtils";
-import { constraints } from "../../../Common/constraints";
+import { constraints } from "../../../Common/constants";
 
 import { AuthServiceType } from "../../services/AuthService";
 
@@ -36,12 +36,15 @@ export class AuthStore {
     setLoginApiSuccessResponse = (
         response: AuthSuccessResObjectTypes
     ): void => {
-        setJwtToken(response.jwt_token!);
+        console.log(response, "response success");
+        setJwtToken(response.jwt_token);
+        this.responseStatus = true;
         this.authErrorMessage = "";
     };
 
     setLoginApiFailure = (response: AuthFailureResObjectTypes): void => {
-        this.authErrorMessage = response.error_msg!;
+        console.log(response.responseStatus, "response failure");
+        this.authErrorMessage = response.error_msg;
         this.responseStatus = response.responseStatus;
     };
 
@@ -55,6 +58,7 @@ export class AuthStore {
             username: this.username,
             password: this.password,
         });
+        console.log(response, "response");
         if ("jwt_token" in response) {
             this.setLoginApiSuccessResponse(response);
         } else {

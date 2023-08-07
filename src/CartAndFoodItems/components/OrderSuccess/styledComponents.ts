@@ -19,7 +19,7 @@ export const OrderSuccessTickImage = styled.img`
 `;
 
 export const OrderSuccessHeading = styled.h1`
-    ${tw`text-Mirage text-fs24_lh32 font-medium mt-8 text-center`}
+    ${tw`text-mirage text-fs24_lh32 font-medium mt-8 text-center`}
 
     @media(max-width: 768px) {
         ${tw`text-fs20_lh24 mt-6`}
@@ -27,7 +27,7 @@ export const OrderSuccessHeading = styled.h1`
 `;
 
 export const OrderSuccessDescription = styled.p`
-    ${tw`text-Slate_Gray text-fs16_lh24 font-medium mt-6 mb-8 text-center`}
+    ${tw`text-slate_gray text-fs16_lh24 font-medium mt-6 mb-8 text-center`}
 
     @media(max-width: 768px) {
         ${tw`text-fs14_lh24 mt-4`}
@@ -35,7 +35,7 @@ export const OrderSuccessDescription = styled.p`
 `;
 
 export const OrderSuccessButton = styled.button`
-    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-lg cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4`}
+    ${tw`text-white text-fs12_lh16 bg-tree_poppy rounded-lg cursor-pointer outline-none pt-2 pr-4 pb-2 pl-4`}
 `;
 
 export const LinkComponent = styled(Link)``;

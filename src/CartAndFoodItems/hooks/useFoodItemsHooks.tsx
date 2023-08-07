@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
-import { FoodItemStore } from "../stores/FoodItemsStore/FoodItemsStore";
-
 import { FoodItemsService } from "../../Common/stores";
 import { ChildProps } from "../../Common/stores/types";
+
+import { FoodItemStore } from "../stores/FoodItemsStore/FoodItemsStore";
 
 const foodItemServiceInstance = new FoodItemsService();
 

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 import Header from "../../Common/components/Header";
-import { constraints } from "../../Common/constraints";
+import { constraints } from "../../Common/constants";
 import Loading from "../../Common/components/Loader";
 import Failure from "../../Common/components/Failure";
 import Footer from "../../Common/components/Footer";
@@ -90,7 +90,7 @@ export const HomeRoute = observer((): JSX.Element => {
             <Header />
             {offersListOverAllViews()}
             {restaurantsListOverAllViews()}
-            <Footer/>
+            <Footer />
         </HomeRouteMainContainer>
     );
 });

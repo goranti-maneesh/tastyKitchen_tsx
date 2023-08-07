@@ -19,7 +19,7 @@ export const NotFoundImage = styled.img`
 `;
 
 export const NotFoundHeading = styled.h1`
-    ${tw`text-Mirage text-fs32_lh48 font-medium mt-12 text-center`}
+    ${tw`text-mirage text-fs32_lh48 font-medium mt-12 text-center`}
 
     @media(max-width: 768px) {
         ${tw`text-fs20_lh32 mt-6`}
@@ -27,7 +27,7 @@ export const NotFoundHeading = styled.h1`
 `;
 
 export const NotFoundDescription = styled.p`
-    ${tw`text-Slate_Gray text-fs20_lh32 font-medium mt-4 mb-8 text-center`}
+    ${tw`text-slate_gray text-fs20_lh32 font-medium mt-4 mb-8 text-center`}
 
     @media(max-width: 768px) {
         ${tw`text-fs16_lh24 mt-3`}
@@ -35,7 +35,7 @@ export const NotFoundDescription = styled.p`
 `;
 
 export const HomePageButton = styled.button`
-    ${tw`text-white text-fs12_lh16 bg-Tree_Poppy rounded-lg cursor-pointer outline-none pt-3 pr-6 pb-3 pl-6`}
+    ${tw`text-white text-fs12_lh16 bg-tree_poppy rounded-lg cursor-pointer outline-none pt-3 pr-6 pb-3 pl-6`}
 
     @media(max-width: 768px) {
         ${tw`pt-2 pr-4 pb-2 pl-4`}

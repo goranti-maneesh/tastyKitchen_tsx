@@ -1,18 +1,18 @@
 import { createContext, useContext } from "react";
-import { AuthServiceAPI } from "../../Common/stores/index";
 
 import { AuthStore } from "../stores/AuthStore/AuthStore";
 
+import { AuthServiceAPI } from "../../Common/stores/index";
 import { ChildProps } from "../../Common/stores/types";
 
-const AuthServiceApiInstance = new AuthServiceAPI();
+const authServiceApiInstance = new AuthServiceAPI();
 
-const AuthStoreInstance = new AuthStore(AuthServiceApiInstance);
+const authStoreInstance = new AuthStore(authServiceApiInstance);
 
-const AuthContext = createContext(AuthStoreInstance);
+const AuthContext = createContext(authStoreInstance);
 
 export const AuthHooks = ({ children }: ChildProps) => (
-    <AuthContext.Provider value={AuthStoreInstance}>
+    <AuthContext.Provider value={authStoreInstance}>
         {children}
     </AuthContext.Provider>
 );

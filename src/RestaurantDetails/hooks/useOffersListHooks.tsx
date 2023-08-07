@@ -5,9 +5,9 @@ import { HomeRouteServivceAPI } from "../../Common/stores/index.api";
 
 import { OffersListStore } from "../stores/HomeRouteStore/OffersListStore";
 
-const HomeRouteServiceInstance = new HomeRouteServivceAPI();
+const homeRouteServiceInstance = new HomeRouteServivceAPI();
 
-const offersListStoreInstance = new OffersListStore(HomeRouteServiceInstance);
+const offersListStoreInstance = new OffersListStore(homeRouteServiceInstance);
 
 const OffersListContext = createContext(offersListStoreInstance);
 

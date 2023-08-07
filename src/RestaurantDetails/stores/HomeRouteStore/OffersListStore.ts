@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { constraints } from "../../../Common/constraints";
+import { constraints } from "../../../Common/constants";
 
 import { HomeServiceType } from "../../services/HomeRouteService/index";
 
@@ -36,10 +36,9 @@ export class OffersListStore {
         } else {
             this.constraint = constraints.failure;
         }
-    }
+    };
 
     fetchOffersList = async (): Promise<void> => {
-        console.log(this.serviceApi);
         const response = await this.serviceApi.offersListApiService();
         this.constraint = constraints.loading;
         this.updateResponseData(response);
