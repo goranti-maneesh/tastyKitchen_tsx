@@ -8,9 +8,12 @@ export class AuthServiceAPI implements AuthServiceType{
 
         const options = {
             method: 'POST',
+			headers: {
+				"Content-Type": "application/json",
+			},
             body: JSON.stringify(requestObj)
         }
-        const response = await fetch('https://apis.ccbp.in/login', options)
+        const response = await fetch('https://user-access.onrender.com/login', options)
         const data = await response.json()
 
         return{

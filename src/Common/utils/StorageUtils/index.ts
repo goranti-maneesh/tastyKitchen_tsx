@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-import { token } from "../../constants";
+import { token, jwtTokenValue } from "../../constants";
 
 export const setToken = (jwtToken: string): void => {
     Cookies.set(token, jwtToken, { expires: 24 });
@@ -9,7 +9,7 @@ export const setToken = (jwtToken: string): void => {
 export const getToken = (): string | null => {
     const JwtToken = Cookies.get(token);
     if (JwtToken !== undefined) {
-        return JwtToken;
+        return jwtTokenValue;
     }
     return null;
 };

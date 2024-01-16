@@ -36,14 +36,12 @@ export class AuthStore {
     setLoginApiSuccessResponse = (
         response: AuthSuccessResObjectTypes
     ): void => {
-        console.log(response, "response success");
         setJwtToken(response.jwt_token);
         this.responseStatus = true;
         this.authErrorMessage = "";
     };
 
     setLoginApiFailure = (response: AuthFailureResObjectTypes): void => {
-        console.log(response.responseStatus, "response failure");
         this.authErrorMessage = response.error_msg;
         this.responseStatus = response.responseStatus;
     };
@@ -58,7 +56,6 @@ export class AuthStore {
             username: this.username,
             password: this.password,
         });
-        console.log(response, "response");
         if ("jwt_token" in response) {
             this.setLoginApiSuccessResponse(response);
         } else {

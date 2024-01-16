@@ -40,7 +40,6 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
         } else {
             await fetchLoginApi();
             const { responseStatus } = authStore;
-            console.log(responseStatus, "responseStatus");
             if (responseStatus) {
                 replacePageWith(history, homeRoute);
             }
