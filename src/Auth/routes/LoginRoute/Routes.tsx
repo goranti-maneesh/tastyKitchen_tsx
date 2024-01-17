@@ -3,19 +3,17 @@ import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
 import { RouterProps } from "react-router-dom";
 
-import WrapperComponent from "../../Common/components/WrapperComponent";
-import { getJwtToken } from "../../Common/utils/StorageUtils";
-import { replacePageWith } from "../../Common/utils/HisyoryUtils";
+import WrapperComponent from "../../../Common/components/WrapperComponent";
+import { getJwtToken } from "../../../Common/utils/StorageUtils";
+import { replacePageWith } from "../../../Common/utils/HisyoryUtils";
 import {
-    usernameRegex,
-    passwordRegex,
     homeRoute,
-} from "../../Common/constants";
+} from "../../../Common/constants";
 
-import { useAuthStore } from "../hooks/useAuthStore";
-import { InputLabelProps } from "../stores/types";
+import { useAuthStore } from "../../hooks/useAuthStore";
+import { InputLabelProps } from "../../stores/Types/loginTypes";
 
-import LoginPage from "../components/LoginPage";
+import LoginPage from "../../components/LoginPage";
 import { LoginRouteContainer } from "./styledComponents";
 
 export const LoginRoute = observer((props: RouterProps): JSX.Element => {
@@ -61,23 +59,19 @@ export const LoginRoute = observer((props: RouterProps): JSX.Element => {
     };
 
     const userNameProps: InputLabelProps = {
-        regex: usernameRegex,
         labelText: "USERNAME",
         id: "username",
         placeholder: "Username",
         onChangeMethod: onChangeUsername,
-        errorMsg: t("loginErrors.loginUsernameError"),
         value: username,
         type: "text",
     };
 
     const passwordProps: InputLabelProps = {
-        regex: passwordRegex,
         labelText: "PASSWORD",
         id: "password",
         placeholder: "Password",
         onChangeMethod: onChangePassword,
-        errorMsg: t("loginErrors.loginPasswordError"),
         value: password,
         type: "password",
     };

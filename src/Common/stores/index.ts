@@ -1,3 +1,3 @@
-import { AuthServiceAPI, HomeRouteServivceAPI, FoodItemsService } from "./index.api";
+import { AuthServiceAPI, HomeRouteServivceAPI, FoodItemsService, RegisterService } from "./index.api";
 
-export { AuthServiceAPI, HomeRouteServivceAPI, FoodItemsService };
+export { AuthServiceAPI, RegisterService, HomeRouteServivceAPI, FoodItemsService };

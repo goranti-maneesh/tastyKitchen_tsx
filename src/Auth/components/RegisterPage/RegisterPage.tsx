@@ -2,18 +2,18 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
-    newToTastyKitchenText,
-    registerRoute,
+    loginRoute,
+    alreadyHaveAccText,
     tastyKitchensLogo,
     tastyKitchensLogoAltText,
 } from "../../../Common/constants";
 
 import WrapperComponent from "../../../Common/components/WrapperComponent";
 import { ObjContext } from "../../../Common/context";
-
-import { LoginPageProps } from "../../stores/Types/loginTypes";
-
 import InputLabelContainer from "../../../Common/components/InputLabelContainer";
+
+import { RegisterPageProps } from "../../stores/Types/registerTypes";
+
 
 import {
     LoginPageContainer,
@@ -32,13 +32,15 @@ import {
     LinkComponent
 } from "./styledComponents";
 
-export const LoginPage = (props: LoginPageProps): JSX.Element => {
+export const RegisterPage = (props: RegisterPageProps): JSX.Element => {
     const {
-        userNameProps,
-        passwordProps,
-        submitMethod,
-        authErrorMessage,
-        constraint,
+        onClickSignupForm,
+		usernameProps,
+		nameProps,
+		passwordProps,
+		confirmPasswordProps,
+		errorMsg,
+		apiStatus,
     } = props;
 
     const { t } = useTranslation();
@@ -47,7 +49,7 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
 
     const submitForm = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        submitMethod();
+        onClickSignupForm();
     };
 
     const renderDesktopViewLoginPage = (): JSX.Element => (
@@ -59,7 +61,7 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
                         alt={tastyKitchensLogoAltText}
                     />
                     <Title>{t("loginPageText.title")}</Title>
-                    <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
+                    <LoginHeading>{t("loginPageText.signUpText")}</LoginHeading>
                     {renderLoginForm()}
                 </FormCard>
             </FormSection>
@@ -79,23 +81,22 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
 
     const renderLoginForm = (): JSX.Element => (
         <FormEle onSubmit={submitForm}>
-            <InputLabelContainer InputLabelPropsObj={userNameProps} />
+            <InputLabelContainer InputLabelPropsObj={usernameProps} />
+            <InputLabelContainer InputLabelPropsObj={nameProps} />
             <InputLabelContainer InputLabelPropsObj={passwordProps} />
+            <InputLabelContainer InputLabelPropsObj={confirmPasswordProps} />
             <LoginButtonContainer>
-                    {authErrorMessage && (
-                        <LoginError>{authErrorMessage}</LoginError>
+                    {errorMsg && (
+                        <LoginError>{errorMsg}</LoginError>
                     )}
                 <LoginButton type="submit">
-                    {constraint === "INITIAL"
-                        ? t("loginPageText.loginText")
+                    {apiStatus === "INITIAL"
+                        ? t("loginPageText.signUpText")
                         : t("loginPageText.loadingText")}
                 </LoginButton>
                 <AlreadyHaveAccText>
-					{newToTastyKitchenText} -
-					<LinkComponent to={registerRoute}>
-						{" "}
-						Click here
-					</LinkComponent>
+					{alreadyHaveAccText} -
+					<LinkComponent to={loginRoute}> Click here</LinkComponent>
 				</AlreadyHaveAccText>
             </LoginButtonContainer>
         </FormEle>

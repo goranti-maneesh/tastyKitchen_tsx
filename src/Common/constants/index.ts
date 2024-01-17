@@ -13,6 +13,8 @@ export const homeRoute = "/";
 
 export const loginRoute = "/login";
 
+export const registerRoute = "/register"
+
 export const restaurantsRoute = "/restaurants";
 
 export const cartRoute = "/cart";
@@ -21,9 +23,9 @@ export const orderSuccessRoute = "/order-success";
 
 export const notFoundRoute = "/not-found";
 
-export const usernameRegex = "[a-zA-Z0-9]{5,}";
+export const alreadyHaveAccText = "Already have an account?";
 
-export const passwordRegex = "^(?=.*[0-9])(?=.*[!@#$%])(?=.*[a-zA-Z]).{6,16}$";
+export const newToTastyKitchenText = "New to Tasty Kitchen?";
 
 export const tastyKitchensLogo =
     "https://res.cloudinary.com/degjdup40/image/upload/v1685290528/Frame_274_v4arhl.png";

@@ -15,12 +15,10 @@ export interface AuthReqObjectTypes {
 }
 
 export interface InputLabelProps {
-    regex: string;
     labelText: string;
     id: string;
     placeholder: string;
     onChangeMethod: (event: React.FormEvent<HTMLInputElement>) => void;
-    errorMsg: string;
     value: string;
     type: string;
 }

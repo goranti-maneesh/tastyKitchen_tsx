@@ -8,6 +8,7 @@
     "loginPageText": {
         "title": "Tasty Kitchens",
         "loginText": "Login",
+        "signUpText": "Sign Up",
         "usernameLabelText": "USERNAME",
         "usernamePhaceholderText": "Username",
         "passwordLabelText": "PASSWORD",

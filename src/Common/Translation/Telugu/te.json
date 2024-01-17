@@ -8,6 +8,7 @@
     "loginPageText": {
         "title": "Tasty Kitchens",
         "loginText": "లాగిన్",
+        "signUpText": "సైన్ అప్",
         "usernameLabelText": "వినియోగదారు పేరు",
         "usernamePhaceholderText": "వినియోగదారు పేరు",
         "passwordLabelText": "పాస్వర్డ్",

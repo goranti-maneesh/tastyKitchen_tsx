@@ -162,6 +162,7 @@ module.exports = {
                 selago: "#F9FBFE",
                 blue_ribbon: "#0B69FF",
                 sun: "#FFA412",
+                osloGray: "#7E858E",
             },
             outlineWidth: {
                 "0px": "0px",

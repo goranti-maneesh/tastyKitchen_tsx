@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthHooks } from "./Auth/hooks/useAuthStore";
+import { RegisterHook } from "./Auth/hooks/useRegisterHooks";
 import { OffersListHook } from "./RestaurantDetails/hooks/useOffersListHooks";
 import { RestaurantsListHook } from "./RestaurantDetails/hooks/useRestaurantsListHooks";
 import { FoodItemsHook } from "./CartAndFoodItems/hooks/useFoodItemsHooks";
@@ -10,11 +11,13 @@ import {
     cartRoute,
     homeRoute,
     loginRoute,
+    registerRoute,
     notFoundRoute,
     orderSuccessRoute,
     restaurantsRoute,
 } from "./Common/constants";
-import LoginRoute from "./Auth/routes";
+import LoginRoute from "./Auth/routes/LoginRoute";
+import RegisterRoute from "./Auth/routes/RegisterRoute";
 import HomeRoute from "./RestaurantDetails/routes";
 import RestaurantItemsRoute from "./CartAndFoodItems/routes";
 import CartRoute from "./CartAndFoodItems/components/Cart";
@@ -45,6 +48,7 @@ const App = (): JSX.Element => {
         >
             <BrowserRouter>
                 <AuthHooks>
+                    <RegisterHook>
                     <OffersListHook>
                         <RestaurantsListHook>
                             <FoodItemsHook>
@@ -53,6 +57,11 @@ const App = (): JSX.Element => {
                                         exact
                                         path={loginRoute}
                                         component={LoginRoute}
+                                    />
+                                    <Route
+                                        exact
+                                        path={registerRoute}
+                                        component={RegisterRoute}
                                     />
                                     <ProtectedRoute
                                         exact
@@ -84,6 +93,7 @@ const App = (): JSX.Element => {
                             </FoodItemsHook>
                         </RestaurantsListHook>
                     </OffersListHook>
+                    </RegisterHook>
                 </AuthHooks>
             </BrowserRouter>
         </ObjContext.Provider>

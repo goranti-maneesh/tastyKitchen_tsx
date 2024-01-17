@@ -1,4 +1,4 @@
-import { AuthReqObjectTypes, AuthSuccessResObjectTypes, AuthFailureResObjectTypes } from "../../stores/types";
+import { AuthReqObjectTypes, AuthSuccessResObjectTypes, AuthFailureResObjectTypes } from "../../stores/Types/loginTypes";
 
 import { AuthServiceType } from "./index";
 

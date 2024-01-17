@@ -5,7 +5,7 @@ import { constraints } from "../../../Common/constants";
 
 import { AuthServiceType } from "../../services/AuthService";
 
-import { AuthSuccessResObjectTypes, AuthFailureResObjectTypes } from "../types";
+import { AuthSuccessResObjectTypes, AuthFailureResObjectTypes } from "../Types/loginTypes";
 
 export class AuthStore {
     AuthApiService: AuthServiceType;
