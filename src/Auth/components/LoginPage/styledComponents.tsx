@@ -3,10 +3,10 @@ import tw from "twin.macro";
 import { Link } from "react-router-dom";
 
 export const LoginPageContainer = styled.div`
-    ${tw`flex w-full h-full justify-center`}
+    ${tw`flex w-full h-screen justify-center `}
 
     @media(max-width: 768px) {
-        ${tw`flex-col w-360px m-auto`}
+        ${tw`flex-col w-360px m-auto overflow-auto`}
     }
 `;
 
@@ -15,7 +15,7 @@ export const FormSection = styled.div`
 `;
 
 export const FormCard = styled.div`
-    ${tw`flex flex-col items-center w-456px min-h-[523px] max-h-full shadow-loginFormCard p-12`}
+    ${tw`flex flex-col items-center min-w-456px max-h-full shadow-loginFormCard p-12 overflow-y-auto`}
 
     @media(max-width:768px) {
         ${tw`shadow-none`}
@@ -34,7 +34,7 @@ export const LoginHeading = styled.h1`
     ${tw`font-medium text-fs32_lh40 mt-8 mb-16`}
 
     @media(max-width:768px) {
-        ${tw`text-fs24_lh32 m-0 ml-6 self-end`}
+        ${tw`text-fs24_lh32 mt-4 mb-4`}
     }
 `;
 
@@ -77,7 +77,7 @@ export const LoginPageImg = styled.img`
 `;
 
 export const LoginPageTopSection = styled.div`
-    ${tw`flex`}
+    ${tw`flex flex-col items-center`}
 
     @media (max-width: 768px) {
         ${tw``}

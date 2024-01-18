@@ -1,0 +1,10 @@
+{
+    "prettier.bracketSameLine": true,
+    "prettier.useTabs": true,
+    "prettier.tabWidth": 4,
+    "prettier.alignObjectProperties": true,
+    "prettier.typescriptEnable": [
+        "typescript",
+        "typescriptreact"
+    ]
+}

@@ -70,8 +70,12 @@ export const LoginPage = (props: LoginPageProps): JSX.Element => {
     const renderMobileViewLoginpage = (): JSX.Element => (
         <LoginPageContainer>
             <LoginPageTopSection>
+                <LogoImg
+                    src={tastyKitchensLogo}
+                    alt={tastyKitchensLogoAltText}
+                />
+                <Title>{t("loginPageText.title")}</Title>
                 <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
-                <BgImgContainer></BgImgContainer>
             </LoginPageTopSection>
             {renderLoginForm()}
         </LoginPageContainer>

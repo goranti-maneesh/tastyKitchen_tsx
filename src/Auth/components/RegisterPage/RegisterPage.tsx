@@ -16,18 +16,18 @@ import { RegisterPageProps } from "../../stores/Types/registerTypes";
 
 
 import {
-    LoginPageContainer,
+    RegisterPageContainer,
     FormSection,
     FormCard,
     LogoImg,
     Title,
-    LoginHeading,
+    SignupHeading,
     FormEle,
-    LoginButton,
-    LoginError,
+    SignupButton,
+    SignupError,
     BgImgContainer,
-    LoginPageTopSection,
-    LoginButtonContainer,
+    SignupPageTopSection,
+    SignupButtonContainer,
     AlreadyHaveAccText,
     LinkComponent
 } from "./styledComponents";
@@ -53,7 +53,7 @@ export const RegisterPage = (props: RegisterPageProps): JSX.Element => {
     };
 
     const renderDesktopViewLoginPage = (): JSX.Element => (
-        <LoginPageContainer>
+        <RegisterPageContainer>
             <FormSection>
                 <FormCard>
                     <LogoImg
@@ -61,22 +61,26 @@ export const RegisterPage = (props: RegisterPageProps): JSX.Element => {
                         alt={tastyKitchensLogoAltText}
                     />
                     <Title>{t("loginPageText.title")}</Title>
-                    <LoginHeading>{t("loginPageText.signUpText")}</LoginHeading>
+                    <SignupHeading>{t("loginPageText.signUpText")}</SignupHeading>
                     {renderLoginForm()}
                 </FormCard>
             </FormSection>
             <BgImgContainer></BgImgContainer>
-        </LoginPageContainer>
+        </RegisterPageContainer>
     );
 
     const renderMobileViewLoginpage = (): JSX.Element => (
-        <LoginPageContainer>
-            <LoginPageTopSection>
-                <LoginHeading>{t("loginPageText.loginText")}</LoginHeading>
-                <BgImgContainer></BgImgContainer>
-            </LoginPageTopSection>
+        <RegisterPageContainer>
+            <SignupPageTopSection>
+                <LogoImg
+                    src={tastyKitchensLogo}
+                    alt={tastyKitchensLogoAltText}
+                />
+                <Title>{t("loginPageText.title")}</Title>
+                <SignupHeading>{t("loginPageText.signUpText")}</SignupHeading>
+            </SignupPageTopSection>
             {renderLoginForm()}
-        </LoginPageContainer>
+        </RegisterPageContainer>
     );
 
     const renderLoginForm = (): JSX.Element => (
@@ -85,20 +89,20 @@ export const RegisterPage = (props: RegisterPageProps): JSX.Element => {
             <InputLabelContainer InputLabelPropsObj={nameProps} />
             <InputLabelContainer InputLabelPropsObj={passwordProps} />
             <InputLabelContainer InputLabelPropsObj={confirmPasswordProps} />
-            <LoginButtonContainer>
+            <SignupButtonContainer>
                     {errorMsg && (
-                        <LoginError>{errorMsg}</LoginError>
+                        <SignupError>{errorMsg}</SignupError>
                     )}
-                <LoginButton type="submit">
+                <SignupButton type="submit">
                     {apiStatus === "INITIAL"
                         ? t("loginPageText.signUpText")
                         : t("loginPageText.loadingText")}
-                </LoginButton>
+                </SignupButton>
                 <AlreadyHaveAccText>
 					{alreadyHaveAccText} -
 					<LinkComponent to={loginRoute}> Click here</LinkComponent>
 				</AlreadyHaveAccText>
-            </LoginButtonContainer>
+            </SignupButtonContainer>
         </FormEle>
     );
 

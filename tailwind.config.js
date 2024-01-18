@@ -135,6 +135,10 @@ module.exports = {
             },
             maxWidth: {
                 "1110px": "1110px",
+                "456px": "456px",
+            },
+            minWidth: {
+                "456px": "456px",
             },
             boxShadow: {
                 loginFormCard: "0px 8px 40px rgba(7, 7, 7, 0.08);",
